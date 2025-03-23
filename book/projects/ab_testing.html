@@ -1,0 +1,1348 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Analyze A/B Test Results &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/projects/ab_testing';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Wrangling and Analyze Data" href="wrangle_act.html" />
+    <link rel="prev" title="Exploratory Data Analysis(EDA)" href="data_investigation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Profile Summary
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Analytics Projects</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="data_investigation.html">Exploratory Data Analysis(EDA)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analyze A/B Test Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wrangle_act.html">Wrangling and Analyze Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seaborne.html">Analytics With Seaborne</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fbook/projects/ab_testing.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/book/projects/ab_testing.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analyze A/B Test Results</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-probability">Part I - Probability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-1-1">ToDo 1.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-1-2">ToDo 1.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-1-3">ToDo 1.3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-1-4">ToDo 1.4</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-a-b-test">Part II - A/B Test</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-2-1">ToDo 2.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-2-2-null-hypothesis-h-0-testing">ToDo 2.2 - Null Hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> Testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-two-sample-z-test">About the two-sample z-test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-a-regression-approach">Part III - A regression approach</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-3-1">ToDo 3.1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommendation">Recommendation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analyze-a-b-test-results">
+<h1>Analyze A/B Test Results<a class="headerlink" href="#analyze-a-b-test-results" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/Khunmi/test/blob/master/_portfolio/ab_testing.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<!-- This current notebook is organised into the following sections: 
+
+- [Introduction](#intro)
+- [Part I - Probability](#probability)
+- [Part II - A/B Test](#ab_test)
+- [Part III - Regression](#regression)
+- [Recommendation](#recommendation) -->
+<!-- <a id='intro'></a> -->
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>A/B tests are very commonly performed by data analysts and data scientists. For this project, I will be working to understand the results of an A/B test run by an e-commerce website.  The goal is to work through this notebook to help the company understand if they should:</p>
+<ul class="simple">
+<li><p>Implement the new webpage,</p></li>
+<li><p>Keep the old webpage, or</p></li>
+<li><p>Perhaps run the experiment longer to make their decision.</p></li>
+</ul>
+<!-- <a id='probability'></a> -->
+</section>
+<section id="part-i-probability">
+<h2>Part I - Probability<a class="headerlink" href="#part-i-probability" title="Link to this heading">#</a></h2>
+<p>To get started, let’s import our libraries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="todo-1-1">
+<h3>ToDo 1.1<a class="headerlink" href="#todo-1-1" title="Link to this heading">#</a></h3>
+<p>Below is the description of the data, there are a total of 5 columns:</p>
+<center>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Data columns</p></th>
+<th class="head text-left"><p>Purpose</p></th>
+<th class="head text-right"><p>Valid values</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>user_id</p></td>
+<td class="text-left"><p>Unique ID</p></td>
+<td class="text-right"><p>Int64 values</p></td>
+</tr>
+<tr class="row-odd"><td><p>timestamp</p></td>
+<td class="text-left"><p>Time stamp when the user visited the webpage</p></td>
+<td class="text-right"><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p>group</p></td>
+<td class="text-left"><p>In the current A/B experiment, the users are categorized into two broad groups. <br>The <code class="docutils literal notranslate"><span class="pre">control</span></code> group users are expected to be served with <code class="docutils literal notranslate"><span class="pre">old_page</span></code>; and <code class="docutils literal notranslate"><span class="pre">treatment</span></code> group users are matched with the <code class="docutils literal notranslate"><span class="pre">new_page</span></code>. <br>However, <strong>some inaccurate rows</strong> are present in the initial data, such as a <code class="docutils literal notranslate"><span class="pre">control</span></code> group user is matched with a <code class="docutils literal notranslate"><span class="pre">new_page</span></code>.</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">['control',</span> <span class="pre">'treatment']</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>landing_page</p></td>
+<td class="text-left"><p>It denotes whether the user visited the old or new webpage.</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">['old_page',</span> <span class="pre">'new_page']</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>converted</p></td>
+<td class="text-left"><p>It denotes whether the user decided to pay for the company’s product. Here, <code class="docutils literal notranslate"><span class="pre">1</span></code> means yes, the user bought the product.</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</center>
+<p><strong>a.</strong> Read in the dataset from the <code class="docutils literal notranslate"><span class="pre">ab_data.csv</span></code> file and take a look at the top few rows here:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://video.udacity-data.com/topher/2017/December/5a32c9a0_analyzeabtestresults-2/analyzeabtestresults-2.zip&#39;</span>
+
+<span class="c1"># Download the file</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;analyzeabtestresults-2.zip&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+<span class="c1"># unzip project file into current directory</span>
+<span class="o">!</span><span class="w"> </span>unzip<span class="w"> </span><span class="s2">&quot;analyzeabtestresults-2.zip&quot;</span>
+<span class="c1"># read file into panda dataframe</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;AnalyzeABTestResults 2\ab_data.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;unzip&#39; is not recognized as an internal or external command,
+operable program or batch file.
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39; unzip &quot;analyzeabtestresults-2.zip&quot;&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1"># read file into panda dataframe</span>
+<span class="ne">---&gt; </span><span class="mi">10</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;AnalyzeABTestResults 2\ab_data.csv&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~\anaconda3\envs\geo\Lib\site-packages\pandas\io\parsers\readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File ~\anaconda3\envs\geo\Lib\site-packages\pandas\io\parsers\readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File ~\anaconda3\envs\geo\Lib\site-packages\pandas\io\parsers\readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File ~\anaconda3\envs\geo\Lib\site-packages\pandas\io\parsers\readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1881</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1882</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1883</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1884</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1885</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1886</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1887</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1888</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1889</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File ~\anaconda3\envs\geo\Lib\site-packages\pandas\io\common.py:873,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">868</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">869</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
+<span class="g g-Whitespace">    </span><span class="mi">870</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
+<span class="g g-Whitespace">    </span><span class="mi">871</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">872</span>         <span class="c1"># Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">873</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">874</span>             <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">875</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">876</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">877</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">878</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">879</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">880</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">881</span>         <span class="c1"># Binary mode</span>
+<span class="g g-Whitespace">    </span><span class="mi">882</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;AnalyzeABTestResults 2\\ab_data.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>b.</strong> Use the cell below to find the number of rows in the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>c.</strong> The number of unique users in the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;landing_page&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>d.</strong> The proportion of users converted.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">converted</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>e.</strong> The number of times when the “group” is <code class="docutils literal notranslate"><span class="pre">treatment</span></code> but “landing_page” is not a <code class="docutils literal notranslate"><span class="pre">new_page</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wrong_match1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;group == &quot;treatment&quot; and landing_page != &quot;new_page&quot;&#39;</span><span class="p">)[</span><span class="s1">&#39;user_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">wrong_match2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;group == &quot;control&quot; and landing_page != &quot;old_page&quot;&#39;</span><span class="p">)[</span><span class="s1">&#39;user_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">wrong_match1</span><span class="p">,</span> <span class="n">wrong_match2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#inspecting the wrong matches in our df</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;group&#39;</span><span class="p">,</span><span class="s1">&#39;landing_page&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>f.</strong> Do any of the rows have missing values?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="todo-1-2">
+<h3>ToDo 1.2<a class="headerlink" href="#todo-1-2" title="Link to this heading">#</a></h3>
+<p>In a particular row, the <strong>group</strong> and <strong>landing_page</strong> columns should have either of the following acceptable values:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>user_id</p></th>
+<th class="head"><p>timestamp</p></th>
+<th class="head"><p>group</p></th>
+<th class="head"><p>landing_page</p></th>
+<th class="head"><p>converted</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>XXXX</p></td>
+<td><p>XXXX</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">control</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">old_page</span></code></p></td>
+<td><p>X</p></td>
+</tr>
+<tr class="row-odd"><td><p>XXXX</p></td>
+<td><p>XXXX</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">treatment</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">new_page</span></code></p></td>
+<td><p>X</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>It means, the <code class="docutils literal notranslate"><span class="pre">control</span></code> group users should match with <code class="docutils literal notranslate"><span class="pre">old_page</span></code>; and <code class="docutils literal notranslate"><span class="pre">treatment</span></code> group users should matched with the <code class="docutils literal notranslate"><span class="pre">new_page</span></code>.</p>
+<p>However, for the rows where <code class="docutils literal notranslate"><span class="pre">treatment</span></code> does not match with <code class="docutils literal notranslate"><span class="pre">new_page</span></code> or <code class="docutils literal notranslate"><span class="pre">control</span></code> does not match with <code class="docutils literal notranslate"><span class="pre">old_page</span></code>, we cannot be sure if such rows truly received the new or old wepage.</p>
+<p>**a.**Create a new dataset that meets the specifications.  Store the new dataframe in <strong>df2</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove the inaccurate rows, and store the result in a new dataframe df2</span>
+<span class="n">wrong_match_index1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;group == &quot;treatment&quot; and landing_page != &quot;new_page&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
+<span class="n">wrong_match_index2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;group == &quot;control&quot; and landing_page != &quot;old_page&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">wrong_match_index1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">wrong_match_index2</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Double Check all of the incorrect rows were removed from df2 - </span>
+<span class="c1"># Output of the statement below should be 0</span>
+<span class="n">df2</span><span class="p">[((</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;treatment&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;landing_page&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;new_page&#39;</span><span class="p">))</span> <span class="o">==</span> <span class="kc">False</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="todo-1-3">
+<h3>ToDo 1.3<a class="headerlink" href="#todo-1-3" title="Link to this heading">#</a></h3>
+<p><strong>a.</strong> How many unique <strong>user_id</strong>s are in <strong>df2</strong>?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>b.</strong> There is one <strong>user_id</strong> repeated in <strong>df2</strong>.  What is it?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>c.</strong> Display the rows for the duplicate <strong>user_id</strong>?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">duplicate_user</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;user_id == 773192&#39;</span><span class="p">)</span>
+<span class="n">duplicate_user</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>d.</strong> Remove <strong>one</strong> of the rows with a duplicate <strong>user_id</strong>, from the <strong>df2</strong> dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove one of the rows with a duplicate user_id..</span>
+<span class="c1"># Hint: The dataframe.drop_duplicates() may not work in this case because the rows with duplicate user_id are not entirely identical. </span>
+<span class="n">df2</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">1899</span><span class="p">,</span><span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Check again if the row with a duplicate user_id is deleted or not</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;user_id == 773192&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="todo-1-4">
+<h3>ToDo 1.4<a class="headerlink" href="#todo-1-4" title="Link to this heading">#</a></h3>
+<p><strong>a.</strong> What is the probability of an individual converting regardless of the page they receive?<br><br></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pop_convert_rate</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">converted</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">pop_convert_rate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>b.</strong> Given that an individual was in the <code class="docutils literal notranslate"><span class="pre">control</span></code> group, what is the probability they converted?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;group == &quot;control&quot;&#39;</span><span class="p">)[</span><span class="s1">&#39;converted&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>c.</strong> Given that an individual was in the <code class="docutils literal notranslate"><span class="pre">treatment</span></code> group, what is the probability they converted?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;group == &quot;treatment&quot;&#39;</span><span class="p">)[</span><span class="s1">&#39;converted&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the actual difference (obs_diff) between the conversion rates for the two groups.</span>
+<span class="n">obs_diff</span> <span class="o">=</span>  <span class="n">df2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;group == &quot;treatment&quot;&#39;</span><span class="p">)[</span><span class="s1">&#39;converted&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">df2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;group == &quot;control&quot;&#39;</span><span class="p">)[</span><span class="s1">&#39;converted&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">obs_diff</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>d.</strong> What is the probability that an individual received the new page?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;landing_page == &quot;new_page&quot;&#39;</span><span class="p">)[</span><span class="s1">&#39;landing_page&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">/</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>e.</strong> Consider your results from parts (a) through (d) above, and explain below whether the new <code class="docutils literal notranslate"><span class="pre">treatment</span></code> group users lead to more conversions.</p>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<blockquote>
+<div><p><span style="color: red;">Based on initial assesment of our data, there is no evidence that suggests that the new treatment group users lead to more conversions</span></p>
+</div></blockquote>
+<!-- <a id='ab_test'></a> -->
+</section>
+</section>
+<section id="part-ii-a-b-test">
+<h2>Part II - A/B Test<a class="headerlink" href="#part-ii-a-b-test" title="Link to this heading">#</a></h2>
+<p>Since a timestamp is associated with each event, you could run a hypothesis test continuously as long as you observe the events.</p>
+<p>However, then the hard questions would be:</p>
+<ul class="simple">
+<li><p>Do you stop as soon as one page is considered significantly better than another or does it need to happen consistently for a certain amount of time?</p></li>
+<li><p>How long do you run to render a decision that neither page is better than another?</p></li>
+</ul>
+<p>These questions are the difficult parts associated with A/B tests in general.</p>
+<section id="todo-2-1">
+<h3>ToDo 2.1<a class="headerlink" href="#todo-2-1" title="Link to this heading">#</a></h3>
+<p>For now, consider we need to make the decision just based on all the data provided.</p>
+<p>Recall that we just calculated that the “converted” probability (or rate) for the old page is <em>slightly</em> higher than that of the new page (ToDo 1.4.c).</p>
+<p>If you want to assume that the old page is better unless the new page proves to be definitely better at a Type I error rate of 5%, what should be your null and alternative hypotheses (<strong><span class="math notranslate nohighlight">\(H_0\)</span></strong> and <strong><span class="math notranslate nohighlight">\(H_1\)</span></strong>)?</p>
+<p>You can state your hypothesis in terms of words or in terms of <strong><span class="math notranslate nohighlight">\(p_{old}\)</span></strong> and <strong><span class="math notranslate nohighlight">\(p_{new}\)</span></strong>, which are the “converted” probability (or rate) for the old and new pages respectively.</p>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<p><span style="color: red;"><span class="math notranslate nohighlight">\(H_0\)</span> : <span class="math notranslate nohighlight">\(p_{new}\)</span> - <span class="math notranslate nohighlight">\(p_{old}\)</span> &lt;= 0</span></p>
+<p><span style="color: red;"><span class="math notranslate nohighlight">\(H_1\)</span> : <span class="math notranslate nohighlight">\(p_{new}\)</span> - <span class="math notranslate nohighlight">\(p_{old}\)</span> &gt; 0</span></p>
+</section>
+<section id="todo-2-2-null-hypothesis-h-0-testing">
+<h3>ToDo 2.2 - Null Hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> Testing<a class="headerlink" href="#todo-2-2-null-hypothesis-h-0-testing" title="Link to this heading">#</a></h3>
+<p>Under the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span>, assume that <span class="math notranslate nohighlight">\(p_{new}\)</span> and <span class="math notranslate nohighlight">\(p_{old}\)</span> are equal. Furthermore, assume that <span class="math notranslate nohighlight">\(p_{new}\)</span> and <span class="math notranslate nohighlight">\(p_{old}\)</span> both are equal to the <strong>converted</strong> success rate in the <code class="docutils literal notranslate"><span class="pre">df2</span></code> data regardless of the page. So, our assumption is: <br><br></p>
+<center>
+$p_{new}$ = $p_{old}$ = $p_{population}$
+</center>
+<p>In this section, I will:</p>
+<ul class="simple">
+<li><p>Simulate (bootstrap) sample data set for both groups, and compute the  “converted” probability <span class="math notranslate nohighlight">\(p\)</span> for those samples.</p></li>
+<li><p>Use a sample size for each group equal to the ones in the <code class="docutils literal notranslate"><span class="pre">df2</span></code> data.</p></li>
+<li><p>Compute the difference in the “converted” probability for the two samples above.</p></li>
+<li><p>Perform the sampling distribution for the “difference in the converted probability” between the two simulated-samples over 10,000 iterations; and calculate an estimate.</p></li>
+</ul>
+<p><strong>a.</strong> What is the <strong>conversion rate</strong> for <span class="math notranslate nohighlight">\(p_{new}\)</span> under the null hypothesis?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_new</span> <span class="o">=</span> <span class="n">pop_convert_rate</span>
+<span class="n">p_new</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>b.</strong> What is the <strong>conversion rate</strong> for <span class="math notranslate nohighlight">\(p_{old}\)</span> under the null hypothesis?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_old</span> <span class="o">=</span> <span class="n">pop_convert_rate</span>
+<span class="n">p_old</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>c.</strong> What is <span class="math notranslate nohighlight">\(n_{new}\)</span>, the number of individuals in the treatment group? <br><br></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_new</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;group == &quot;treatment&quot;&#39;</span><span class="p">)[</span><span class="s1">&#39;user_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+<span class="n">n_new</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>d.</strong> What is <span class="math notranslate nohighlight">\(n_{old}\)</span>, the number of individuals in the control group?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_old</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;group == &quot;control&quot;&#39;</span><span class="p">)[</span><span class="s1">&#39;user_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+<span class="n">n_old</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>e. Simulate Sample for the <code class="docutils literal notranslate"><span class="pre">treatment</span></code> Group</strong><br>
+Simulate <span class="math notranslate nohighlight">\(n_{new}\)</span> transactions with a conversion rate of <span class="math notranslate nohighlight">\(p_{new}\)</span> under the null hypothesis.  <br><br></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simulate a Sample for the treatment Group</span>
+<span class="n">new_page_converted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">n_new</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="n">p_new</span><span class="p">,</span> <span class="n">p_new</span><span class="p">])</span>
+<span class="n">new_page_converted</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>f. Simulate Sample for the <code class="docutils literal notranslate"><span class="pre">control</span></code> Group</strong> <br>
+Simulate <span class="math notranslate nohighlight">\(n_{old}\)</span> transactions with a conversion rate of <span class="math notranslate nohighlight">\(p_{old}\)</span> under the null hypothesis. <br> Store these <span class="math notranslate nohighlight">\(n_{old}\)</span> 1’s and 0’s in the <code class="docutils literal notranslate"><span class="pre">old_page_converted</span></code> numpy array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simulate a Sample for the control Group</span>
+<span class="n">old_page_converted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">n_old</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="n">p_old</span><span class="p">,</span> <span class="n">p_old</span><span class="p">])</span>
+<span class="n">old_page_converted</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>g.</strong> Find the difference in the “converted” probability <span class="math notranslate nohighlight">\((p{'}_{new}\)</span> - <span class="math notranslate nohighlight">\(p{'}_{old})\)</span> for your simulated samples from the parts (e) and (f) above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_new2</span> <span class="o">=</span> <span class="n">new_page_converted</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">p_old2</span> <span class="o">=</span> <span class="n">old_page_converted</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">p_new2</span> <span class="o">-</span> <span class="n">p_old2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>h. Sampling distribution</strong> <br>
+Re-create <code class="docutils literal notranslate"><span class="pre">new_page_converted</span></code> and <code class="docutils literal notranslate"><span class="pre">old_page_converted</span></code> and find the <span class="math notranslate nohighlight">\((p{'}_{new}\)</span> - <span class="math notranslate nohighlight">\(p{'}_{old})\)</span> value 10,000 times using the same simulation process you used in parts (a) through (g) above.</p>
+<br>
+Store all  $(p{'}_{new}$ - $p{'}_{old})$  values in a NumPy array called `p_diffs`.<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_page_converted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="n">n_new</span><span class="p">,</span> <span class="n">p_new</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span><span class="o">/</span><span class="n">n_new</span>
+<span class="n">old_page_converted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="n">n_old</span><span class="p">,</span> <span class="n">p_old</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span><span class="o">/</span><span class="n">n_old</span>
+<span class="n">p_diffs</span> <span class="o">=</span> <span class="n">new_page_converted</span> <span class="o">-</span> <span class="n">old_page_converted</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>i. Histogram</strong><br>
+Plot a histogram of the <strong>p_diffs</strong>.  Does this plot look like what is expected?<br><br></p>
+<p>Also, we use <code class="docutils literal notranslate"><span class="pre">plt.axvline()</span></code> method to mark the actual difference observed  in the <code class="docutils literal notranslate"><span class="pre">df2</span></code> data (recall <code class="docutils literal notranslate"><span class="pre">obs_diff</span></code>), in the chart.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_diffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">p_diffs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">p_diffs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Difference in Conversion Rates&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Simulated Differences&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">obs_diff</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>j.</strong> What proportion of the <strong>p_diffs</strong> are greater than the actual difference observed in the <code class="docutils literal notranslate"><span class="pre">df2</span></code> data?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">p_diffs</span> <span class="o">&gt;</span> <span class="n">obs_diff</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>k.</strong> Explaining the calculated value in <strong>j</strong> above.</p>
+<ul class="simple">
+<li><p>What is this value called in scientific studies?</p></li>
+<li><p>What does this value signify in terms of whether or not there is a difference between the new and old pages?</p></li>
+</ul>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<ul class="simple">
+<li><p><span style="color: red;">The value calculated is called the P value - If <span class="math notranslate nohighlight">\(H_0\)</span> is true, the probablity of obtaining the observed statistic or an etreme value in favour of the <span class="math notranslate nohighlight">\(H_1\)</span>.</span></p></li>
+<li><p><span style="color: red;">The P value calculated suggests that the statistic(obs_diff) is likely from the <span class="math notranslate nohighlight">\(H_0\)</span>. In order words, the threshold for a type one error is 5% and since our P value is greater than the error threshold, <span class="math notranslate nohighlight">\(H_0\)</span> remains valid.</span></p></li>
+</ul>
+<p><strong>l. Using Built-in Methods for Hypothesis Testing</strong><br>
+We could also use a built-in to achieve similar results.  Though using the built-in might be easier to code, the above portions are a walkthrough of the ideas that are critical to correctly thinking about statistical significance.</p>
+<p>Fill in the statements below to calculate the:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">convert_old</span></code>: number of conversions with the old_page</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">convert_new</span></code>: number of conversions with the new_page</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_old</span></code>: number of individuals who were shown the old_page</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_new</span></code>: number of individuals who were shown the new_page</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+
+<span class="c1"># number of conversions with the old_page</span>
+<span class="n">convert_old</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;group == &quot;control&quot;&#39;</span><span class="p">)[</span><span class="s1">&#39;converted&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># number of conversions with the new_page</span>
+<span class="n">convert_new</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;group == &quot;treatment&quot;&#39;</span><span class="p">)[</span><span class="s1">&#39;converted&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># number of individuals who were shown the old_page</span>
+<span class="n">n_old</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;landing_page == &quot;old_page&quot;&#39;</span><span class="p">)[</span><span class="s1">&#39;landing_page&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="c1"># number of individuals who received new_page</span>
+<span class="n">n_new</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;landing_page == &quot;new_page&quot;&#39;</span><span class="p">)[</span><span class="s1">&#39;landing_page&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>m.</strong> Now use <code class="docutils literal notranslate"><span class="pre">sm.stats.proportions_ztest()</span></code> to compute your test statistic and p-value.  <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.stats.proportion.proportions_ztest.html">Here</a> is a helpful link on using the built in.</p>
+<p>The syntax is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>proportions_ztest<span class="o">(</span>count_array,<span class="w"> </span>nobs_array,<span class="w"> </span><span class="nv">alternative</span><span class="o">=</span><span class="s1">&#39;larger&#39;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>where,</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">count_array</span></code> = represents the number of “converted” for each group</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nobs_array</span></code> = represents the total number of observations (rows) in each group</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alternative</span></code> = choose one of the values from <code class="docutils literal notranslate"><span class="pre">[‘two-sided’,</span> <span class="pre">‘smaller’,</span> <span class="pre">‘larger’]</span></code> depending upon two-tailed, left-tailed, or right-tailed respectively.</p></li>
+</ul>
+<blockquote>
+<div><p><strong>Hint</strong>: <br>
+It’s a two-tailed if you defined <span class="math notranslate nohighlight">\(H_1\)</span> as <span class="math notranslate nohighlight">\((p_{new} = p_{old})\)</span>. <br>
+It’s a left-tailed if you defined <span class="math notranslate nohighlight">\(H_1\)</span> as <span class="math notranslate nohighlight">\((p_{new} &lt; p_{old})\)</span>. <br>
+It’s a right-tailed if you defined <span class="math notranslate nohighlight">\(H_1\)</span> as <span class="math notranslate nohighlight">\((p_{new} &gt; p_{old})\)</span>.</p>
+</div></blockquote>
+<p>The built-in function above will return the z_score, p_value.</p>
+</section>
+<hr class="docutils" />
+<section id="about-the-two-sample-z-test">
+<h3>About the two-sample z-test<a class="headerlink" href="#about-the-two-sample-z-test" title="Link to this heading">#</a></h3>
+<p>Recall that you have plotted a distribution <code class="docutils literal notranslate"><span class="pre">p_diffs</span></code> representing the
+difference in the “converted” probability  <span class="math notranslate nohighlight">\((p{'}_{new}-p{'}_{old})\)</span>  for your two simulated samples 10,000 times.</p>
+<p>Another way for comparing the mean of two independent and normal distribution is a <strong>two-sample z-test</strong>. You can perform the Z-test to calculate the Z_score, as shown in the equation below:</p>
+<div class="math notranslate nohighlight">
+\[
+Z_{score} = \frac{ (p{'}_{new}-p{'}_{old}) - (p_{new}  -  p_{old})}{ \sqrt{ \frac{\sigma^{2}_{new} }{n_{new}} + \frac{\sigma^{2}_{old} }{n_{old}}  } }
+\]</div>
+<p>where,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p{'}\)</span> is the “converted” success rate in the sample</p></li>
+<li><p><span class="math notranslate nohighlight">\(p_{new}\)</span> and <span class="math notranslate nohighlight">\(p_{old}\)</span> are the “converted” success rate for the two groups in the population.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma_{new}\)</span> and <span class="math notranslate nohighlight">\(\sigma_{new}\)</span> are the standard deviation for the two groups in the population.</p></li>
+<li><p><span class="math notranslate nohighlight">\(n_{new}\)</span> and <span class="math notranslate nohighlight">\(n_{old}\)</span> represent the size of the two groups or samples (it’s same in our case)</p></li>
+</ul>
+<blockquote>
+<div><p>Z-test is performed when the sample size is large, and the population variance is known. The z-score represents the distance between the two “converted” success rates in terms of the standard error.</p>
+</div></blockquote>
+<p>Next step is to make a decision to reject or fail to reject the null hypothesis based on comparing these two values:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Z_{score}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Z_{\alpha}\)</span> or <span class="math notranslate nohighlight">\(Z_{0.05}\)</span>, also known as critical value at 95% confidence interval.  <span class="math notranslate nohighlight">\(Z_{0.05}\)</span> is 1.645 for one-tailed tests,  and 1.960 for two-tailed test. You can determine the <span class="math notranslate nohighlight">\(Z_{\alpha}\)</span> from the z-table manually.</p></li>
+</ul>
+<p>Decide if your hypothesis is either a two-tailed, left-tailed, or right-tailed test. Accordingly, reject OR fail to reject the  null based on the comparison between <span class="math notranslate nohighlight">\(Z_{score}\)</span> and <span class="math notranslate nohighlight">\(Z_{\alpha}\)</span>.</p>
+<blockquote>
+<div><p>Hint:<br>
+For a right-tailed test, reject null if <span class="math notranslate nohighlight">\(Z_{score}\)</span> &gt; <span class="math notranslate nohighlight">\(Z_{\alpha}\)</span>. <br>
+For a left-tailed test, reject null if <span class="math notranslate nohighlight">\(Z_{score}\)</span> &lt; <span class="math notranslate nohighlight">\(Z_{\alpha}\)</span>.</p>
+</div></blockquote>
+<p>In other words, we determine whether or not the <span class="math notranslate nohighlight">\(Z_{score}\)</span> lies in the “rejection region” in the distribution. A “rejection region” is an interval where the null hypothesis is rejected iff the <span class="math notranslate nohighlight">\(Z_{score}\)</span> lies in that region.</p>
+<p>Reference:</p>
+<ul class="simple">
+<li><p>Example 9.1.2 on this <a class="reference external" href="https://stats.libretexts.org/Bookshelves/Introductory_Statistics/Book%3A_Introductory_Statistics_(Shafer_and_Zhang)/09%3A_Two-Sample_Problems/9.01%3A_Comparison_of_Two_Population_Means-_Large_Independent_Samples">page</a>, courtesy <a class="reference external" href="http://www.stats.libretexts.org">www.stats.libretexts.org</a></p></li>
+</ul>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+<span class="c1"># ToDo: Complete the sm.stats.proportions_ztest() method arguments</span>
+<span class="n">count_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">convert_new</span><span class="p">,</span><span class="n">convert_old</span><span class="p">])</span>
+<span class="n">nobs_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">n_new</span><span class="p">,</span><span class="n">n_old</span><span class="p">])</span>
+<span class="n">z_score</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">proportions_ztest</span><span class="p">(</span><span class="n">count_array</span><span class="p">,</span><span class="n">nobs_array</span><span class="p">,</span><span class="n">alternative</span> <span class="o">=</span><span class="s1">&#39;larger&#39;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z_score</span><span class="p">,</span> <span class="n">p_value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>n.</strong> What do the z-score and p-value you computed in the previous question mean for the conversion rates of the old and new pages?  Do they agree with the findings in parts <strong>j.</strong> and <strong>k.</strong>?<br><br></p>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<ul class="simple">
+<li><p><span style="color: red;">The P value calculated using the inbuilt method agrees with previous approach where the calculated P value is above a type 1 error threshold(<span class="math notranslate nohighlight">\({\alpha}\)</span>). Hence, there isn’t a significant evidence to reject the <span class="math notranslate nohighlight">\(H_0\)</span>.</span></p></li>
+<li><p><span style="color: red;">The Z score value agrees that we fail to reject the <span class="math notranslate nohighlight">\(H_0\)</span>. Having seen that the <span class="math notranslate nohighlight">\(Z_{score}\)</span> &lt; <span class="math notranslate nohighlight">\(Z_{\alpha}\)</span>.</span></p></li>
+</ul>
+<p><a id='regression'></a></p>
+</section>
+</section>
+<section id="part-iii-a-regression-approach">
+<h2>Part III - A regression approach<a class="headerlink" href="#part-iii-a-regression-approach" title="Link to this heading">#</a></h2>
+<section id="todo-3-1">
+<h3>ToDo 3.1<a class="headerlink" href="#todo-3-1" title="Link to this heading">#</a></h3>
+<p>In this final part, you will see that the result achieved in the A/B test in Part II above can also be achieved by performing regression.<br><br></p>
+<p><strong>a.</strong> Since each row in the <code class="docutils literal notranslate"><span class="pre">df2</span></code> data is either a conversion or no conversion, what type of regression should you be performing in this case?</p>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<p><span style="color: red;">Logistic Regression</span>.</p>
+<p><strong>b.</strong> The goal is to use <strong>statsmodels</strong> library to fit the regression model you specified in part <strong>a.</strong> above to see if there is a significant difference in conversion based on the page-type a customer receives. However, you first need to create the following two columns in the <code class="docutils literal notranslate"><span class="pre">df2</span></code> dataframe:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">intercept</span></code> - It should be <code class="docutils literal notranslate"><span class="pre">1</span></code> in the entire column.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ab_page</span></code> - It’s a dummy variable column, having a value <code class="docutils literal notranslate"><span class="pre">1</span></code> when an individual receives the <strong>treatment</strong>, otherwise <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;intercept&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">df2</span><span class="p">[[</span><span class="s1">&#39;other_page&#39;</span><span class="p">,</span><span class="s1">&#39;ab_page&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">])</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>c.</strong> Use <strong>statsmodels</strong> to instantiate the regression model on the two columns you created in part (b). above, then fit the model to predict whether or not an individual converts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logit_mod</span> <span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">Logit</span><span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;converted&#39;</span><span class="p">],</span><span class="n">df2</span><span class="p">[[</span><span class="s1">&#39;intercept&#39;</span><span class="p">,</span> <span class="s1">&#39;ab_page&#39;</span><span class="p">]])</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">logit_mod</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>d.</strong> Provide the summary of your model below, and use it as necessary to answer the following questions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">summary2</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.0150</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>e.</strong> What is the p-value associated with <strong>ab_page</strong>? Why does it differ from the value you found in <strong>Part II</strong>?<br><br></p>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<ul class="simple">
+<li><p><span style="color: red;">The P value associated with ab_page is 0.1899 which agrees with not to reject the <span class="math notranslate nohighlight">\(H_0\)</span>.</span></p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><span style="color: red;">The <span class="math notranslate nohighlight">\(H_0\)</span> of our logistic regression model(LRM) states that none of the explanatory variable(s) have a statistically significant relationship with the response variable(“conversion” rate), y. The <span class="math notranslate nohighlight">\(H_1\)</span> of our LRM states that there is a statistically significant relationship between conversion rates and the ab_page column. In order words, <span class="math notranslate nohighlight">\(H_0:B_1\)</span> <span class="math notranslate nohighlight">\(=\)</span> <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(H_1:B_1\)</span> <span class="math notranslate nohighlight">\(!=\)</span> <span class="math notranslate nohighlight">\(0\)</span>.</span></p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><span style="color: red;">In comparison to the <span class="math notranslate nohighlight">\(H_0\)</span> and <span class="math notranslate nohighlight">\(H_1\)</span> in Part II, Part II investigated same outcome as this current section, where insight was derived from our two competing hypothesis with the basis of the difference in the average conversion rate for both idependent variables(groups). In both cases, we fail to reject the <span class="math notranslate nohighlight">\(H_0\)</span>.</span></p></li>
+</ul>
+<p><strong>f.</strong> Now, you are considering other things that might influence whether or not an individual converts.  Discuss why it is a good idea to consider other factors to add into your regression model.  Are there any disadvantages to adding additional terms into your regression model?</p>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<ul class="simple">
+<li><p><span style="color: red;">An advantage of using multiple explanantory variables is the ability to determine the relative influence of one or more explanantory variables to the criterion value.</span></p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><span style="color: red;">We can’t be entirely reliant on one categorical data due to the influence of distribution bias where class distribution have significant difference in share per category. Considering other explanantory variables or a combination of explanatory variables will suffice. However, it is important to pay attention to the presence of Multicollinearity amongst predictor variables.</span></p></li>
+</ul>
+<p><strong>g. Adding countries</strong><br>
+Now along with testing if the conversion rate changes for different pages, also add an effect based on which country a user lives in.</p>
+<ol class="arabic simple">
+<li><p>You will need to read in the <strong>countries.csv</strong> dataset and merge together your <code class="docutils literal notranslate"><span class="pre">df2</span></code> datasets on the appropriate rows. You call the resulting dataframe <code class="docutils literal notranslate"><span class="pre">df_merged</span></code>. <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html">Here</a> are the docs for joining tables.</p></li>
+<li><p>Does it appear that country had an impact on conversion?  To answer this question, consider the three unique values, <code class="docutils literal notranslate"><span class="pre">['UK',</span> <span class="pre">'US',</span> <span class="pre">'CA']</span></code>, in the <code class="docutils literal notranslate"><span class="pre">country</span></code> column. Create dummy variables for these country columns.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the countries.csv</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;AnalyzeABTestResults 2\countries.csv&#39;</span><span class="p">)</span>
+<span class="n">df3</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Join with the df2 dataframe</span>
+<span class="n">df_merged</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df3</span><span class="p">,</span><span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;user_id&#39;</span><span class="p">)</span>
+
+<span class="n">df_merged</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the necessary dummy variables</span>
+<span class="n">df_merged</span><span class="p">[[</span> <span class="s1">&#39;CA&#39;</span><span class="p">,</span><span class="s1">&#39;UK&#39;</span><span class="p">,</span> <span class="s1">&#39;US&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df_merged</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">])</span>
+<span class="n">df_merged</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logit_mod</span> <span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">Logit</span><span class="p">(</span><span class="n">df_merged</span><span class="p">[</span><span class="s1">&#39;converted&#39;</span><span class="p">],</span><span class="n">df_merged</span><span class="p">[[</span><span class="s1">&#39;intercept&#39;</span><span class="p">,</span><span class="s1">&#39;US&#39;</span><span class="p">,</span><span class="s1">&#39;UK&#39;</span><span class="p">]])</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">logit_mod</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">results</span><span class="o">.</span><span class="n">summary2</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#making the summary coefficients interpretable by exponentiating.</span>
+<span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.0408</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.0507</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><span style="color: red;">Consequently, conversion rates are 1.042 times more likely for users living in Canada as compared to users that live in USA, holding all other variables constant.</span></p></li>
+<li><p><span style="color: red;">Conversion rates are 1.052 times more likely for users living in Canada as compared to users that live in UK, holding all other variables constant.</span></p></li>
+</ul>
+<p><strong>h. Fit your model and obtain the results</strong><br>
+Though I have now looked at the individual factors of country and page on conversion, we would now like to look at an interaction between page and country to see if are there significant effects on conversion.  <strong>Create the necessary additional columns, and fit the new model.</strong></p>
+<p>Provide the summary results (statistical output), and your conclusions (written response) based on the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit your model, and summarize the results</span>
+<span class="n">df_merged</span><span class="p">[</span><span class="s1">&#39;UK_new&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_merged</span><span class="p">[</span><span class="s1">&#39;UK&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df_merged</span><span class="p">[</span><span class="s1">&#39;ab_page&#39;</span><span class="p">]</span>
+<span class="n">df_merged</span><span class="p">[</span><span class="s1">&#39;US_new&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_merged</span><span class="p">[</span><span class="s1">&#39;US&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df_merged</span><span class="p">[</span><span class="s1">&#39;ab_page&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logit_mod</span> <span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">Logit</span><span class="p">(</span><span class="n">df_merged</span><span class="p">[</span><span class="s1">&#39;converted&#39;</span><span class="p">],</span><span class="n">df_merged</span><span class="p">[[</span><span class="s1">&#39;intercept&#39;</span><span class="p">,</span><span class="s1">&#39;ab_page&#39;</span><span class="p">,</span><span class="s1">&#39;US&#39;</span><span class="p">,</span><span class="s1">&#39;UK&#39;</span><span class="p">,</span><span class="s1">&#39;UK_new&#39;</span><span class="p">,</span><span class="s1">&#39;US_new&#39;</span><span class="p">]])</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">logit_mod</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">results</span><span class="o">.</span><span class="n">summary2</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<ol class="arabic simple">
+<li><p><span style="color: red;">The introduction of the country explanatory variable(s) complements previous findings that there isn’t a statiscal significance enough to reject our null hypothesis.</span></p></li>
+<li><p><span style="color: red;">All calculated P values present in the summary indicates no significance as they are all higher than the 5% probability threshold of a type 1 error.</span></p></li>
+</ol>
+<hr class="docutils" />
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<hr class="docutils" />
+<p><a id='recommendation'></a></p>
+</section>
+</section>
+<section id="recommendation">
+<h2>Recommendation<a class="headerlink" href="#recommendation" title="Link to this heading">#</a></h2>
+<p><span style="color: red;">All evidence suggests that keeping the old webpage is the most profitable decision to make. The new webpage simply doesn’t outperfrom the exisiting webpage.</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">subprocess</span><span class="w"> </span><span class="kn">import</span> <span class="n">call</span>
+<span class="n">call</span><span class="p">([</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="s1">&#39;nbconvert&#39;</span><span class="p">,</span> <span class="s1">&#39;Analyze_ab_test_results_notebook.ipynb&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book\projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="data_investigation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Exploratory Data Analysis(EDA)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="wrangle_act.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Wrangling and Analyze Data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-probability">Part I - Probability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-1-1">ToDo 1.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-1-2">ToDo 1.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-1-3">ToDo 1.3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-1-4">ToDo 1.4</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-a-b-test">Part II - A/B Test</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-2-1">ToDo 2.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-2-2-null-hypothesis-h-0-testing">ToDo 2.2 - Null Hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> Testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-two-sample-z-test">About the two-sample z-test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-a-regression-approach">Part III - A regression approach</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-3-1">ToDo 3.1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommendation">Recommendation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
