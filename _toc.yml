@@ -1,0 +1,20 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: index
+
+
+# chapters:
+# - file: markdown
+# - file: notebooks
+# - file: markdown-notebooks
+# - file: mymarkdownfile
+
+parts:
+  - caption: Data Analytics Projects
+    chapters:
+      - file: book/projects/data_investigation
+      - file: book/projects/ab_testing
+      - file: book/projects/wrangle_act
+      - file: book/projects/seaborne

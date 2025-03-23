@@ -1,0 +1,1705 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Wrangling and Analyze Data &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/projects/wrangle_act';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Analyze A/B Test Results" href="ab_testing.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Profile Summary
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Analytics Projects</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="data_investigation.html">Investigate a Dataset - Hospital appointments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ab_testing.html">Analyze A/B Test Results</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Wrangling and Analyze Data</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fbook/projects/wrangle_act.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/book/projects/wrangle_act.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Wrangling and Analyze Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-gathering">Data Gathering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessing-data">Assessing Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-issues">Quality issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tidiness-issues">Tidiness issues</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-data">Cleaning Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tidiness">Tidiness:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#re-gathering">Re-Gathering:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality">Quality:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Quality:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Tidiness:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Quality:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Quality:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Quality:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Quality:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Quality:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Quality:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Tidiness:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-data">Storing Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-and-visualizing-data">Analyzing and Visualizing Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insights">Insights:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="wrangling-and-analyze-data">
+<h1>Wrangling and Analyze Data<a class="headerlink" href="#wrangling-and-analyze-data" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/Khunmi/book/master/_portfolio/wrangle_act.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<section id="data-gathering">
+<h2>Data Gathering<a class="headerlink" href="#data-gathering" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="n">weratedogs_archive</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://d17h27t6h515a5.cloudfront.net/topher/2017/August/59a4e958_twitter-archive-enhanced/twitter-archive-enhanced.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tweet_id</th>
+      <th>in_reply_to_status_id</th>
+      <th>in_reply_to_user_id</th>
+      <th>timestamp</th>
+      <th>source</th>
+      <th>text</th>
+      <th>retweeted_status_id</th>
+      <th>retweeted_status_user_id</th>
+      <th>retweeted_status_timestamp</th>
+      <th>expanded_urls</th>
+      <th>rating_numerator</th>
+      <th>rating_denominator</th>
+      <th>name</th>
+      <th>doggo</th>
+      <th>floofer</th>
+      <th>pupper</th>
+      <th>puppo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>892420643555336193</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2017-08-01 16:23:56 +0000</td>
+      <td>&lt;a href="http://twitter.com/download/iphone" r...</td>
+      <td>This is Phineas. He's a mystical boy. Only eve...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://twitter.com/dog_rates/status/892420643...</td>
+      <td>13</td>
+      <td>10</td>
+      <td>Phineas</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>892177421306343426</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2017-08-01 00:17:27 +0000</td>
+      <td>&lt;a href="http://twitter.com/download/iphone" r...</td>
+      <td>This is Tilly. She's just checking pup on you....</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://twitter.com/dog_rates/status/892177421...</td>
+      <td>13</td>
+      <td>10</td>
+      <td>Tilly</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>891815181378084864</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2017-07-31 00:18:03 +0000</td>
+      <td>&lt;a href="http://twitter.com/download/iphone" r...</td>
+      <td>This is Archie. He is a rare Norwegian Pouncin...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://twitter.com/dog_rates/status/891815181...</td>
+      <td>12</td>
+      <td>10</td>
+      <td>Archie</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>891689557279858688</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2017-07-30 15:58:51 +0000</td>
+      <td>&lt;a href="http://twitter.com/download/iphone" r...</td>
+      <td>This is Darla. She commenced a snooze mid meal...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://twitter.com/dog_rates/status/891689557...</td>
+      <td>13</td>
+      <td>10</td>
+      <td>Darla</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>891327558926688256</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2017-07-29 16:00:24 +0000</td>
+      <td>&lt;a href="http://twitter.com/download/iphone" r...</td>
+      <td>This is Franklin. He would like you to stop ca...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://twitter.com/dog_rates/status/891327558...</td>
+      <td>12</td>
+      <td>10</td>
+      <td>Franklin</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2351</th>
+      <td>666049248165822465</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2015-11-16 00:24:50 +0000</td>
+      <td>&lt;a href="http://twitter.com/download/iphone" r...</td>
+      <td>Here we have a 1949 1st generation vulpix. Enj...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://twitter.com/dog_rates/status/666049248...</td>
+      <td>5</td>
+      <td>10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2352</th>
+      <td>666044226329800704</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2015-11-16 00:04:52 +0000</td>
+      <td>&lt;a href="http://twitter.com/download/iphone" r...</td>
+      <td>This is a purebred Piers Morgan. Loves to Netf...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://twitter.com/dog_rates/status/666044226...</td>
+      <td>6</td>
+      <td>10</td>
+      <td>a</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2353</th>
+      <td>666033412701032449</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2015-11-15 23:21:54 +0000</td>
+      <td>&lt;a href="http://twitter.com/download/iphone" r...</td>
+      <td>Here is a very happy pup. Big fan of well-main...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://twitter.com/dog_rates/status/666033412...</td>
+      <td>9</td>
+      <td>10</td>
+      <td>a</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2354</th>
+      <td>666029285002620928</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2015-11-15 23:05:30 +0000</td>
+      <td>&lt;a href="http://twitter.com/download/iphone" r...</td>
+      <td>This is a western brown Mitsubishi terrier. Up...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://twitter.com/dog_rates/status/666029285...</td>
+      <td>7</td>
+      <td>10</td>
+      <td>a</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2355</th>
+      <td>666020888022790149</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2015-11-15 22:32:08 +0000</td>
+      <td>&lt;a href="http://twitter.com/download/iphone" r...</td>
+      <td>Here we have a Japanese Irish Setter. Lost eye...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://twitter.com/dog_rates/status/666020888...</td>
+      <td>8</td>
+      <td>10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>2356 rows × 17 columns</p>
+</div></div></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Use the Requests library to download the tweet image prediction (image_predictions.tsv)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">folder_name</span> <span class="o">=</span> <span class="s1">&#39;image_prediction&#39;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">folder_name</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">folder_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://d17h27t6h515a5.cloudfront.net/topher/2017/August/599fd2ad_image-predictions/image-predictions.tsv&#39;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span> <span class="n">url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_prediction</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://d17h27t6h515a5.cloudfront.net/topher/2017/August/599fd2ad_image-predictions/image-predictions.tsv&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">image_prediction</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tweet_id</th>
+      <th>jpg_url</th>
+      <th>img_num</th>
+      <th>p1</th>
+      <th>p1_conf</th>
+      <th>p1_dog</th>
+      <th>p2</th>
+      <th>p2_conf</th>
+      <th>p2_dog</th>
+      <th>p3</th>
+      <th>p3_conf</th>
+      <th>p3_dog</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>666020888022790149</td>
+      <td>https://pbs.twimg.com/media/CT4udn0WwAA0aMy.jpg</td>
+      <td>1</td>
+      <td>Welsh_springer_spaniel</td>
+      <td>0.465074</td>
+      <td>True</td>
+      <td>collie</td>
+      <td>0.156665</td>
+      <td>True</td>
+      <td>Shetland_sheepdog</td>
+      <td>0.061428</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>666029285002620928</td>
+      <td>https://pbs.twimg.com/media/CT42GRgUYAA5iDo.jpg</td>
+      <td>1</td>
+      <td>redbone</td>
+      <td>0.506826</td>
+      <td>True</td>
+      <td>miniature_pinscher</td>
+      <td>0.074192</td>
+      <td>True</td>
+      <td>Rhodesian_ridgeback</td>
+      <td>0.072010</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>666033412701032449</td>
+      <td>https://pbs.twimg.com/media/CT4521TWwAEvMyu.jpg</td>
+      <td>1</td>
+      <td>German_shepherd</td>
+      <td>0.596461</td>
+      <td>True</td>
+      <td>malinois</td>
+      <td>0.138584</td>
+      <td>True</td>
+      <td>bloodhound</td>
+      <td>0.116197</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>666044226329800704</td>
+      <td>https://pbs.twimg.com/media/CT5Dr8HUEAA-lEu.jpg</td>
+      <td>1</td>
+      <td>Rhodesian_ridgeback</td>
+      <td>0.408143</td>
+      <td>True</td>
+      <td>redbone</td>
+      <td>0.360687</td>
+      <td>True</td>
+      <td>miniature_pinscher</td>
+      <td>0.222752</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>666049248165822465</td>
+      <td>https://pbs.twimg.com/media/CT5IQmsXIAAKY4A.jpg</td>
+      <td>1</td>
+      <td>miniature_pinscher</td>
+      <td>0.560311</td>
+      <td>True</td>
+      <td>Rottweiler</td>
+      <td>0.243682</td>
+      <td>True</td>
+      <td>Doberman</td>
+      <td>0.154629</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2070</th>
+      <td>891327558926688256</td>
+      <td>https://pbs.twimg.com/media/DF6hr6BUMAAzZgT.jpg</td>
+      <td>2</td>
+      <td>basset</td>
+      <td>0.555712</td>
+      <td>True</td>
+      <td>English_springer</td>
+      <td>0.225770</td>
+      <td>True</td>
+      <td>German_short-haired_pointer</td>
+      <td>0.175219</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2071</th>
+      <td>891689557279858688</td>
+      <td>https://pbs.twimg.com/media/DF_q7IAWsAEuuN8.jpg</td>
+      <td>1</td>
+      <td>paper_towel</td>
+      <td>0.170278</td>
+      <td>False</td>
+      <td>Labrador_retriever</td>
+      <td>0.168086</td>
+      <td>True</td>
+      <td>spatula</td>
+      <td>0.040836</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2072</th>
+      <td>891815181378084864</td>
+      <td>https://pbs.twimg.com/media/DGBdLU1WsAANxJ9.jpg</td>
+      <td>1</td>
+      <td>Chihuahua</td>
+      <td>0.716012</td>
+      <td>True</td>
+      <td>malamute</td>
+      <td>0.078253</td>
+      <td>True</td>
+      <td>kelpie</td>
+      <td>0.031379</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2073</th>
+      <td>892177421306343426</td>
+      <td>https://pbs.twimg.com/media/DGGmoV4XsAAUL6n.jpg</td>
+      <td>1</td>
+      <td>Chihuahua</td>
+      <td>0.323581</td>
+      <td>True</td>
+      <td>Pekinese</td>
+      <td>0.090647</td>
+      <td>True</td>
+      <td>papillon</td>
+      <td>0.068957</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2074</th>
+      <td>892420643555336193</td>
+      <td>https://pbs.twimg.com/media/DGKD1-bXoAAIAUK.jpg</td>
+      <td>1</td>
+      <td>orange</td>
+      <td>0.097049</td>
+      <td>False</td>
+      <td>bagel</td>
+      <td>0.085851</td>
+      <td>False</td>
+      <td>banana</td>
+      <td>0.076110</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+<p>2075 rows × 12 columns</p>
+</div></div></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Use the Tweepy library to query additional data via the Twitter API (tweet_json.txt)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file1</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tweet-json.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">tweet_json</span> <span class="o">=</span> <span class="n">file1</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">file1</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tweet-json.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">tweet_json</span> <span class="o">=</span> <span class="n">file1</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+<span class="nn">File ~\anaconda3\envs\geo\Lib\site-packages\IPython\core\interactiveshell.py:324,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">317</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
+<span class="g g-Whitespace">    </span><span class="mi">318</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">319</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">320</span>         <span class="s2">&quot;as it is likely to crash IPython. If you know what you are doing, &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">321</span>         <span class="s2">&quot;you can use builtins&#39; open.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">322</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">324</span> <span class="k">return</span> <span class="n">io_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;tweet-json.txt&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets_converted</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweet_json</span><span class="p">:</span>
+    <span class="n">tweets_converted</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">tweet</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#tweet ID, retweet count, and favorite count.&quot;</span>
+<span class="n">df_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweets_converted</span><span class="p">:</span>
+        <span class="n">tweet_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;id_str&#39;</span><span class="p">])</span>
+        <span class="n">retweets</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;retweet_count&#39;</span><span class="p">]</span>
+        <span class="n">number_of_likes</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;favorite_count&#39;</span><span class="p">]</span>
+        <span class="c1"># Append to list of dictionaries</span>
+        <span class="n">df_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;tweet_id&#39;</span><span class="p">:</span> <span class="n">tweet_id</span><span class="p">,</span>
+                        <span class="s1">&#39;retweets&#39;</span><span class="p">:</span> <span class="n">retweets</span><span class="p">,</span>
+                        <span class="s1">&#39;number_of_likes&#39;</span><span class="p">:</span> <span class="n">number_of_likes</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create DataFrame from list of dictionaries</span>
+<span class="n">tweets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df_list</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tweet_id&#39;</span><span class="p">,</span> <span class="s1">&#39;retweets&#39;</span><span class="p">,</span> <span class="s1">&#39;number_of_likes&#39;</span><span class="p">])</span>
+<span class="n">tweets</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="assessing-data">
+<h2>Assessing Data<a class="headerlink" href="#assessing-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Programmatic Assessment</span>
+<span class="n">weratedogs_archive</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Programmatic Assessment</span>
+<span class="n">weratedogs_archive</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Programmatic Assessment</span>
+<span class="n">image_prediction</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Programmatic Assessment</span>
+<span class="n">image_prediction</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Programmatic Assessment</span>
+<span class="n">tweets</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="quality-issues">
+<h3>Quality issues<a class="headerlink" href="#quality-issues" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">weratedogs_archive</span></code> columns:</p>
+<ul class="simple">
+<li><p>Visual Assessment</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p><strong>name</strong>: this column shows some unrealistic name type like single letters(a, the), there are also missing names as well as duplicated names, some name are proper case while some are all lowercase as observed via visual assessment.</p></li>
+</ol>
+<hr class="docutils" />
+<ol class="arabic simple" start="2">
+<li><p><strong>retweeted_status_id |</strong> <strong>retweeted_status_user_id |</strong>	<strong>retweeted_status_timestamp</strong>: missing entries for the following variables/columns.</p></li>
+</ol>
+<hr class="docutils" />
+<ol class="arabic simple" start="3">
+<li><p><strong>doggo |</strong>	<strong>floofer |</strong>	<strong>pupper |</strong> <strong>puppo</strong>: missing entries for the following columns.</p></li>
+</ol>
+<hr class="docutils" />
+<ol class="arabic simple" start="4">
+<li><p><strong>in_reply_to_status_id |</strong> 	<strong>in_reply_to_user_id</strong>: Observance of missing values from these columns.</p></li>
+</ol>
+<hr class="docutils" />
+<ol class="arabic simple" start="5">
+<li><p><strong>floofer</strong>: Column name error. Floofer is not a dog stage according to the Dogtionary.</p></li>
+</ol>
+<ul class="simple">
+<li><p>Programmatic Assessment</p></li>
+</ul>
+<ol class="arabic simple" start="6">
+<li><p><strong>expanded_urls</strong>: during programmatic assessment, some values appear to be missing from this column.</p></li>
+</ol>
+<hr class="docutils" />
+<ol class="arabic simple" start="7">
+<li><p><strong>timestamp</strong>: data type in this column is wrong. Should be a datetime format data type.</p></li>
+</ol>
+<hr class="docutils" />
+<ol class="arabic simple" start="8">
+<li><p><strong>tweet_id</strong>: data type in this column is not preffered. Since I won’t be using the figures here to perform any calculations, it is best practice that it is coverted to a string.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="tidiness-issues">
+<h3>Tidiness issues<a class="headerlink" href="#tidiness-issues" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">weratedogs_archive</span></code> columns:</p>
+<ol class="arabic simple">
+<li><p><strong>doggo |</strong>	<strong>floofer |</strong>	<strong>pupper |</strong> <strong>puppo</strong>: The following columns violate the first rule of tidiness: that each variable forms a column. They all belong under one variable: stage.</p></li>
+</ol>
+<hr class="docutils" />
+<ol class="arabic simple" start="2">
+<li><p><strong>retweeted_status_id |</strong> <strong>retweeted_status_user_id |</strong>	<strong>retweeted_status_timestamp</strong> : The following columns are not needed for the current process as majority of the data within are missing.</p></li>
+</ol>
+</section>
+</section>
+<section id="cleaning-data">
+<h2>Cleaning Data<a class="headerlink" href="#cleaning-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make copies of original pieces of data</span>
+<span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">weratedogs_archive</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">tweets_clean</span> <span class="o">=</span> <span class="n">tweets</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">image_prediction_clean</span> <span class="o">=</span> <span class="n">image_prediction</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<section id="tidiness">
+<h3>Tidiness:<a class="headerlink" href="#tidiness" title="Link to this heading">#</a></h3>
+<p>Define: I will be getting rid of the unwanted columns by using the <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> method.</p>
+<p><span style="color: purple;">Code</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#This code drops all columns that are either unwanted from the `weratedogs_archive_clean` dataframe</span>
+
+<span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;retweeted_status_id&#39;</span><span class="p">,</span><span class="s1">&#39;retweeted_status_user_id&#39;</span><span class="p">,</span><span class="s1">&#39;retweeted_status_timestamp&#39;</span><span class="p">,</span>
+                                                          <span class="s1">&#39;expanded_urls&#39;</span><span class="p">,</span><span class="s1">&#39;floofer&#39;</span><span class="p">,</span><span class="s1">&#39;in_reply_to_status_id&#39;</span><span class="p">,</span><span class="s1">&#39;in_reply_to_user_id&#39;</span> <span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: green;">Test</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#checking if all unwanted columns have been successfully removed from the &#39;weratedogs_archive_clean&#39; dataframe</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+</section>
+</section>
+<section id="re-gathering">
+<h2>Re-Gathering:<a class="headerlink" href="#re-gathering" title="Link to this heading">#</a></h2>
+<p>Define: I will be re-gathering the dog stages, <code class="docutils literal notranslate"><span class="pre">rating_numerator</span></code>, <code class="docutils literal notranslate"><span class="pre">rating_denominator</span></code> and <code class="docutils literal notranslate"><span class="pre">name</span></code> columns using the <code class="docutils literal notranslate"><span class="pre">.extract()</span></code> method.</p>
+<p><span style="color: purple;">Code</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;doggo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(doggo)&#39;</span><span class="p">,</span><span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;pupper&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(pupper)&#39;</span><span class="p">,</span><span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;puppo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(puppo)&#39;</span><span class="p">,</span><span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;blep&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(blep)&#39;</span><span class="p">,</span><span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;floof&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(floof)&#39;</span><span class="p">,</span><span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;snoot&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(snoot)&#39;</span><span class="p">,</span><span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;rating_numerator&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(\d+\S?\d+)(/\d+)&#39;</span><span class="p">,</span><span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;rating_denominator&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(/\d+)(\s+h?)&#39;</span><span class="p">,</span><span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(is\s[A-Z][a-z]+\.)&#39;</span><span class="p">,</span><span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: green;">Test</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<section id="quality">
+<h3>Quality:<a class="headerlink" href="#quality" title="Link to this heading">#</a></h3>
+<p>Define: Cleaning the data  re-generated for the <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">rating_denominator</span></code> columns.</p>
+<p><span style="color: purple;">Code</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#cleaning the data re-gathered and testing to see the results</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_denominator</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_denominator</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: green;">Test</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+</section>
+<section id="id1">
+<h3>Quality:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Define: Merging all dataframes into one using the  <code class="docutils literal notranslate"><span class="pre">.merge()</span></code>  method on the <code class="docutils literal notranslate"><span class="pre">tweet_id</span></code> column.</p>
+<p><span style="color: purple;">Code</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">weratedogs_archive_clean</span><span class="p">,</span><span class="n">tweets_clean</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;tweet_id&#39;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">weratedogs_archive_clean</span><span class="p">,</span><span class="n">image_prediction_clean</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;tweet_id&#39;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: green;">Test</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#A check to see if the merge was successful</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+</section>
+<section id="id2">
+<h3>Tidiness:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Define: <code class="docutils literal notranslate"><span class="pre">doggo</span></code>,<code class="docutils literal notranslate"><span class="pre">floof</span></code>, <code class="docutils literal notranslate"><span class="pre">pupper</span></code>, <code class="docutils literal notranslate"><span class="pre">puppo</span></code>,<code class="docutils literal notranslate"><span class="pre">blep</span></code> and <code class="docutils literal notranslate"><span class="pre">snoot</span></code> - I will be collapsing these columns into a <code class="docutils literal notranslate"><span class="pre">stage</span></code> column using the <code class="docutils literal notranslate"><span class="pre">.melt()</span></code> method.</p>
+<p><span style="color: purple;">Code</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#collapsing the stage variable columns to effect proper structure</span>
+<span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">weratedogs_archive_clean</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tweet_id&#39;</span><span class="p">,</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;rating_numerator&#39;</span><span class="p">,</span><span class="s1">&#39;rating_denominator&#39;</span><span class="p">,</span>
+                                                                      <span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="s1">&#39;retweets&#39;</span><span class="p">,</span><span class="s1">&#39;number_of_likes&#39;</span><span class="p">,</span><span class="s1">&#39;text&#39;</span><span class="p">,</span>
+                                                                      <span class="s1">&#39;jpg_url&#39;</span><span class="p">,</span><span class="s1">&#39;img_num&#39;</span><span class="p">,</span><span class="s1">&#39;p1&#39;</span><span class="p">,</span><span class="s1">&#39;p1_conf&#39;</span><span class="p">,</span><span class="s1">&#39;p1_dog&#39;</span><span class="p">,</span><span class="s1">&#39;p2&#39;</span><span class="p">,</span><span class="s1">&#39;p2_conf&#39;</span><span class="p">,</span><span class="s1">&#39;p2_dog&#39;</span><span class="p">,</span><span class="s1">&#39;p3&#39;</span><span class="p">,</span><span class="s1">&#39;p3_conf&#39;</span><span class="p">,</span><span class="s1">&#39;p3_dog&#39;</span><span class="p">],</span>
+                           <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;header&#39;</span><span class="p">,</span> <span class="n">value_name</span> <span class="o">=</span> <span class="s1">&#39;stage&#39;</span><span class="p">)</span>
+
+<span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;header&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: green;">Test</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#checking if code implementation was a success</span>
+<span class="n">weratedogs_archive_clean</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+</section>
+<section id="id3">
+<h3>Quality:<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Define: I will be tackling the duplicated rows created by the <code class="docutils literal notranslate"><span class="pre">.melt()</span></code> method used in the previous cell using the</p>
+<p><code class="docutils literal notranslate"><span class="pre">.drop_duplicates()</span></code> and <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> methods.</p>
+<p><span style="color: purple;">Code</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#querying the duplicated tweet_id with Null values and leaving those with valid entries</span>
+<span class="n">mask_null_stage</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">tweet_id</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)]</span>
+<span class="n">rows_to_drop</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mask_null_stage</span><span class="p">[</span><span class="n">mask_null_stage</span><span class="o">.</span><span class="n">stage</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">rows_to_drop</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: green;">Test</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#this test shows that we still have some form of duplicates hiding in our dataset</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+</section>
+<section id="id4">
+<h3>Quality:<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>Define: I will be tackling the duplicated <code class="docutils literal notranslate"><span class="pre">tweet_id</span></code> values which exposed double entry in the <code class="docutils literal notranslate"><span class="pre">stage</span></code> column using the</p>
+<p><code class="docutils literal notranslate"><span class="pre">.duplicated().</span></code> and <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> methods.</p>
+<p><span style="color: purple;">Code</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#checking if we still have duplicated tweet_ids</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">tweet_id</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span> <span class="kc">False</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#querying and deleting tweet_ids that have multiple stage entries as found in the cell above</span>
+<span class="n">double_stage_entry</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">tweet_id</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span> <span class="kc">False</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">double_stage_entry</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: green;">Test</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">tweet_id</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span> <span class="kc">False</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+</section>
+<section id="id5">
+<h3>Quality:<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>Define: Fiding and removing rows with missing image URLs from  <code class="docutils literal notranslate"><span class="pre">weratedogs_archive_clean</span></code> dataframe.</p>
+<p><span style="color: purple;">Code</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">missing_image_Urls</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">jpg_url</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">missing_image_Urls</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: green;">Test</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">jpg_url</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+</section>
+<section id="id6">
+<h3>Quality:<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>Define : Filling in the null values present in the <code class="docutils literal notranslate"><span class="pre">retweets</span></code> and <code class="docutils literal notranslate"><span class="pre">number_of_likes</span></code> columns using the <code class="docutils literal notranslate"><span class="pre">.fillna</span></code> method.</p>
+<p><span style="color: purple;">Code</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#checking the rows with null values for retweets abd number_of_likes columns</span>
+
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">number_of_likes</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#filling the missing values with the average number of retweets and likes in the dataset</span>
+
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;retweets&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;retweets&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">((</span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;retweets&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;number_of_likes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;number_of_likes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">((</span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;number_of_likes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: green;">Test</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#checking if there are any null values left in the &#39;retwweets&#39; and &#39;number_of_likes&#39; columns</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">number_of_likes</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">retweets</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span><span class="o">.</span><span class="n">size</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+</section>
+<section id="id7">
+<h3>Quality:<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>Define : Converting all inappropriate data type to preffered data types.</p>
+<p><span style="color: purple;">Code</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p1_dog</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p1_dog</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p2_dog</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p2_dog</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p3_dog</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p3_dog</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">retweets</span><span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">retweets</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">number_of_likes</span><span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">number_of_likes</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">img_num</span><span class="o">=</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">img_num</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">tweet_id</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">tweet_id</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p1</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p1</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p2</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p2</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p3</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p3</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_numerator</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_numerator</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_denominator</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_denominator</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: green;">Test</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+</section>
+<section id="id8">
+<h3>Quality:<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>Define : Filling in the null values present in the <code class="docutils literal notranslate"><span class="pre">rating_numerator</span></code> and <code class="docutils literal notranslate"><span class="pre">rating_denominator</span></code> columns using the <code class="docutils literal notranslate"><span class="pre">.fillna</span></code> method.</p>
+<p><span style="color: purple;">Code</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#checking the rows with null values for retweets abd rating_numerator columns</span>
+
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_numerator</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#checking the rows with null values for retweets abd rating_denominator columns</span>
+
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_denominator</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#filling the missing values with the average number of rating_numerator and rating_denominator respectively</span>
+
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;rating_numerator&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;rating_numerator&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;rating_numerator&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;rating_denominator&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;rating_denominator&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;rating_denominator&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: green;">Test</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_numerator</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span><span class="o">.</span><span class="n">size</span><span class="p">,</span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_denominator</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span><span class="o">.</span><span class="n">size</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+</section>
+<section id="id9">
+<h3>Tidiness:<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>Define: Removing all rows with  <span style="color: red;">’False’</span> dog predictions by the neural network.</p>
+<p><span style="color: purple;">Code</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">false_prediction_rows</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;p1_dog == False&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">false_prediction_rows</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: green;">Test</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="storing-data">
+<h2>Storing Data<a class="headerlink" href="#storing-data" title="Link to this heading">#</a></h2>
+<p>Save gathered, assessed, and cleaned master dataset to a CSV file named “twitter_archive_master.csv”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;twitter_archive_master.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="analyzing-and-visualizing-data">
+<h2>Analyzing and Visualizing Data<a class="headerlink" href="#analyzing-and-visualizing-data" title="Link to this heading">#</a></h2>
+<p>In this section, analyze and visualize your wrangled data. You must produce at least <strong>three (3) insights and one (1) visualization.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;twitter_archive_master.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Top viral tweets from the dataframe</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;retweets&#39;</span><span class="p">],</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Top 10 Tweets with the highest likes</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;number_of_likes&#39;</span><span class="p">],</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#The top five most frequent dog breed predicted by the neural network</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">p1</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="insights">
+<h3>Insights:<a class="headerlink" href="#insights" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>The top ten dog rating tweets with the highest retweets(coverage) in the dataset. On the top of the chart is a dog in its ‘doggo’ stage</p></li>
+<li><p>The top ten most admired dog rating tweets. On the top of the chart is a dog in its ‘puppo’ stage</p></li>
+<li><p>The top five most popular dog breeds in the neural network prediction.</p></li>
+</ol>
+</section>
+<section id="visualization">
+<h3>Visualization<a class="headerlink" href="#visualization" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stages</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">stage</span><span class="o">.</span><span class="n">isna</span><span class="p">())]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">stages</span><span class="o">.</span><span class="n">stage</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Most Popular Dog Stage&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Stages&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book\projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ab_testing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Analyze A/B Test Results</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-gathering">Data Gathering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessing-data">Assessing Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-issues">Quality issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tidiness-issues">Tidiness issues</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-data">Cleaning Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tidiness">Tidiness:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#re-gathering">Re-Gathering:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality">Quality:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Quality:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Tidiness:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Quality:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Quality:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Quality:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Quality:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Quality:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Quality:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Tidiness:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-data">Storing Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-and-visualizing-data">Analyzing and Visualizing Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insights">Insights:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1884 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Analytics With Seaborne &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/projects/seaborne';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Wrangling and Analyze Data" href="wrangle_act.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Profile Summary
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Analytics Projects</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="data_investigation.html">Exploratory Data Analysis(EDA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ab_testing.html">Analyze A/B Test Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wrangle_act.html">Wrangling and Analyze Data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analytics With Seaborne</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fbook/projects/seaborne.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/book/projects/seaborne.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analytics With Seaborne</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-wrangling">Preliminary Wrangling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-structure-of-your-dataset">What is the structure of your dataset?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-are-the-main-feature-s-of-interest-in-your-dataset">What is/are the main feature(s) of interest in your dataset?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-features-in-the-dataset-do-you-think-will-help-support-your-investigation-into-your-feature-s-of-interest">What features in the dataset do you think will help support your investigation into your feature(s) of interest?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#univariate-exploration">Univariate Exploration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discuss-the-distribution-s-of-your-variable-s-of-interest-were-there-any-unusual-points-did-you-need-to-perform-any-transformations">Discuss the distribution(s) of your variable(s) of interest. Were there any unusual points? Did you need to perform any transformations?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#of-the-features-you-investigated-were-there-any-unusual-distributions-did-you-perform-any-operations-on-the-data-to-tidy-adjust-or-change-the-form-of-the-data-if-so-why-did-you-do-this">Of the features you investigated, were there any unusual distributions? Did you perform any operations on the data to tidy, adjust, or change the form of the data? If so, why did you do this?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bivariate-exploration">Bivariate Exploration<a id="bi"></a></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#talk-about-some-of-the-relationships-you-observed-in-this-part-of-the-investigation-how-did-the-feature-s-of-interest-vary-with-other-features-in-the-dataset">Talk about some of the relationships you observed in this part of the investigation. How did the feature(s) of interest vary with other features in the dataset?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#did-you-observe-any-interesting-relationships-between-the-other-features-not-the-main-feature-s-of-interest">Did you observe any interesting relationships between the other features (not the main feature(s) of interest)?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multivariate-exploration">Multivariate Exploration<a id="multi"></a></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#talk-about-some-of-the-relationships-you-observed-in-this-part-of-the-investigation-were-there-features-that-strengthened-each-other-in-terms-of-looking-at-your-feature-s-of-interest">Talk about some of the relationships you observed in this part of the investigation. Were there features that strengthened each other in terms of looking at your feature(s) of interest?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#were-there-any-interesting-or-surprising-interactions-between-features">Were there any interesting or surprising interactions between features?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analytics-with-seaborne">
+<h1>Analytics With Seaborne<a class="headerlink" href="#analytics-with-seaborne" title="Link to this heading">#</a></h1>
+<!-- #                by 
+<h1><span style="color:blue">Bukunmi Adebanjo</span><h1> -->
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<!-- <h3>This current notebook is organised into the following sections:<h3>
+ 
+- [Introduction](#intro)
+
+- [Univariate Exploration](#uni)
+
+- [Bivariate Exploration](#bi)
+
+- [Multivariate Exploration](#multi) -->
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>This project explores the individual rides in a bike-sharing system spanning the larger San Francisco Bay area included in the ‘fordgobike-tripdata’ dataset of over 180,000 records.</p>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+</section>
+<section id="preliminary-wrangling">
+<h2>Preliminary Wrangling<a class="headerlink" href="#preliminary-wrangling" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import all packages and set plots to be embedded inline</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sb</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#loading th dataset into a pandas dataframe</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;https://video.udacity-data.com/topher/2023/July/64ac0039_fordgobike-tripdata/fordgobike-tripdata.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">HTTPError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#loading th dataset into a pandas dataframe</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;https://video.udacity-data.com/topher/2023/July/64ac0039_fordgobike-tripdata/fordgobike-tripdata.csv&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="nn">File ~\anaconda3\envs\geo\Lib\site-packages\pandas\io\parsers\readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File ~\anaconda3\envs\geo\Lib\site-packages\pandas\io\parsers\readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File ~\anaconda3\envs\geo\Lib\site-packages\pandas\io\parsers\readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File ~\anaconda3\envs\geo\Lib\site-packages\pandas\io\parsers\readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1881</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1882</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1883</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1884</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1885</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1886</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1887</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1888</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1889</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File ~\anaconda3\envs\geo\Lib\site-packages\pandas\io\common.py:728,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">725</span>     <span class="n">codecs</span><span class="o">.</span><span class="n">lookup_error</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">727</span> <span class="c1"># open URLs</span>
+<span class="ne">--&gt; </span><span class="mi">728</span> <span class="n">ioargs</span> <span class="o">=</span> <span class="n">_get_filepath_or_buffer</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">729</span>     <span class="n">path_or_buf</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">730</span>     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">731</span>     <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">732</span>     <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">733</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">734</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">736</span> <span class="n">handle</span> <span class="o">=</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">filepath_or_buffer</span>
+<span class="g g-Whitespace">    </span><span class="mi">737</span> <span class="n">handles</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BaseBuffer</span><span class="p">]</span>
+
+<span class="nn">File ~\anaconda3\envs\geo\Lib\site-packages\pandas\io\common.py:384,</span> in <span class="ni">_get_filepath_or_buffer</span><span class="nt">(filepath_or_buffer, encoding, compression, mode, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">382</span> <span class="c1"># assuming storage_options is to be interpreted as headers</span>
+<span class="g g-Whitespace">    </span><span class="mi">383</span> <span class="n">req_info</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">384</span> <span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">req_info</span><span class="p">)</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">385</span>     <span class="n">content_encoding</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Content-Encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">386</span>     <span class="k">if</span> <span class="n">content_encoding</span> <span class="o">==</span> <span class="s2">&quot;gzip&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">387</span>         <span class="c1"># Override compression based on Content-Encoding header</span>
+
+<span class="nn">File ~\anaconda3\envs\geo\Lib\site-packages\pandas\io\common.py:289,</span> in <span class="ni">urlopen</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">283</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">284</span><span class="sd"> Lazy-import wrapper for stdlib urlopen, as that imports a big chunk of</span>
+<span class="g g-Whitespace">    </span><span class="mi">285</span><span class="sd"> the stdlib.</span>
+<span class="g g-Whitespace">    </span><span class="mi">286</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">287</span> <span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
+<span class="ne">--&gt; </span><span class="mi">289</span> <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~\anaconda3\envs\geo\Lib\urllib\request.py:216,</span> in <span class="ni">urlopen</span><span class="nt">(url, data, timeout, cafile, capath, cadefault, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span>     <span class="n">opener</span> <span class="o">=</span> <span class="n">_opener</span>
+<span class="ne">--&gt; </span><span class="mi">216</span> <span class="k">return</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+
+<span class="nn">File ~\anaconda3\envs\geo\Lib\urllib\request.py:525,</span> in <span class="ni">OpenerDirector.open</span><span class="nt">(self, fullurl, data, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">523</span> <span class="k">for</span> <span class="n">processor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">protocol</span><span class="p">,</span> <span class="p">[]):</span>
+<span class="g g-Whitespace">    </span><span class="mi">524</span>     <span class="n">meth</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">processor</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">525</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">meth</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">527</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File ~\anaconda3\envs\geo\Lib\urllib\request.py:634,</span> in <span class="ni">HTTPErrorProcessor.http_response</span><span class="nt">(self, request, response)</span>
+<span class="g g-Whitespace">    </span><span class="mi">631</span> <span class="c1"># According to RFC 2616, &quot;2xx&quot; code indicates that the client&#39;s</span>
+<span class="g g-Whitespace">    </span><span class="mi">632</span> <span class="c1"># request was successfully received, understood, and accepted.</span>
+<span class="g g-Whitespace">    </span><span class="mi">633</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">200</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">634</span>     <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">635</span>         <span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">637</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File ~\anaconda3\envs\geo\Lib\urllib\request.py:563,</span> in <span class="ni">OpenerDirector.error</span><span class="nt">(self, proto, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">561</span> <span class="k">if</span> <span class="n">http_err</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">562</span>     <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="s1">&#39;http_error_default&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">orig_args</span>
+<span class="ne">--&gt; </span><span class="mi">563</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<span class="nn">File ~\anaconda3\envs\geo\Lib\urllib\request.py:496,</span> in <span class="ni">OpenerDirector._call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span> <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">495</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">496</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">497</span>     <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">498</span>         <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File ~\anaconda3\envs\geo\Lib\urllib\request.py:643,</span> in <span class="ni">HTTPDefaultErrorHandler.http_error_default</span><span class="nt">(self, req, fp, code, msg, hdrs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">642</span> <span class="k">def</span><span class="w"> </span><span class="nf">http_error_default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">643</span>     <span class="k">raise</span> <span class="n">HTTPError</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">full_url</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+
+<span class="ne">HTTPError</span>: HTTP Error 403: Forbidden
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>duration_sec</th>
+      <th>start_station_id</th>
+      <th>start_station_latitude</th>
+      <th>start_station_longitude</th>
+      <th>end_station_id</th>
+      <th>end_station_latitude</th>
+      <th>end_station_longitude</th>
+      <th>bike_id</th>
+      <th>member_birth_year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>183412.000000</td>
+      <td>183215.000000</td>
+      <td>183412.000000</td>
+      <td>183412.000000</td>
+      <td>183215.000000</td>
+      <td>183412.000000</td>
+      <td>183412.000000</td>
+      <td>183412.000000</td>
+      <td>175147.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>726.078435</td>
+      <td>138.590427</td>
+      <td>37.771223</td>
+      <td>-122.352664</td>
+      <td>136.249123</td>
+      <td>37.771427</td>
+      <td>-122.352250</td>
+      <td>4472.906375</td>
+      <td>1984.806437</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1794.389780</td>
+      <td>111.778864</td>
+      <td>0.099581</td>
+      <td>0.117097</td>
+      <td>111.515131</td>
+      <td>0.099490</td>
+      <td>0.116673</td>
+      <td>1664.383394</td>
+      <td>10.116689</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>61.000000</td>
+      <td>3.000000</td>
+      <td>37.317298</td>
+      <td>-122.453704</td>
+      <td>3.000000</td>
+      <td>37.317298</td>
+      <td>-122.453704</td>
+      <td>11.000000</td>
+      <td>1878.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>325.000000</td>
+      <td>47.000000</td>
+      <td>37.770083</td>
+      <td>-122.412408</td>
+      <td>44.000000</td>
+      <td>37.770407</td>
+      <td>-122.411726</td>
+      <td>3777.000000</td>
+      <td>1980.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>514.000000</td>
+      <td>104.000000</td>
+      <td>37.780760</td>
+      <td>-122.398285</td>
+      <td>100.000000</td>
+      <td>37.781010</td>
+      <td>-122.398279</td>
+      <td>4958.000000</td>
+      <td>1987.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>796.000000</td>
+      <td>239.000000</td>
+      <td>37.797280</td>
+      <td>-122.286533</td>
+      <td>235.000000</td>
+      <td>37.797320</td>
+      <td>-122.288045</td>
+      <td>5502.000000</td>
+      <td>1992.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>85444.000000</td>
+      <td>398.000000</td>
+      <td>37.880222</td>
+      <td>-121.874119</td>
+      <td>398.000000</td>
+      <td>37.880222</td>
+      <td>-121.874119</td>
+      <td>6645.000000</td>
+      <td>2001.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(183412, 16)
+duration_sec                 int64
+start_time                  object
+end_time                    object
+start_station_id           float64
+start_station_name          object
+start_station_latitude     float64
+start_station_longitude    float64
+end_station_id             float64
+end_station_name            object
+end_station_latitude       float64
+end_station_longitude      float64
+bike_id                      int64
+user_type                   object
+member_birth_year          float64
+member_gender               object
+bike_share_for_all_trip     object
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#making my copy of the original data set</span>
+<span class="n">bikeshare</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1">#dropping rows containing null values from the data set</span>
+<span class="n">rows_to_drop</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">bikeshare</span><span class="p">[</span><span class="n">bikeshare</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="n">bikeshare</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">rows_to_drop</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#dropping columns that wouldn&#39;t be relevant to my eplanatory analysis project</span>
+<span class="n">bikeshare</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;start_station_latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;start_station_longitude&#39;</span><span class="p">,</span> <span class="s1">&#39;end_station_latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;end_station_longitude&#39;</span><span class="p">,</span> <span class="s1">&#39;bike_share_for_all_trip&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#converting some variables to a more appropriate data type </span>
+<span class="k">def</span><span class="w"> </span><span class="nf">converter</span><span class="p">():</span>
+    <span class="n">bikeshare</span><span class="o">.</span><span class="n">bike_id</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">bike_id</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">bikeshare</span><span class="o">.</span><span class="n">member_birth_year</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">member_birth_year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">bikeshare</span><span class="o">.</span><span class="n">start_station_id</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">start_station_id</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">bikeshare</span><span class="o">.</span><span class="n">end_station_id</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">end_station_id</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">bikeshare</span><span class="o">.</span><span class="n">member_gender</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">member_gender</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+    <span class="n">bikeshare</span><span class="o">.</span><span class="n">user_type</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">user_type</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+    <span class="n">bikeshare</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">bikeshare</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span>
+    <span class="n">bikeshare</span><span class="o">.</span><span class="n">end_time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">bikeshare</span><span class="o">.</span><span class="n">end_time</span><span class="p">)</span>
+    
+<span class="n">converter</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">bikeshare</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bikeshare</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(174952, 11)
+duration_sec                   int64
+start_time            datetime64[ns]
+end_time              datetime64[ns]
+start_station_id               int64
+start_station_name            object
+end_station_id                 int64
+end_station_name              object
+bike_id                        int64
+user_type                   category
+member_birth_year              int64
+member_gender               category
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bikeshare</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>duration_sec</th>
+      <th>start_time</th>
+      <th>end_time</th>
+      <th>start_station_id</th>
+      <th>start_station_name</th>
+      <th>end_station_id</th>
+      <th>end_station_name</th>
+      <th>bike_id</th>
+      <th>user_type</th>
+      <th>member_birth_year</th>
+      <th>member_gender</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>52185</td>
+      <td>2019-02-28 17:32:10.145</td>
+      <td>2019-03-01 08:01:55.975</td>
+      <td>21</td>
+      <td>Montgomery St BART Station (Market St at 2nd St)</td>
+      <td>13</td>
+      <td>Commercial St at Montgomery St</td>
+      <td>4902</td>
+      <td>Customer</td>
+      <td>1984</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>61854</td>
+      <td>2019-02-28 12:13:13.218</td>
+      <td>2019-03-01 05:24:08.146</td>
+      <td>86</td>
+      <td>Market St at Dolores St</td>
+      <td>3</td>
+      <td>Powell St BART Station (Market St at 4th St)</td>
+      <td>5905</td>
+      <td>Customer</td>
+      <td>1972</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>36490</td>
+      <td>2019-02-28 17:54:26.010</td>
+      <td>2019-03-01 04:02:36.842</td>
+      <td>375</td>
+      <td>Grove St at Masonic Ave</td>
+      <td>70</td>
+      <td>Central Ave at Fell St</td>
+      <td>6638</td>
+      <td>Subscriber</td>
+      <td>1989</td>
+      <td>Other</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1585</td>
+      <td>2019-02-28 23:54:18.549</td>
+      <td>2019-03-01 00:20:44.074</td>
+      <td>7</td>
+      <td>Frank H Ogawa Plaza</td>
+      <td>222</td>
+      <td>10th Ave at E 15th St</td>
+      <td>4898</td>
+      <td>Subscriber</td>
+      <td>1974</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1793</td>
+      <td>2019-02-28 23:49:58.632</td>
+      <td>2019-03-01 00:19:51.760</td>
+      <td>93</td>
+      <td>4th St at Mission Bay Blvd S</td>
+      <td>323</td>
+      <td>Broadway at Kearny</td>
+      <td>5200</td>
+      <td>Subscriber</td>
+      <td>1959</td>
+      <td>Male</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<section id="what-is-the-structure-of-your-dataset">
+<h3>What is the structure of your dataset?<a class="headerlink" href="#what-is-the-structure-of-your-dataset" title="Link to this heading">#</a></h3>
+<p>There are approximately 175,000 bike rides in this data set with 11 trip attributes
+(duration_sec,
+start_time,
+end_time,
+start_station_id,
+start_station_name,
+end_station_id,
+end_station_name,
+bike_id,
+user_type,
+member_birth_year,
+member_gender ). The <code class="docutils literal notranslate"><span class="pre">member_gender</span></code> and <code class="docutils literal notranslate"><span class="pre">user_type</span></code> features are categorical variables. Numeric data types are more dominant in the data set with 5 variables being integer values.</p>
+</section>
+<section id="what-is-are-the-main-feature-s-of-interest-in-your-dataset">
+<h3>What is/are the main feature(s) of interest in your dataset?<a class="headerlink" href="#what-is-are-the-main-feature-s-of-interest-in-your-dataset" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>I’m interested in the time it takes for an average trip to be completed.</p></li>
+<li><p>If any particular gender spends more time than the other on trips.</p></li>
+<li><p>Another area of interest is the relationship between user_type and member_gender.</p></li>
+</ul>
+</section>
+<section id="what-features-in-the-dataset-do-you-think-will-help-support-your-investigation-into-your-feature-s-of-interest">
+<h3>What features in the dataset do you think will help support your investigation into your feature(s) of interest?<a class="headerlink" href="#what-features-in-the-dataset-do-you-think-will-help-support-your-investigation-into-your-feature-s-of-interest" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>I expect <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">duration_sec</span></code> variable will be of great importance in understanding average time duration for trips.</p></li>
+<li><p>Variables such as the user_type, member_gender,member_birth_year will also help in exploring relationships.</p></li>
+</ul>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+</section>
+</section>
+<section id="univariate-exploration">
+<h2>Univariate Exploration<a class="headerlink" href="#univariate-exploration" title="Link to this heading">#</a></h2>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<ul class="simple">
+<li><p><strong>I will start by taking a look at some variables of interest.</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binsize</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;duration_sec&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="n">binsize</span><span class="p">,</span> <span class="n">binsize</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;duration_sec&#39;</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bins</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Duration (sec)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distibution of Trip Duration&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3500</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/948f753022240e5c9caeb480fa45c086a3393abcf1f076c108a5137ac7ea36a4.png" src="../../_images/948f753022240e5c9caeb480fa45c086a3393abcf1f076c108a5137ac7ea36a4.png" />
+</div>
+</div>
+<p>Duration distribution comment 1: <span style="color:red">The distribution of the duration variable has a long tail and it is rightly-skewed.</span></p>
+<p>Duration distribution comment 2: <span style="color:red">Finding the right bin size for this ditribution took a while. Reducing it to minutes or hours will be a good idea for me to explore.</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#converting the duration variable from seconds to minutes</span>
+
+<span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;duration_min&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">((</span><span class="n">bikeshare</span><span class="o">.</span><span class="n">duration_sec</span><span class="o">/</span> <span class="mi">60</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">bikeshare</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;duration_sec&#39;</span> <span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bikeshare</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>start_time</th>
+      <th>end_time</th>
+      <th>start_station_id</th>
+      <th>start_station_name</th>
+      <th>end_station_id</th>
+      <th>end_station_name</th>
+      <th>bike_id</th>
+      <th>user_type</th>
+      <th>member_birth_year</th>
+      <th>member_gender</th>
+      <th>duration_min</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2019-02-28 17:32:10.145</td>
+      <td>2019-03-01 08:01:55.975</td>
+      <td>21</td>
+      <td>Montgomery St BART Station (Market St at 2nd St)</td>
+      <td>13</td>
+      <td>Commercial St at Montgomery St</td>
+      <td>4902</td>
+      <td>Customer</td>
+      <td>1984</td>
+      <td>Male</td>
+      <td>869.75</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019-02-28 12:13:13.218</td>
+      <td>2019-03-01 05:24:08.146</td>
+      <td>86</td>
+      <td>Market St at Dolores St</td>
+      <td>3</td>
+      <td>Powell St BART Station (Market St at 4th St)</td>
+      <td>5905</td>
+      <td>Customer</td>
+      <td>1972</td>
+      <td>Male</td>
+      <td>1030.90</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019-02-28 17:54:26.010</td>
+      <td>2019-03-01 04:02:36.842</td>
+      <td>375</td>
+      <td>Grove St at Masonic Ave</td>
+      <td>70</td>
+      <td>Central Ave at Fell St</td>
+      <td>6638</td>
+      <td>Subscriber</td>
+      <td>1989</td>
+      <td>Other</td>
+      <td>608.17</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019-02-28 23:54:18.549</td>
+      <td>2019-03-01 00:20:44.074</td>
+      <td>7</td>
+      <td>Frank H Ogawa Plaza</td>
+      <td>222</td>
+      <td>10th Ave at E 15th St</td>
+      <td>4898</td>
+      <td>Subscriber</td>
+      <td>1974</td>
+      <td>Male</td>
+      <td>26.42</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2019-02-28 23:49:58.632</td>
+      <td>2019-03-01 00:19:51.760</td>
+      <td>93</td>
+      <td>4th St at Mission Bay Blvd S</td>
+      <td>323</td>
+      <td>Broadway at Kearny</td>
+      <td>5200</td>
+      <td>Subscriber</td>
+      <td>1959</td>
+      <td>Male</td>
+      <td>29.88</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#taking a look at the log distribution of duration to help determine a suitable bin size</span>
+<span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;duration_min&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    174952.000000
+mean          2.140649
+std           0.702727
+min           0.019803
+25%           1.682688
+50%           2.140066
+75%           2.576422
+max           7.250728
+Name: duration_min, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#log transformation plot</span>
+<span class="n">binsize2</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;duration_min&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="o">+</span><span class="n">binsize2</span> <span class="p">,</span> <span class="n">binsize2</span><span class="p">)</span>
+<span class="n">ticks</span> <span class="o">=</span>  <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ticks</span><span class="p">]</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;duration_min&#39;</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bins</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Duration (min)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distibution of Trip Duration&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span><span class="mi">1500</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/7caebecfcbd6bbaae09b51f5f7d8d7b33b23c8755e5c0f5627fe180ff542f365.png" src="../../_images/7caebecfcbd6bbaae09b51f5f7d8d7b33b23c8755e5c0f5627fe180ff542f365.png" />
+</div>
+</div>
+<p>Duration distribution comment 3: <span style="color:red">
+A log scale plot helps to view the distrbution more closely, there seems to be a few data points greater than where majority of the distribution lies(1- 100 minutes). An observed peak is seen at 10 minutes.</span></p>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<ul class="simple">
+<li><p><strong>I will proceed to take a look at the <code class="docutils literal notranslate"><span class="pre">user_type</span></code> variable. Particulary, I will explore the distribution of user types across the data set.</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_color</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="n">sb</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;user_type&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">base_color</span><span class="p">)</span>
+
+
+<span class="c1"># percentage lable on the bar chart</span>
+<span class="n">n_trips</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">user_counts</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;user_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">locs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">()</span>  
+
+
+<span class="k">for</span> <span class="n">loc</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">locs</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">user_counts</span><span class="p">[</span><span class="n">label</span><span class="o">.</span><span class="n">get_text</span><span class="p">()]</span>
+    <span class="n">percentage</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:0.1f}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">count</span><span class="o">/</span><span class="n">n_trips</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">count</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="n">percentage</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bike Trips by User category&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;User Type&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2b98826c2f24c0323ff328ebe13715d5fbe5c7c197c9f7f47f0619973cedfca1.png" src="../../_images/2b98826c2f24c0323ff328ebe13715d5fbe5c7c197c9f7f47f0619973cedfca1.png" />
+</div>
+</div>
+<p>Category distribution comment 1: <span style="color:red">
+A majority of trips were done by subscribers (90.5%) while <code class="docutils literal notranslate"><span class="pre">customer</span> <span class="pre">category</span></code> accounts for below 10% of the trips taken.</span></p>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<ul class="simple">
+<li><p><strong>Next is to explore the start_time and end_time variables. Particularly I want to understand the start time and end time distribution of trips between hours of the day, I want to check for similarities in peak periods if any.</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#extracting the starting hour and ending hour of each trip to understand trip distrbution per hour of the day</span>
+<span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;start_time_hr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;start_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;end_time_hr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+
+<span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;start_time_hr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;start_time_hr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;end_time_hr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;end_time_hr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bikeshare</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>start_time</th>
+      <th>end_time</th>
+      <th>start_station_id</th>
+      <th>start_station_name</th>
+      <th>end_station_id</th>
+      <th>end_station_name</th>
+      <th>bike_id</th>
+      <th>user_type</th>
+      <th>member_birth_year</th>
+      <th>member_gender</th>
+      <th>duration_min</th>
+      <th>start_time_hr</th>
+      <th>end_time_hr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2019-02-28 17:32:10.145</td>
+      <td>2019-03-01 08:01:55.975</td>
+      <td>21</td>
+      <td>Montgomery St BART Station (Market St at 2nd St)</td>
+      <td>13</td>
+      <td>Commercial St at Montgomery St</td>
+      <td>4902</td>
+      <td>Customer</td>
+      <td>1984</td>
+      <td>Male</td>
+      <td>869.75</td>
+      <td>17</td>
+      <td>08</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019-02-28 12:13:13.218</td>
+      <td>2019-03-01 05:24:08.146</td>
+      <td>86</td>
+      <td>Market St at Dolores St</td>
+      <td>3</td>
+      <td>Powell St BART Station (Market St at 4th St)</td>
+      <td>5905</td>
+      <td>Customer</td>
+      <td>1972</td>
+      <td>Male</td>
+      <td>1030.90</td>
+      <td>12</td>
+      <td>05</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019-02-28 17:54:26.010</td>
+      <td>2019-03-01 04:02:36.842</td>
+      <td>375</td>
+      <td>Grove St at Masonic Ave</td>
+      <td>70</td>
+      <td>Central Ave at Fell St</td>
+      <td>6638</td>
+      <td>Subscriber</td>
+      <td>1989</td>
+      <td>Other</td>
+      <td>608.17</td>
+      <td>17</td>
+      <td>04</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019-02-28 23:54:18.549</td>
+      <td>2019-03-01 00:20:44.074</td>
+      <td>7</td>
+      <td>Frank H Ogawa Plaza</td>
+      <td>222</td>
+      <td>10th Ave at E 15th St</td>
+      <td>4898</td>
+      <td>Subscriber</td>
+      <td>1974</td>
+      <td>Male</td>
+      <td>26.42</td>
+      <td>23</td>
+      <td>00</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2019-02-28 23:49:58.632</td>
+      <td>2019-03-01 00:19:51.760</td>
+      <td>93</td>
+      <td>4th St at Mission Bay Blvd S</td>
+      <td>323</td>
+      <td>Broadway at Kearny</td>
+      <td>5200</td>
+      <td>Subscriber</td>
+      <td>1959</td>
+      <td>Male</td>
+      <td>29.88</td>
+      <td>23</td>
+      <td>00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_color</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">sb</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;start_time_hr&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">base_color</span><span class="p">)</span>
+
+<span class="c1"># percentage lable on the bar chart</span>
+<span class="n">n_trips</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">user_counts</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;start_time_hr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">locs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">()</span>  
+
+
+<span class="k">for</span> <span class="n">loc</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">locs</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">user_counts</span><span class="p">[</span><span class="n">label</span><span class="o">.</span><span class="n">get_text</span><span class="p">()]</span>
+    <span class="n">percentage</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:0.1f}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">count</span><span class="o">/</span><span class="n">n_trips</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">count</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="n">percentage</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bike Trips Start Time per hour of the day&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Hours of the day (24hr)&#39;</span><span class="p">);</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">sb</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;end_time_hr&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">base_color</span><span class="p">)</span>
+
+<span class="c1"># percentage lable on the bar chart</span>
+<span class="n">n_trips</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">user_counts</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;end_time_hr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">locs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">()</span>  
+
+
+<span class="k">for</span> <span class="n">loc</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">locs</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">user_counts</span><span class="p">[</span><span class="n">label</span><span class="o">.</span><span class="n">get_text</span><span class="p">()]</span>
+    <span class="n">percentage</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:0.1f}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">count</span><span class="o">/</span><span class="n">n_trips</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">count</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="n">percentage</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bike Trips End time per hour of the day&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Hours of the day (24hr)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/4abca0821c0b77b2280b22961c0988b35a1bf4b604c01778e6b2c563e46cd8e1.png" src="../../_images/4abca0821c0b77b2280b22961c0988b35a1bf4b604c01778e6b2c563e46cd8e1.png" />
+</div>
+</div>
+<p>Hourly distribution comment 1: <span style="color:red">Both distributions appears bimodal whereby peak periods are observed at 8am and 9am as well as 5pm to 6pm with the most busy period recorded at 5pm for the start time. The trip end time also mimics the start time distrbution with a peak period of 5pm as well.  </span></p>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<ul class="simple">
+<li><p><strong>What gender is predominant in larger San Francisco Bay area when it comes to bike trips? Let me take a look at this.</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plotting age distribution</span>
+<span class="n">base_color</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="n">sb</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;member_gender&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">base_color</span><span class="p">)</span>
+
+
+<span class="c1"># percentage lable on the bar chart</span>
+<span class="n">n_trips</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">user_counts</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;member_gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">locs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">()</span>  
+
+
+<span class="k">for</span> <span class="n">loc</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">locs</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">user_counts</span><span class="p">[</span><span class="n">label</span><span class="o">.</span><span class="n">get_text</span><span class="p">()]</span>
+    <span class="n">percentage</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:0.1f}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">count</span><span class="o">/</span><span class="n">n_trips</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">count</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="n">percentage</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Gender Distribution Across Dataset&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Gender Type&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/e3102686bbd47d12418ad260f8d09d0a1f8362eeb2a53b78b0af9fbd06eb79c0.png" src="../../_images/e3102686bbd47d12418ad260f8d09d0a1f8362eeb2a53b78b0af9fbd06eb79c0.png" />
+</div>
+</div>
+<p>Gender distribution comment 1: <span style="color:red">As seen above, the male gender appears to take more bike trips than the female and other gender categories present in the dataset. More than half(75%) of the bike trips were actioned by men and less than 3% belong to the other gender category.</span></p>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<ul class="simple">
+<li><p><strong>Another variable of interest is the <code class="docutils literal notranslate"><span class="pre">member_birth_year</span></code>. With this variable I can take a look at the age distribution if trips within the dataset.</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#writing a function to help extract age from the &#39;member birth year&#39; variable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_age</span><span class="p">(</span><span class="n">dates</span><span class="p">):</span>
+    <span class="n">today</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">today</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="n">dates</span>
+
+<span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;member_age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">member_birth_year</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">extract_age</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="n">binsize</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;member_age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="n">binsize</span><span class="p">,</span> <span class="n">binsize</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;member_age&#39;</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bins</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Member Age Distribution&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/5fd2cc9ba7291c376c16dade4d5e9f8f7f15133edbb9addcd99f5c01dba7f414.png" src="../../_images/5fd2cc9ba7291c376c16dade4d5e9f8f7f15133edbb9addcd99f5c01dba7f414.png" />
+</div>
+</div>
+<p>Member age distribution comment 1: <span style="color:red">A right-skewed distribution is observed for the age variable with a peak between the ages of 30 to 35.</span></p>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<ul class="simple">
+<li><p>Stations should experience more activity in comparison to each other. Patricularly I want to see the busiest stations in reference to start and end trips.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#setting color palette and figure size for the plots</span>
+<span class="n">base_color</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+
+<span class="c1">#Creation of plot for top five busiest bike starting stations</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">station_order</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;start_station_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+<span class="n">sb</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;start_station_name&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">base_color</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="n">station_order</span><span class="p">)</span>
+
+
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top five busiest start stations&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Station Name&#39;</span><span class="p">)</span>
+
+<span class="c1">#Creation of plot for top five busiest bike starting stations</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">station_order</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;end_station_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+<span class="n">sb</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;end_station_name&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">base_color</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="n">station_order</span><span class="p">)</span>
+
+
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top five busiest end stations&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Station Name&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/a188cb85db7b4fb1af1b8fb70ece1f1b5b7874d4fd2f36f796a368b8867fe483.png" src="../../_images/a188cb85db7b4fb1af1b8fb70ece1f1b5b7874d4fd2f36f796a368b8867fe483.png" />
+</div>
+</div>
+<p>Busiest stations comment 1: <span style="color:red">The top two busiest end stations are ‘San Francisco Caltrain Station 2’ and ‘Market St at 10th St’ with both of them switching postions for the start station. Considering the whole dataset, San Francisco Caltrain Station 2 is busiest bike station. </span></p>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<section id="discuss-the-distribution-s-of-your-variable-s-of-interest-were-there-any-unusual-points-did-you-need-to-perform-any-transformations">
+<h3>Discuss the distribution(s) of your variable(s) of interest. Were there any unusual points? Did you need to perform any transformations?<a class="headerlink" href="#discuss-the-distribution-s-of-your-variable-s-of-interest-were-there-any-unusual-points-did-you-need-to-perform-any-transformations" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">DRURATION('duration_sec')</span></code></p>
+<ul class="simple">
+<li><p><span style="color:blue">The duration variable initially had large range pof values due to it being in seconds, a conversion to minutes helped me see things a little bit more clearly.</span></p></li>
+<li><p><span style="color:blue">The duration variable followed a long-tialed distribution so I had to perform a log tranformation to the ‘X’ variable for a better drilled-down view of the distribution.</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">USER</span> <span class="pre">CATEGORY('user_type')</span></code></p>
+<ul class="simple">
+<li><p><span style="color:blue">The duration variable followed a long-tialed distribution so I had to perform a log tranformation to the ‘X’ variable for a better drilled-down view of the distribution.</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">TIME('start_time','end_time')</span></code></p>
+<ul class="simple">
+<li><p><span style="color:blue">Both variables mimic same ditribution pattern. Peak hours are present in both the first and second half of each day with the second half of the day recording the highest percentage trip activity.</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">GENDER('member_gender')</span></code></p>
+<ul class="simple">
+<li><p><span style="color:blue">This variable followed an expected distrbution flow with ‘males’ being the predominant gender type.</span></p></li>
+</ul>
+</section>
+<section id="of-the-features-you-investigated-were-there-any-unusual-distributions-did-you-perform-any-operations-on-the-data-to-tidy-adjust-or-change-the-form-of-the-data-if-so-why-did-you-do-this">
+<h3>Of the features you investigated, were there any unusual distributions? Did you perform any operations on the data to tidy, adjust, or change the form of the data? If so, why did you do this?<a class="headerlink" href="#of-the-features-you-investigated-were-there-any-unusual-distributions-did-you-perform-any-operations-on-the-data-to-tidy-adjust-or-change-the-form-of-the-data-if-so-why-did-you-do-this" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">DRURATION('duration_min')</span></code></p>
+<ul class="simple">
+<li><p><span style="color:blue">The duration variable initially had large range of values due to it being in seconds, a conversion to minutes helped me see things a little bit more clearly. This further helped determine a better bin size to apply.</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">TIME('start_time','end_time')</span></code></p>
+<ul class="simple">
+<li><p><span style="color:blue">I engineered the <code class="docutils literal notranslate"><span class="pre">start_time_hr</span></code> and <code class="docutils literal notranslate"><span class="pre">end_time_hr</span></code> variables to help visualise the distribution of trips by hours of the day.</span></p></li>
+</ul>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+</section>
+</section>
+<section id="bivariate-exploration">
+<h2>Bivariate Exploration<a id='bi'></a><a class="headerlink" href="#bivariate-exploration" title="Link to this heading">#</a></h2>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<ul class="simple">
+<li><p><strong>I start my bivariate explorations by exploring the relationship between trip duration and gender category as well as trip duration against user type category</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scatter plot of duration vs user type</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">[</span><span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;duration_min&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">70</span><span class="p">]</span>
+<span class="n">base_color</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+
+<span class="c1">#Plot relationship between duration and user category</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">sb</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span> <span class="n">sample</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;user_type&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;duration_min&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">base_color</span><span class="p">,</span> <span class="n">inner</span><span class="o">=</span><span class="s1">&#39;quartile&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;User Type&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Trip Duration (min)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Duration Against User Type&#39;</span><span class="p">)</span>
+
+<span class="c1">#Plot relationship between duration and gender type</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">sb</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span> <span class="n">sample</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;member_gender&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;duration_min&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">base_color</span><span class="p">,</span> <span class="n">inner</span><span class="o">=</span><span class="s1">&#39;quartile&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Gender Type&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Trip Duration (min)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Duration Against Gender Type&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/a3100e06ab3ffb6fe4bcd4f0c540f676586088b9a056f84a1cd4a94f94bece5e.png" src="../../_images/a3100e06ab3ffb6fe4bcd4f0c540f676586088b9a056f84a1cd4a94f94bece5e.png" />
+</div>
+</div>
+<blockquote>
+<div><blockquote>
+<div><p><span style="color:red">A majority of the subscriber category members’ travel duration fall within the range of 1 to 10 minutes with over 50% falling below 10 minutes. The customer category have slightly over 25% of them with trip durations lower than 10 minutes while the rest fall above the 10 minutes cap. A more spreadout trip duration distribution is obeserved in the customer category type.</span><br />
+<span style="color:green">The ‘male’, ‘female’ and ‘other’ gender types show similiar relationships with the trip duration variable regardless of their respective size.</span>  `</p>
+</div></blockquote>
+</div></blockquote>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<ul class="simple">
+<li><p><strong>Next is to inspect the relationship between age distibution and trip duration</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plotting of Trip Duration against age</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;member_age&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;duration_min&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Trip Duration (min)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Duration Against User Age&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/15245d0b391fdcd7327dd312b5725ecacdf9416b494ad7ae99dfd853d6975559.png" src="../../_images/15245d0b391fdcd7327dd312b5725ecacdf9416b494ad7ae99dfd853d6975559.png" />
+</div>
+</div>
+<blockquote>
+<div><blockquote>
+<div><p><span style="color:red">A general overview shows that the older age distribution seldom embark on longer trips as opposed to the younger ages. Age group 33 shows the strongest relationship with the most people of this age group embarking on longer trips.</span></p>
+</div></blockquote>
+</div></blockquote>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<ul class="simple">
+<li><p><strong>Is there a relationship between the trip durations and the hour the day people start their trips or time of the day members end their trips? I will inspect this using the a plot of trip duration against start hour and end hour variables.</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+
+
+<span class="c1">#Plot relationship between duration and start time</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;start_time_hr&#39;</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;duration_min&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Start Hour&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Duration (min)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Start Hour Against Duration&#39;</span><span class="p">)</span>
+
+<span class="c1">#Plot relationship between duration and end time</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;end_time_hr&#39;</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;duration_min&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;End Hour&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Duration (min)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;End Hour Against Duration&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/67f743cbc596d4990e4981f3336b79ed4b3a8c1e5936b88f64cc58714c25a8db.png" src="../../_images/67f743cbc596d4990e4981f3336b79ed4b3a8c1e5936b88f64cc58714c25a8db.png" />
+</div>
+</div>
+<blockquote>
+<div><blockquote>
+<div><p><span style="color:red">In reference to the start hour vs duration plot, relationship gets stronger between the hours leading to noon and trip duration. In other words, the closer the time is to 12pm, the more likely that bike trips would start off.</span><br />
+<span style="color:green">In reference to the end hour vs duration plot, a stronger relationship is observed with trips that end at later hours of the day. In other words, longer duration trips seldom end at the late hours of the day as opposed to the early hours of the day.</span></p>
+</div></blockquote>
+</div></blockquote>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<ul class="simple">
+<li><p><strong>Is there a pattern or correlation present between categorical and numeric data types? A Matrx plot of numeric agaist categorical data can show me at a galance.</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#assigning all variables to their respective data categories</span>
+
+<span class="n">numeric_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;duration_min&#39;</span><span class="p">,</span><span class="s1">&#39;member_age&#39;</span><span class="p">,</span><span class="s1">&#39;start_time_hr&#39;</span><span class="p">,</span><span class="s1">&#39;end_time_hr&#39;</span><span class="p">]</span>
+<span class="n">categoric_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;member_gender&#39;</span><span class="p">,</span><span class="s1">&#39;user_type&#39;</span><span class="p">,</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Creating a matrix plot to view numeric against catgorical data</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">boxgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Quick hack for creating box plots with seaborn&#39;s PairGrid. &quot;&quot;&quot;</span>
+    <span class="n">default_color</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">sb</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">default_color</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">sample</span><span class="p">,</span> <span class="n">y_vars</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;member_age&#39;</span><span class="p">,</span> <span class="s1">&#39;duration_min&#39;</span><span class="p">],</span> <span class="n">x_vars</span> <span class="o">=</span> <span class="n">categoric_vars</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">aspect</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">boxgrid</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.figure.Figure at 0x7fd60cd08a90&gt;
+</pre></div>
+</div>
+<img alt="../../_images/e64c26f05bb9ebb05a54f731e276d0618878a82bc63a97f8aa46818d104ba4e1.png" src="../../_images/e64c26f05bb9ebb05a54f731e276d0618878a82bc63a97f8aa46818d104ba4e1.png" />
+</div>
+</div>
+<p><span style="color:red">This clearly informs that the average age of all gender and customer category is less that 40 yrs albeit several outliers present in the dataset.</span></p>
+<p><span style="color:green"> From the gender point of view, average trip duration is less than 10 minutes albeit several outlier present in the distribution. From the user_type point of view, average trip druation for customer category is over 10 minutes while that od the subscriber category are less than 10 minutes.</span></p>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<section id="talk-about-some-of-the-relationships-you-observed-in-this-part-of-the-investigation-how-did-the-feature-s-of-interest-vary-with-other-features-in-the-dataset">
+<h3>Talk about some of the relationships you observed in this part of the investigation. How did the feature(s) of interest vary with other features in the dataset?<a class="headerlink" href="#talk-about-some-of-the-relationships-you-observed-in-this-part-of-the-investigation-how-did-the-feature-s-of-interest-vary-with-other-features-in-the-dataset" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">DRURATION('duration_min'</span> <span class="pre">Vs</span> <span class="pre">'member_age')</span></code></p>
+<ul class="simple">
+<li><p><span style="color:blue">The relationship between age and trip duration revealed that members of age 33 engaged in more trips as well as longer trip durations. </span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">GENDER('duration_min'</span> <span class="pre">Vs</span> <span class="pre">'member_gender')</span></code></p>
+<ul class="simple">
+<li><p><span style="color:blue">Surprisingly, the male gender spend lesser time on thier bike trips in comparison to other gender categories, alibeit being the predominant gender across the dataset. </span></p></li>
+</ul>
+</section>
+<section id="did-you-observe-any-interesting-relationships-between-the-other-features-not-the-main-feature-s-of-interest">
+<h3>Did you observe any interesting relationships between the other features (not the main feature(s) of interest)?<a class="headerlink" href="#did-you-observe-any-interesting-relationships-between-the-other-features-not-the-main-feature-s-of-interest" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">START</span> <span class="pre">AND</span> <span class="pre">END</span> <span class="pre">TIME('end_station_hr','start_station_hr'</span> <span class="pre">Vs</span> <span class="pre">'duration_min')</span></code></p>
+<ul class="simple">
+<li><p><span style="color:blue">It is quite interesting to see that members mostly start their trip between hours close to 12 pm and another relationship between trip duration and end station time shows a larger number of people end their trips as the day progresses into late night . </span></p></li>
+</ul>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+</section>
+</section>
+<section id="multivariate-exploration">
+<h2>Multivariate Exploration<a id='multi'></a><a class="headerlink" href="#multivariate-exploration" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plotting a stacked barplot for gender category of busiest start stations by trip durations</span>
+<span class="n">sb</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">:(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">)})</span>
+<span class="n">station_order</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;start_station_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+<span class="n">sb</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">sample</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;duration_min&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;start_station_name&#39;</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;member_gender&#39;</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="n">station_order</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Start Station Name&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Duration (min)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Gender Activity Across Top 5 Busiest Start Stations&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/0bbc34816ac9ebf6c7505d13936e5a797ad59a776f21e9172272b8aab4924d94.png" src="../../_images/0bbc34816ac9ebf6c7505d13936e5a797ad59a776f21e9172272b8aab4924d94.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plotting a stacked barplot for gender category of busiest end stations by trip durations</span>
+<span class="n">sb</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">:(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">)})</span>
+<span class="n">station_order</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;end_station_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+<span class="n">sb</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">sample</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;duration_min&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;end_station_name&#39;</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;member_gender&#39;</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="n">station_order</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;End Station Name&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Duration (min)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Gender Activity Across Top 5 Busiest End Stations&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/454ce33347aa89cea2497951fb528b8df835ba6f6ffe0f3781e8445233f05219.png" src="../../_images/454ce33347aa89cea2497951fb528b8df835ba6f6ffe0f3781e8445233f05219.png" />
+</div>
+</div>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+<section id="talk-about-some-of-the-relationships-you-observed-in-this-part-of-the-investigation-were-there-features-that-strengthened-each-other-in-terms-of-looking-at-your-feature-s-of-interest">
+<h3>Talk about some of the relationships you observed in this part of the investigation. Were there features that strengthened each other in terms of looking at your feature(s) of interest?<a class="headerlink" href="#talk-about-some-of-the-relationships-you-observed-in-this-part-of-the-investigation-were-there-features-that-strengthened-each-other-in-terms-of-looking-at-your-feature-s-of-interest" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">TOP_START&amp;END_STATION</span></code></p>
+<ul class="simple">
+<li><p><span style="color:blue">For a majority of the busiest station, whether start or end, the male gender category seem to keep things busy the most.</span></p></li>
+</ul>
+</section>
+<section id="were-there-any-interesting-or-surprising-interactions-between-features">
+<h3>Were there any interesting or surprising interactions between features?<a class="headerlink" href="#were-there-any-interesting-or-surprising-interactions-between-features" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">TOP_START_STATION</span></code></p>
+<ul class="simple">
+<li><p><span style="color:blue"> More male gender type in the dataset doesn’t directly interprets to a dominance in all variables, this came as a surprise. Here in the top 5 busiest start stations, it can be seen that the Other gender category keeps the ‘San Francisco Caltrain Station 2’  and ‘Powell St BART Station (Market St at 4th St) stations the busiest in terms of trip durations at start stations.</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">TOP_END_STATION</span></code></p>
+<ul class="simple">
+<li><p><span style="color:blue">Similarly, the Other gender category kept ‘Market St at 10th St’ and ‘San Francisco Caltrain Station 2  (Townsend St at 4th St)’ stations most busy when it comes to the trip durations recorded for to five end stations as opposed to the male gender category.</span></p></li>
+</ul>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
+</section>
+</section>
+<section id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><span style="color:blue">Average trip duration for the entire dataset hovers around 10 minutes. Most people start their trips for the day at 8am while evening trips are mostly started at 5pm. A percentage of 75 male gender type dominate the data set and majority (95%)of the bike riders are Subscriber category user types. Over 50% of the Subscriber category users travel less than a total of 10 minutes while the Customer user types record more minutes during bike trips. </span></p></li>
+<li><p><span style="color:blue">Users of age range 32 to 35 ride bikes the most and average age across all categories is below 40yrs.</span></p></li>
+<li><p><span style="color:blue">A surprising outcome is that the Other gender category took longer trips at some of the busiest stations, despite it being of the lowest percentage of gender type present in the dataset.</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Converting my dataframe to a csv for later use such as the presentation slide decks</span>
+<span class="n">bikeshare</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;bike_rides.csv&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book\projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="wrangle_act.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Wrangling and Analyze Data</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-wrangling">Preliminary Wrangling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-structure-of-your-dataset">What is the structure of your dataset?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-are-the-main-feature-s-of-interest-in-your-dataset">What is/are the main feature(s) of interest in your dataset?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-features-in-the-dataset-do-you-think-will-help-support-your-investigation-into-your-feature-s-of-interest">What features in the dataset do you think will help support your investigation into your feature(s) of interest?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#univariate-exploration">Univariate Exploration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discuss-the-distribution-s-of-your-variable-s-of-interest-were-there-any-unusual-points-did-you-need-to-perform-any-transformations">Discuss the distribution(s) of your variable(s) of interest. Were there any unusual points? Did you need to perform any transformations?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#of-the-features-you-investigated-were-there-any-unusual-distributions-did-you-perform-any-operations-on-the-data-to-tidy-adjust-or-change-the-form-of-the-data-if-so-why-did-you-do-this">Of the features you investigated, were there any unusual distributions? Did you perform any operations on the data to tidy, adjust, or change the form of the data? If so, why did you do this?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bivariate-exploration">Bivariate Exploration<a id="bi"></a></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#talk-about-some-of-the-relationships-you-observed-in-this-part-of-the-investigation-how-did-the-feature-s-of-interest-vary-with-other-features-in-the-dataset">Talk about some of the relationships you observed in this part of the investigation. How did the feature(s) of interest vary with other features in the dataset?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#did-you-observe-any-interesting-relationships-between-the-other-features-not-the-main-feature-s-of-interest">Did you observe any interesting relationships between the other features (not the main feature(s) of interest)?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multivariate-exploration">Multivariate Exploration<a id="multi"></a></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#talk-about-some-of-the-relationships-you-observed-in-this-part-of-the-investigation-were-there-features-that-strengthened-each-other-in-terms-of-looking-at-your-feature-s-of-interest">Talk about some of the relationships you observed in this part of the investigation. Were there features that strengthened each other in terms of looking at your feature(s) of interest?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#were-there-any-interesting-or-surprising-interactions-between-features">Were there any interesting or surprising interactions between features?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
