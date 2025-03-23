@@ -1,0 +1,11 @@
+*.so
+*.geojson
+*.tif
+*.nc
+*.parquet
+*.txt
+*.zip
+*.csv
+*.tsv
+book/unused/*
+book/image_prediction/*
