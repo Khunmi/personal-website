@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Exploratory Data Analysis(EDA) &#8212; My sample book</title>
+    <title>Exploratory Data Analysis(EDA) &#8212; Personal Website</title>
   
   
   
@@ -58,10 +58,12 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'book/projects/data_investigation';</script>
+    <link rel="canonical" href="https://github.com/Khunmi/book/projects/data_investigation.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Analyze A/B Test Results" href="ab_testing.html" />
-    <link rel="prev" title="Profile Summary" href="../../index.html" />
+    <link rel="prev" title="Profile Summary" href="../about/summary.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -100,8 +102,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -153,8 +155,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Personal Website - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Personal Website - Home"/>`);</script>
   
   
 </a></div>
@@ -171,15 +173,11 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../index.html">
-                    Profile Summary
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Analytics Projects</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/summary.html">Profile Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Analytics Projects</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Exploratory Data Analysis(EDA)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ab_testing.html">Analyze A/B Test Results</a></li>
@@ -231,6 +229,73 @@
 
 
 
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/Khunmi/personal-website/main?urlpath=tree/book/projects/data_investigation.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/Khunmi/personal-website/blob/main/book/projects/data_investigation.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -239,7 +304,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+      <li><a href="https://github.com/Khunmi/personal-website" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -256,7 +321,24 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fbook/projects/data_investigation.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/Khunmi/personal-website/edit/main/book/projects/data_investigation.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Khunmi/personal-website/issues/new?title=Issue%20on%20page%20%2Fbook/projects/data_investigation.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -409,11 +491,11 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exploratory-data-analysis-eda">
 <h1>Exploratory Data Analysis(EDA)<a class="headerlink" href="#exploratory-data-analysis-eda" title="Link to this heading">#</a></h1>
-<p><a class="reference external" href="https://colab.research.google.com/github/Khunmi/test/blob/master/_portfolio/data_investigation.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/Khunmi/personal-website/blob/main/book/projects/data_investigation.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <!-- ## Table of Contents
 <ul>
 <li><a href="#intro">Introduction</a></li>
-<li><a href="#depedencies">Dependencies and Data</a></li>
+<li><a href="#dependencies">Dependencies and Data</a></li>
 <li><a href="#wrangling">Data Wrangling</a></li>
 <li><a href="#eda">Exploratory Data Analysis</a></li>
 <li><a href="#conclusions">Conclusions</a></li>
@@ -422,7 +504,7 @@ document.write(`
 <a id='intro'></a> -->
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>This project will be investigating the ‘No-show appoinments’ dataset for hospital appointment attendance status and other characteristics for 100,000 patients in Brazil, South America.</p>
+<p>This project will be investigating the ‘No-show appointments’ dataset for hospital appointment attendance status and other characteristics for 100,000 patients in Brazil, South America.</p>
 <p>In particular, I will be exploring trends concerning attendance rates between male and females, factors that may or may not have influenced attendance such as SMS prompts, welfare enrolments and Handicap level, average age of attendees and non-attendees.</p>
 <section id="dataset-description">
 <h3>Dataset Description<a class="headerlink" href="#dataset-description" title="Link to this heading">#</a></h3>
@@ -435,10 +517,10 @@ document.write(`
 <h3>Question(s) for Analysis<a class="headerlink" href="#question-s-for-analysis" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>What age ranges are more likely to honor appointments as well as the ages that most likely wouldn’t?</p></li>
-<li><p>Does SMS prompts play an important role in appoinment showup rates?</p></li>
+<li><p>Does SMS prompts play an important role in appointment showup rates?</p></li>
 <li><p>What percentage of males and females are enrolled in welfare programs?</p></li>
 </ul>
-<!-- <a id='depedencies'></a> -->
+<!-- <a id='dependencies'></a> -->
 </section>
 <section id="dependencies-and-data">
 <h3>Dependencies and Data<a class="headerlink" href="#dependencies-and-data" title="Link to this heading">#</a></h3>
@@ -460,11 +542,11 @@ document.write(`
 </section>
 <section id="data-properties">
 <h3>Data Properties<a class="headerlink" href="#data-properties" title="Link to this heading">#</a></h3>
-<p>The following cells cotains statements used to check the various properties of the dataframe such as;</p>
+<p>The following cells contains statements used to check the various properties of the dataframe such as;</p>
 <ul class="simple">
 <li><p>Column names</p></li>
 <li><p>Data Types in each column</p></li>
-<li><p>Number of Rows and Colunms</p></li>
+<li><p>Number of Rows and Columns</p></li>
 <li><p>Columns with missing values</p></li>
 </ul>
 <p>A quick description command on the dataframe will also help preview trends at a glance.</p>
@@ -489,31 +571,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 110527 entries, 0 to 110526
-Data columns (total 14 columns):
- #   Column          Non-Null Count   Dtype  
----  ------          --------------   -----  
- 0   PatientId       110527 non-null  float64
- 1   AppointmentID   110527 non-null  int64  
- 2   Gender          110527 non-null  object 
- 3   ScheduledDay    110527 non-null  object 
- 4   AppointmentDay  110527 non-null  object 
- 5   Age             110527 non-null  int64  
- 6   Neighbourhood   110527 non-null  object 
- 7   Scholarship     110527 non-null  int64  
- 8   Hipertension    110527 non-null  int64  
- 9   Diabetes        110527 non-null  int64  
- 10  Alcoholism      110527 non-null  int64  
- 11  Handcap         110527 non-null  int64  
- 12  SMS_received    110527 non-null  int64  
- 13  No-show         110527 non-null  object 
-dtypes: float64(1), int64(8), object(5)
-memory usage: 11.8+ MB
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -521,138 +578,8 @@ memory usage: 11.8+ MB
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>PatientId</th>
-      <th>AppointmentID</th>
-      <th>Age</th>
-      <th>Scholarship</th>
-      <th>Hipertension</th>
-      <th>Diabetes</th>
-      <th>Alcoholism</th>
-      <th>Handcap</th>
-      <th>SMS_received</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>1.105270e+05</td>
-      <td>1.105270e+05</td>
-      <td>110527.000000</td>
-      <td>110527.000000</td>
-      <td>110527.000000</td>
-      <td>110527.000000</td>
-      <td>110527.000000</td>
-      <td>110527.000000</td>
-      <td>110527.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>1.474963e+14</td>
-      <td>5.675305e+06</td>
-      <td>37.088874</td>
-      <td>0.098266</td>
-      <td>0.197246</td>
-      <td>0.071865</td>
-      <td>0.030400</td>
-      <td>0.022248</td>
-      <td>0.321026</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>2.560949e+14</td>
-      <td>7.129575e+04</td>
-      <td>23.110205</td>
-      <td>0.297675</td>
-      <td>0.397921</td>
-      <td>0.258265</td>
-      <td>0.171686</td>
-      <td>0.161543</td>
-      <td>0.466873</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>3.921784e+04</td>
-      <td>5.030230e+06</td>
-      <td>-1.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>4.172614e+12</td>
-      <td>5.640286e+06</td>
-      <td>18.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>3.173184e+13</td>
-      <td>5.680573e+06</td>
-      <td>37.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>9.439172e+13</td>
-      <td>5.725524e+06</td>
-      <td>55.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>1.000000</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>9.999816e+14</td>
-      <td>5.790484e+06</td>
-      <td>115.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>4.000000</td>
-      <td>1.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
-<p>A quick glance at the dataset description is clearly highlighting that there is at least one occurence of an invalid  age value(-1.0) in the age column. This will be treated in the Data cleaning section.</p>
+<p>A quick glance at the dataset description is clearly highlighting that there is at least one occurrence of an invalid  age value(-1.0) in the age column. This will be treated in the Data cleaning section.</p>
 <!-- <a id='wrangling'></a> -->
 </section>
 </section>
@@ -664,220 +591,11 @@ are necessary checks in order to determine the amount and type of cleaning and c
 <p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#The first ten rows in the dataet is queries to give and overview on what the data looks like.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#The first ten rows in the dataset is queries to give and overview on what the data looks like.</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>PatientId</th>
-      <th>AppointmentID</th>
-      <th>Gender</th>
-      <th>ScheduledDay</th>
-      <th>AppointmentDay</th>
-      <th>Age</th>
-      <th>Neighbourhood</th>
-      <th>Scholarship</th>
-      <th>Hipertension</th>
-      <th>Diabetes</th>
-      <th>Alcoholism</th>
-      <th>Handcap</th>
-      <th>SMS_received</th>
-      <th>No-show</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2.987250e+13</td>
-      <td>5642903</td>
-      <td>F</td>
-      <td>2016-04-29T18:38:08Z</td>
-      <td>2016-04-29T00:00:00Z</td>
-      <td>62</td>
-      <td>JARDIM DA PENHA</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>5.589978e+14</td>
-      <td>5642503</td>
-      <td>M</td>
-      <td>2016-04-29T16:08:27Z</td>
-      <td>2016-04-29T00:00:00Z</td>
-      <td>56</td>
-      <td>JARDIM DA PENHA</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>4.262962e+12</td>
-      <td>5642549</td>
-      <td>F</td>
-      <td>2016-04-29T16:19:04Z</td>
-      <td>2016-04-29T00:00:00Z</td>
-      <td>62</td>
-      <td>MATA DA PRAIA</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>8.679512e+11</td>
-      <td>5642828</td>
-      <td>F</td>
-      <td>2016-04-29T17:29:31Z</td>
-      <td>2016-04-29T00:00:00Z</td>
-      <td>8</td>
-      <td>PONTAL DE CAMBURI</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>8.841186e+12</td>
-      <td>5642494</td>
-      <td>F</td>
-      <td>2016-04-29T16:07:23Z</td>
-      <td>2016-04-29T00:00:00Z</td>
-      <td>56</td>
-      <td>JARDIM DA PENHA</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>9.598513e+13</td>
-      <td>5626772</td>
-      <td>F</td>
-      <td>2016-04-27T08:36:51Z</td>
-      <td>2016-04-29T00:00:00Z</td>
-      <td>76</td>
-      <td>REPÚBLICA</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>7.336882e+14</td>
-      <td>5630279</td>
-      <td>F</td>
-      <td>2016-04-27T15:05:12Z</td>
-      <td>2016-04-29T00:00:00Z</td>
-      <td>23</td>
-      <td>GOIABEIRAS</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>3.449833e+12</td>
-      <td>5630575</td>
-      <td>F</td>
-      <td>2016-04-27T15:39:58Z</td>
-      <td>2016-04-29T00:00:00Z</td>
-      <td>39</td>
-      <td>GOIABEIRAS</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>5.639473e+13</td>
-      <td>5638447</td>
-      <td>F</td>
-      <td>2016-04-29T08:02:16Z</td>
-      <td>2016-04-29T00:00:00Z</td>
-      <td>21</td>
-      <td>ANDORINHAS</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>7.812456e+13</td>
-      <td>5629123</td>
-      <td>F</td>
-      <td>2016-04-27T12:48:25Z</td>
-      <td>2016-04-29T00:00:00Z</td>
-      <td>19</td>
-      <td>CONQUISTA</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>No</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>A view of what the first ten rows in our dataset looks like to give an idea of what is contained within the dataset.</p>
 <div class="cell docutils container">
@@ -888,42 +606,12 @@ are necessary checks in order to determine the amount and type of cleaning and c
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-</pre></div>
-</div>
-</div>
 </div>
 <p>Total number of duplicate rows in our data is computed in the cell above as a rule for data inspection.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the &#39;.info()&#39; gives necessary information to determine if any column has null values present.</span>
 <span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 110527 entries, 0 to 110526
-Data columns (total 14 columns):
- #   Column          Non-Null Count   Dtype  
----  ------          --------------   -----  
- 0   PatientId       110527 non-null  float64
- 1   AppointmentID   110527 non-null  int64  
- 2   Gender          110527 non-null  object 
- 3   ScheduledDay    110527 non-null  object 
- 4   AppointmentDay  110527 non-null  object 
- 5   Age             110527 non-null  int64  
- 6   Neighbourhood   110527 non-null  object 
- 7   Scholarship     110527 non-null  int64  
- 8   Hipertension    110527 non-null  int64  
- 9   Diabetes        110527 non-null  int64  
- 10  Alcoholism      110527 non-null  int64  
- 11  Handcap         110527 non-null  int64  
- 12  SMS_received    110527 non-null  int64  
- 13  No-show         110527 non-null  object 
-dtypes: float64(1), int64(8), object(5)
-memory usage: 11.8+ MB
 </pre></div>
 </div>
 </div>
@@ -951,7 +639,7 @@ memory usage: 11.8+ MB
 </div>
 </div>
 </div>
-<p>A good practice is to convert all column names to lower case because it is somewhat stressfull to always check the column name everytime you intend to access them during analysis.</p>
+<p>A good practice is to convert all column names to lower case because it is somewhat stressfull to always check the column name every time you intend to access them during analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Renaming of columns and making the changes permanent with the &#39;inplace&#39; command</span>
@@ -972,17 +660,6 @@ memory usage: 11.8+ MB
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\bukun\AppData\Local\Temp\ipykernel_59080\1216298388.py:3: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
-The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
-
-For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
-
-
-  df[&#39;no_show&#39;].replace({&#39;No&#39; : &#39;yes&#39;}, inplace = True)
-</pre></div>
-</div>
-</div>
 </div>
 <p>Documentation states there was an error in the no_show column where ‘Yes’ was recorded as ‘No’ and ‘No’ was entered as ‘Yes’.
 This cell renames the values of the no_show column</p>
@@ -997,36 +674,13 @@ This cell renames the values of the no_show column</p>
 </div>
 </div>
 </div>
-<p>After data inspection, it was obesrved that the ‘scheduledday’ and ‘appoinmentday’ columns are dates but their data types do not correspond, they appear to be strings which should not be so. Dates are to be treated as datetime formats for smooth analysis process.</p>
+<p>After data inspection, it was obesrved that the ‘scheduledday’ and ‘appointmentday’ columns are dates but their data types do not correspond, they appear to be strings which should not be so. Dates are to be treated as datetime formats for smooth analysis process.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#checking datafarme properties for confirmation</span>
 <span class="n">date_convert</span><span class="p">()</span>
 
 <span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 110527 entries, 0 to 110526
-Data columns (total 12 columns):
- #   Column          Non-Null Count   Dtype              
----  ------          --------------   -----              
- 0   gender          110527 non-null  object             
- 1   scheduledday    110527 non-null  datetime64[ns, UTC]
- 2   appointmentday  110527 non-null  datetime64[ns, UTC]
- 3   age             110527 non-null  int64              
- 4   neighbourhood   110527 non-null  object             
- 5   scholarship     110527 non-null  int64              
- 6   hypertension    110527 non-null  int64              
- 7   diabetes        110527 non-null  int64              
- 8   alcoholism      110527 non-null  int64              
- 9   handicap        110527 non-null  int64              
- 10  sms_received    110527 non-null  int64              
- 11  no_show         110527 non-null  object             
-dtypes: datetime64[ns, UTC](2), int64(7), object(3)
-memory usage: 10.1+ MB
 </pre></div>
 </div>
 </div>
@@ -1041,122 +695,10 @@ memory usage: 10.1+ MB
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>age</th>
-      <th>scholarship</th>
-      <th>hypertension</th>
-      <th>diabetes</th>
-      <th>alcoholism</th>
-      <th>handicap</th>
-      <th>sms_received</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>3540.000000</td>
-      <td>3540.000000</td>
-      <td>3540.0</td>
-      <td>3540.0</td>
-      <td>3540.0</td>
-      <td>3540.000000</td>
-      <td>3540.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>-0.000282</td>
-      <td>0.014689</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.000282</td>
-      <td>0.253390</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>0.016807</td>
-      <td>0.120323</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.016807</td>
-      <td>0.435014</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>-1.000000</td>
-      <td>0.000000</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.000000</td>
-      <td>1.000000</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>0.000000</td>
-      <td>1.000000</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <ul class="simple">
-<li><p>Taking a look at the category of data that has invalid age entry as spoted while inspecting the data properties (see section <a href="#depedencies">Dependencies and Data</a>).</p></li>
-<li><p>As seen, we have a total of 3540 rows with invalid age input of less than 1. A further inspection of this category is neccessary inorder to make a decision on whether to delete the entries from the dataset or fill the wrong values.</p></li>
+<li><p>Taking a look at the category of data that has invalid age entry as spoted while inspecting the data properties (see section <a href="#dependencies">Dependencies and Data</a>).</p></li>
+<li><p>As seen, we have a total of 3540 rows with invalid age input of less than 1. A further inspection of this category is necessary inorder to make a decision on whether to delete the entries from the dataset or fill the wrong values.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1182,9 +724,6 @@ memory usage: 10.1+ MB
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;No_Show&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/f695e6fc33b5c0fda45b75346ac128928022abb23d1f18fdcfa200b8855e0e47.png" src="../../_images/f695e6fc33b5c0fda45b75346ac128928022abb23d1f18fdcfa200b8855e0e47.png" />
 </div>
 </div>
 <p>This cell contains an overview plot of other characteristics of the group with ages less than 1. These plots give enough details to compare with the general characteristics of our entire dataframe. I am looking to inspect if there are any peculiarities about this age group by comparing their characteristics with that of the entire datafarme.</p>
@@ -1212,9 +751,6 @@ memory usage: 10.1+ MB
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/ad5516bf8f1687e1f63e085e0d36ca8f3ec305595d4a03c3d6e59106c14b83c5.png" src="../../_images/ad5516bf8f1687e1f63e085e0d36ca8f3ec305595d4a03c3d6e59106c14b83c5.png" />
-</div>
 </div>
 <p>Histograms plots for general characteristics of the ‘No-show appointments’ dataset.</p>
 <p>In comparison to the histogram plots for the age group less than 1 years of age, it can be deduced that there are a few differences in trends accross all characteristics.</p>
@@ -1236,17 +772,6 @@ memory usage: 10.1+ MB
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\bukun\AppData\Local\Temp\ipykernel_59080\1912874076.py:3: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
-The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
-
-For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
-
-
-  df[&#39;age&#39;].replace({ -1 : df.age.mean(), 0 : df.age.mean()}, inplace = True)
-</pre></div>
-</div>
-</div>
 </div>
 <p>All invalid ages are replaced in the cell above and making the changes inplace for the rest of my analysis.</p>
 <div class="cell docutils container">
@@ -1257,129 +782,12 @@ For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>age</th>
-      <th>scholarship</th>
-      <th>hypertension</th>
-      <th>diabetes</th>
-      <th>alcoholism</th>
-      <th>handicap</th>
-      <th>sms_received</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>110527.000000</td>
-      <td>110527.000000</td>
-      <td>110527.000000</td>
-      <td>110527.000000</td>
-      <td>110527.000000</td>
-      <td>110527.000000</td>
-      <td>110527.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>38.276780</td>
-      <td>0.098266</td>
-      <td>0.197246</td>
-      <td>0.071865</td>
-      <td>0.030400</td>
-      <td>0.022248</td>
-      <td>0.321026</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>22.104561</td>
-      <td>0.297675</td>
-      <td>0.397921</td>
-      <td>0.258265</td>
-      <td>0.171686</td>
-      <td>0.161543</td>
-      <td>0.466873</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>1.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>20.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>37.088874</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>55.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>1.000000</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>115.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>4.000000</td>
-      <td>1.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#checkinng if there are still ages less that 1 remaining in the dataframe</span>
 
 <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">age</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)][</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
 </div>
@@ -1422,13 +830,6 @@ For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\bukun\AppData\Local\Temp\ipykernel_59080\3608931604.py:8: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
-  plt.legend(loc=&quot;upper right&quot;)
-</pre></div>
-</div>
-<img alt="../../_images/2308d8ca47d995d87e664c62e8aa890d184cc26006df51fdac421dfe45cfa750.png" src="../../_images/2308d8ca47d995d87e664c62e8aa890d184cc26006df51fdac421dfe45cfa750.png" />
-</div>
 </div>
 <p>Based on the chart above, it shows that slightly older people tend to honor medical appointments more. in order words, the closer and individual gets to age 40(i.e age 36,37,39 etc), the likelier the individual will honor hospital appintments.</p>
 <p>It would be interesting to see how this varies amongst genders as I continue my analysis.</p>
@@ -1465,9 +866,6 @@ For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/50e0255ff545cc8399ffc4a96bbf83669a36a41d431a7ae7ca2bf4a20c74ca07.png" src="../../_images/50e0255ff545cc8399ffc4a96bbf83669a36a41d431a7ae7ca2bf4a20c74ca07.png" />
-</div>
 </div>
 <p>This communicates more insight on the connection between age and attendance according to  gender. Some key notes include;</p>
 <ol class="arabic simple">
@@ -1475,7 +873,7 @@ For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using
 <li><p>The male distribution however shows a general attribute of a lesser average age of attendance and non attendance.</p></li>
 </ol>
 <ul class="simple">
-<li><p>Do SMS prompts play an important role in appoinment showup rates?</p></li>
+<li><p>Do SMS prompts play an important role in appointment showup rates?</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1485,11 +883,6 @@ For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using
 <span class="n">sms_nshow</span> <span class="o">=</span> <span class="n">nshowup</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;sms_received == 1&#39;</span><span class="p">)[</span><span class="s1">&#39;sms_received&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 
 <span class="n">sms_show</span><span class="p">,</span> <span class="n">sms_nshow</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(25698, 9784)
 </pre></div>
 </div>
 </div>
@@ -1506,15 +899,10 @@ For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(62510, 12535)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#This section helps to position the plots below side by side as well as the overal size of the plot displayed</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#This section helps to position the plots below side by side as well as the overall  size of the plot displayed</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
 <span class="n">explode</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
@@ -1539,14 +927,11 @@ For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/d88638e6d38ac543461ca04177f4a9a44b4e23c3d4de68051e20ed72087cb426.png" src="../../_images/d88638e6d38ac543461ca04177f4a9a44b4e23c3d4de68051e20ed72087cb426.png" />
-</div>
 </div>
 <p>Clearly, SMS prompts doesn’t seem to influence attendance in any way.</p>
 <ol class="arabic simple">
-<li><p>A large percentage(83.3%) of people that didn’t receive SMS prompts honored their appoinments while 16.7% did not.</p></li>
-<li><p>72.4% of SMS receivers honored their appoinment but this is obviously lesser than the attendees that did not receive any SMS prompts whatsoever.</p></li>
+<li><p>A large percentage(83.3%) of people that didn’t receive SMS prompts honored their appointments while 16.7% did not.</p></li>
+<li><p>72.4% of SMS receivers honored their appointment but this is obviously lesser than the attendees that did not receive any SMS prompts whatsoever.</p></li>
 </ol>
 <ul class="simple">
 <li><p>What percentage of males and females are enrolled in welfare programs?</p></li>
@@ -1563,17 +948,6 @@ For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\bukun\AppData\Local\Temp\ipykernel_59080\2411563871.py:4: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
-  schshp_f = df.groupby([&#39;gender&#39;])[&#39;scholarship&#39;].sum()[0]
-C:\Users\bukun\AppData\Local\Temp\ipykernel_59080\2411563871.py:5: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
-  schshp_m = df.groupby([&#39;gender&#39;])[&#39;scholarship&#39;].sum()[1]
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2008, 8853)
-</pre></div>
-</div>
-</div>
 </div>
 <p>Exploring the distribution of scholarship enrolments by gender involves cateorising our dataframe into the existing gender distribution and summing up the scholarship values because the data type in the ‘scholarship’ column is ‘int’ and it consists of two distinct values(0 and 1).</p>
 <div class="cell docutils container">
@@ -1584,17 +958,6 @@ C:\Users\bukun\AppData\Local\Temp\ipykernel_59080\2411563871.py:5: FutureWarning
 <span class="n">female_count</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;gender&#39;</span><span class="p">])[</span><span class="s1">&#39;gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="n">male_count</span><span class="p">,</span> <span class="n">female_count</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\bukun\AppData\Local\Temp\ipykernel_59080\709079853.py:3: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
-  male_count = df.groupby([&#39;gender&#39;])[&#39;gender&#39;].count()[1]
-C:\Users\bukun\AppData\Local\Temp\ipykernel_59080\709079853.py:4: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
-  female_count = df.groupby([&#39;gender&#39;])[&#39;gender&#39;].count()[0]
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(38687, 71840)
 </pre></div>
 </div>
 </div>
@@ -1611,16 +974,11 @@ C:\Users\bukun\AppData\Local\Temp\ipykernel_59080\709079853.py:4: FutureWarning:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(36679, 62987)
-</pre></div>
-</div>
-</div>
 </div>
 <p>Investigating using percentage was chosen because the number of females in the distribution far outnumbers the males so plotting aggregates like count may not communicate the exact picture of the welfare enrollment distribution amongst genders.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#This section helps to position the plots below side by side as well as the overal size of the plot displayed</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#This section helps to position the plots below side by side as well as the necessary size of the plot displayed</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
 <span class="n">explode</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
@@ -1644,9 +1002,6 @@ C:\Users\bukun\AppData\Local\Temp\ipykernel_59080\709079853.py:4: FutureWarning:
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Percentage of scholarship</span><span class="se">\n</span><span class="s2">recipients amongst Females&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/6f01832a188515bca8adad2fb56699ed3baa24a92d9ffa294b99e5e2d90713e5.png" src="../../_images/6f01832a188515bca8adad2fb56699ed3baa24a92d9ffa294b99e5e2d90713e5.png" />
 </div>
 </div>
 <p>Some details from the chart include;</p>
@@ -1679,11 +1034,6 @@ C:\Users\bukun\AppData\Local\Temp\ipykernel_59080\709079853.py:4: FutureWarning:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4294967295
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
@@ -1692,8 +1042,8 @@ C:\Users\bukun\AppData\Local\Temp\ipykernel_59080\709079853.py:4: FutureWarning:
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
+            repo: "Khunmi/personal-website",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -1719,7 +1069,7 @@ C:\Users\bukun\AppData\Local\Temp\ipykernel_59080\709079853.py:4: FutureWarning:
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../index.html"
+       href="../about/summary.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -1782,7 +1132,7 @@ C:\Users\bukun\AppData\Local\Temp\ipykernel_59080\709079853.py:4: FutureWarning:
   <div class="footer-item">
     
 <p class="component-author">
-By The Jupyter Book Community
+By Kunmi Adebanjo
 </p>
 
   </div>
@@ -1792,7 +1142,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2025.
       <br/>
     
   </p>
