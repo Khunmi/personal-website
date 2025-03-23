@@ -12,6 +12,9 @@ root: index
 # - file: mymarkdownfile
 
 parts:
+  - caption: About
+    chapters:
+      - file: book/about/summary
   - caption: Data Analytics Projects
     chapters:
       - file: book/projects/data_investigation
