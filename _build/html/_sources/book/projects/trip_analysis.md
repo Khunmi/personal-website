@@ -4,11 +4,11 @@ This is an end-to-end data engineering project, This project uses [Taxi Trips da
 
 ## Technology Stack
 The following technologies are used to build this project
-- Google Cloud Storage (GCS) - as Data Lake <br>
-- Prefect - for orchestration <br>
-- dbt - for transformation and data modeling <br>
-- Google BigQuery - for Data Warehouse <br>
-- Google Looker studio - for visualizations <br>
+- Google Cloud Storage (GCS) - as Data Lake
+- Prefect - for orchestration
+- dbt - for transformation and data modeling
+- Google BigQuery - for Data Warehouse
+- Google Looker studio - for visualizations
 ## Data Pipeline Architecture
 
 <div style="display: flex; align-items: center; justify-content: flex-start;">
@@ -61,7 +61,7 @@ python prefect docs/parameterized_flow.py
 4. Data tranformation and modeling using dbt
 
 - I decided to create a free dbt cloud developer account and setup my google credential with it to enable communication between Google Bigquery and dbt
-- kindly refer to the [core](https://github.com/Khunmi/ELT_Project_DZC/tree/main/dbt_files/models/core) and [staging](https://github.com/Khunmi/ELT_Project_DZC/tree/main/dbt_files/models/staging) models i created for more tranformation details.
+- kindly refer to the [core](https://github.com/Khunmi/ELT_Project_DZC/tree/main/dbt_files/models/core) and [staging](https://github.com/Khunmi/ELT_Project_DZC/tree/main/dbt_files/models/staging) models i created for more dbt tranformation docs and syntax.
 
 ```
 dbt build --var 'is_test_run: false'
@@ -72,11 +72,11 @@ You will get 4 tables in Citibike_data_dbt data set
   - facts_citibike
   - stg_citibike_data
 
-1.  Data Vizualization and Dashboarding
+Data Vizualization and Dashboarding
 - You can now query the data and connect it to looker to visualize the data, when connecting to data source use facts table to build the data source in looker, dont use partitioned table, as you wont get any data in your report.
 - go to [Looker Studio](https://lookerstudio.google.com/) &rarr; create &rarr; BigQuery &rarr; choose your project, dataset & transformed table.
 
-1. Future work
+Future work
 - Add more tests
 - Add CI/CD pipeline
 - Make incremental model, to append only the latest data from each load
