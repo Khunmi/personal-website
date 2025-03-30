@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This portfolio showcases data analytics and visualization projects using Power BI and Tableau, highlighting key insights and findings from various projects.
+This section showcases data analytics and visualization projects using Power BI and Tableau, highlighting key insights and findings from various projects.
 
 ### Key Projects:
 
