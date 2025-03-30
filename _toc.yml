@@ -22,4 +22,9 @@ parts:
       - file: book/projects/wrangle_act
       - file: book/projects/seaborne
       - file: book/projects/powerbi_tableau
+  - caption: Data Engineering Projects
+    chapters:
+      - file: book/projects/trip_analysis
+
+
 
