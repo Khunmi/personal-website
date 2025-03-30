@@ -57,8 +57,6 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'book/projects/powerbi_tableau';</script>
     <link rel="canonical" href="https://github.com/Khunmi/book/projects/powerbi_tableau.html" />
     <link rel="icon" href="../../_static/fav.ico"/>
@@ -405,28 +403,21 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives-and-primary-goal">Objectives and Primary Goal:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-overview">Dataset Overview:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-insights">Initial Insights:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-findings-deposit-trends">Key Findings - Deposit Trends:</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-summary-deposit-trends">Visual Summary - Deposit Trends:</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geographic-distribution-heatmap">Geographic Distribution Heatmap:</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-findings-deposit-trends">Key Findings - Deposit Trends:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-findings-geographic-distribution">Key Findings - Geographic Distribution:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recommendations">Recommendations:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retail-sales-annual-report-oil-gas">Retail Sales Annual Report (Oil &amp; Gas)</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eoy-retail-sales-performance-downstream-oil-gas">EOY Retail Sales Performance(Downstream Oil &amp; Gas)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Introduction:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-findings">Main Findings:</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#embedded-power-bi-report">Embedded Power BI Report:</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-and-transformations">Data Cleaning and Transformations:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-findings">Main Findings:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion:</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monitoring-and-evaluation-dashboard-agriculture">Monitoring and Evaluation Dashboard (Agriculture)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Introduction:</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#embedded-tableau-report">Embedded Tableau Report:</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Introduction:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#etl-process">ETL Process:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Main Findings:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Conclusion:</a></li>
 </ul>
@@ -451,7 +442,7 @@ document.write(`
 <h3>Key Projects:<a class="headerlink" href="#key-projects" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p><strong>ATB Financial’s US Branch Performance Analysis</strong> - Transitioning client activity to digital channels.</p></li>
-<li><p><strong>End of Year Retail Sales Performance Report via Power BI.</strong></p></li>
+<li><p><strong>EOY Retail Sales Performance(Downstream Oil &amp; Gas) via Power BI.</strong></p></li>
 <li><p><strong>Monitoring and Evaluation Dashboard Tracker via Tableau.</strong></p></li>
 </ol>
 <p>Let’s get started ………</p>
@@ -485,38 +476,50 @@ document.write(`
 </section>
 <section id="initial-insights">
 <h3>Initial Insights:<a class="headerlink" href="#initial-insights" title="Link to this heading">#</a></h3>
-<p>First level Exploratory data analysis(EDA) reveals the following:</p>
-<!-- - Total Deposits: **$12.65 billion** (Walk-In: **$12.63 billion**, Drive-Thru: **$26.43 million**) -->
 <ul class="simple">
-<li><p>Total Deposits: exactly <strong><span class="math notranslate nohighlight">\(12.65 billion**  has been deposited between 2010 and 2016. A further breakdown shows that, of the **\)</span>12.65 billion</strong> deposited, <strong><span class="math notranslate nohighlight">\(26.43 million** was via drive-thrus while **\)</span>12.63 billion</strong> was through walk-in branches</p></li>
-</ul>
-<!-- - Total Branches: **5,413** (Walk-In: **5,313**, Drive-Thru: **100**) -->
-<ul class="simple">
-<li><p>Total Branches: There are a total of <strong>5,413</strong> branches of ATB as of July 16, 2016 when this dataset was generated. <strong>100</strong> of these branches are drive-thrus while <strong>5,313</strong>are walk-in branches</p></li>
-</ul>
-<!-- - Average Deposits per Branch: Drive-Thru (**$264,322.37**), Walk-In (**$2,376,553.74**) -->
-<ul class="simple">
-<li><p>Average Deposits per Branch: Based on these numbers, initial assumption informs that each drive-thru branch received deposits of an average of <strong><span class="math notranslate nohighlight">\(264,322.37** between 2010 and 2016 and each physical branch received deposits of an average of **\)</span>2,376,553.74</strong> between 2010 and 2016</p></li>
+<li><p>Total Deposits: exactly <strong>12.65 billion(USD)</strong> has been deposited between 2010 and 2016. A further breakdown shows that, of the <strong>12.65 billion(USD)</strong> deposited, <strong>26.43 million(USD)</strong> was via drive-thrus while <strong>12.63 billion(USD)</strong> was through walk-in branches</p></li>
+<li><p>Total Branches: there are a total of <strong>5,413</strong> branches of ATB as of July 16, 2016 when this dataset was generated. <strong>100</strong> of these branches are drive-thrus while <strong>5,313</strong>are walk-in branches</p></li>
+<li><p>Average Deposits per Branch: Based on these numbers, initial assumption informs that each drive-thru branch received deposits of an average of <strong>264,322.37(USD)</strong> between 2010 and 2016 and each physical branch received deposits of an average of <strong>2,376,553.74(USD)</strong> between 2010 and 2016</p></li>
 </ul>
 </div>
 </div>
 </section>
 <section id="key-findings-deposit-trends">
 <h3>Key Findings - Deposit Trends:<a class="headerlink" href="#key-findings-deposit-trends" title="Link to this heading">#</a></h3>
+<div style="display: flex; align-items: center; justify-content: flex-start;">
+<img src="https://khunmi.github.io/portfolio/images/story_telling_deposit%20chart.png" alt="Visual Summary" style="max-width: 500px; margin-right: 40px;">
+<div style="max-width: 800x;">
+<div style="display: flex; align-items: center; justify-content: flex-start;">
+<img src="https://khunmi.github.io/portfolio/images/story_telling_deposit%20chart2.png" alt="Visual Summary" style="max-width: 500px; margin-right: 40px;">
+</div>
+</div>
+</div>
+<div style="display: flex; align-items: center; justify-content: flex-start;">
 <ul class="simple">
-<li><p>Walk-in branches significantly outperform drive-thru branches.</p></li>
-<li><p>Acquired branches contribute over <strong>90%</strong> of drive-thru deposits.</p></li>
-<li><p>States like Ohio and New York show high deposit volumes, while Pennsylvania shows $0 despite proximity to high performers.</p></li>
+<li><p>Walk-in branches have higher deposits(in billions)</p></li>
+<li><p>Drive-thru ABMs show consistent growth potential similar to walk-in branches</p></li>
+<li><p>At this level of granularity, the observed difference can easily be attributed to the number of branches in each category as well as their popularity and general technology adoption</p></li>
 </ul>
-<section id="visual-summary-deposit-trends">
-<h4>Visual Summary - Deposit Trends:<a class="headerlink" href="#visual-summary-deposit-trends" title="Link to this heading">#</a></h4>
-<p><img alt="Deposit Trends" src="book/projects/images/story_telling_deposit_chart.png" />
-<img alt="Deposit Trends 2" src="book/projects/images/story_telling_deposit_chart2.png" /></p>
+<div style="max-width: 800x;">
+<div style="display: flex; align-items: center; justify-content: flex-start;">
+<ul class="simple">
+<li><p>Additional level of details shows acquired branches contributes over 90% of deposits recorded at drive-thru ABMs. This is in contrast to what is observed in walk-in branches where organic ownerships are largely responsible for deposits</p></li>
+<li><p>Could this be a function of a great acquisition team, number of branches for each ownership type, geography or an hybrid of some or all of these factors?</p></li>
+</ul>
+</div>
+</div>
+</div>
 </section>
-<section id="geographic-distribution-heatmap">
-<h4>Geographic Distribution Heatmap:<a class="headerlink" href="#geographic-distribution-heatmap" title="Link to this heading">#</a></h4>
-<p><img alt="Deposit Heatmap" src="book/projects/images/story_telling_deposit_heatmap.png" /></p>
-</section>
+<section id="key-findings-geographic-distribution">
+<h3>Key Findings - Geographic Distribution:<a class="headerlink" href="#key-findings-geographic-distribution" title="Link to this heading">#</a></h3>
+<div style="display: flex; align-items: center; justify-content: flex-start;">
+<img src="https://khunmi.github.io/portfolio/images/story_telling_deposit%20heatmap.png" alt="Visual Summary" style="max-width: 500px; margin-right: 40px;">
+<div style="max-width: 800x;">
+<ul class="simple">
+<li><p>Deposits heatmap reveal Ohio and New York as the largest deposit contributors for the entire US market. However, it is interesting to highlight that the State of Pennsylvania, despite being sandwiched between the two highest contributing States, actually recorded $0 in deposits.</p></li>
+</ul>
+</div>
+</div>
 </section>
 <section id="recommendations">
 <h3>Recommendations:<a class="headerlink" href="#recommendations" title="Link to this heading">#</a></h3>
@@ -526,52 +529,53 @@ document.write(`
 <li><p><strong>Enhance Digital Channels:</strong> Incentivize web and drive-thru services to foster adoption.</p></li>
 <li><p><strong>Customer Support:</strong> Provide localized support for non-tech-savvy customers.</p></li>
 </ol>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
 </section>
 </section>
-<section id="retail-sales-annual-report-oil-gas">
-<h2>Retail Sales Annual Report (Oil &amp; Gas)<a class="headerlink" href="#retail-sales-annual-report-oil-gas" title="Link to this heading">#</a></h2>
+<section id="eoy-retail-sales-performance-downstream-oil-gas">
+<h2>EOY Retail Sales Performance(Downstream Oil &amp; Gas)<a class="headerlink" href="#eoy-retail-sales-performance-downstream-oil-gas" title="Link to this heading">#</a></h2>
+<iframe width="965" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiYzMzMDNjNmUtZjIwYi00ODNiLTgyMTctOTg0NDI5NDBjZDQ0IiwidCI6ImJkMDJkNzlkLWZjMjktNGExMi05ZGYxLWE0YmZlNmQ4ZjRjOCJ9&pageName=ReportSectiond9306b8184b0330bd596" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <section id="id1">
 <h3>Introduction:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>Analyzed retail sales data from the downstream oil and gas sector to understand key product performance (PMS, AGO, Lubricants).</p>
+<p>In today’s fast-paced business world, retail sales performance is a key indicator of a company’s success. The Downstream Oil and Gas sector is no exception, with a constantly changing landscape and a highly competitive market. As such, understanding the performance of key products like PMS, AGO, and lubricants is crucial for decision-makers in the industry. In this report, I present the findings of my analysis of retail sales performance data sourced from Sage Business Cloud ERP for the year 2022. my analysis provides insights into the performance of retail stations, PMS, AGO, and lubricant sales across different regions, as well as the factors that influenced their performance. This report is aimed at providing industry stakeholders with valuable insights that can guide their decision-making processes and help them optimize their retail sales performance.</p>
+</section>
+<section id="data-cleaning-and-transformations">
+<h3>Data Cleaning and Transformations:<a class="headerlink" href="#data-cleaning-and-transformations" title="Link to this heading">#</a></h3>
+<p>To create this dashboard, I sourced data from an Enterprise resource planner API. ERP extracts are usually characterized by several variables due to its robust architecture. To suit the purpose of this report, I employed some modelling and data standardisation using Powerquery within PowerBI to ensure that the data was consistent and accurate. Finally, the data was visualized using Power Business Intelligence software</p>
 </section>
 <section id="main-findings">
 <h3>Main Findings:<a class="headerlink" href="#main-findings" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong>PMS Sales:</strong> Significant growth due to station expansion and logistics collaboration.</p></li>
-<li><p><strong>AGO Sales:</strong> Decline caused by supply challenges and unstable pricing.</p></li>
-<li><p><strong>Lubricant Sales:</strong> Decreased due to price hikes and competition.</p></li>
-<li><p><strong>Top Performing Regions:</strong> West region contributes <strong>44.25%</strong> of revenue.</p></li>
+<li><p><strong>PMS Sales:</strong> Active expansion activities saw the number of active stations rise to 70 as of December 2022, with plans to increase this number significantly in 2023. As a result of this expansion, PMS volume sales in 2022 surpassed that of 2021 by over 10 million liters. Collaboration with the logistics department and improved product supply influenced these volumes. However, more could have been achieved if not for product supply challenges in certain regions.</p></li>
+<li><p><strong>AGO Sales:</strong> AGO sales suffered a dip in 2022 by over one million liters. Product supply challenges coupled with unstable product pricing significantly affected sales performance. Despite the challenges, AGO sales performance peaked in June 2021 and 2022, with poor sales performance in January and February. Sales challenges continued into March and April, and stable conditions resumed in May.</p></li>
+<li><p><strong>Lubricant Sales:</strong> Lubricant sales suffered a dip of over 92,000 liters. Lubricant sales performance was significantly affected by a price increase that occurred in Q3 and Q4 of 2022. Stiff competition from other manufacturers also impacted sales performance, particularly in North 2. Lubricant sales performance peaked in March for H1 2021 and H1 2022, with low sales performance in terms of lubricant sales all through H1 2022.</p></li>
+<li><p><strong>Top Performing Regions:</strong> The West region contributed almost half <strong>(44.25%)</strong> of the revenue generated across all regions. This was reflected in the revenue contribution list by stations where Gbagada, Osapa, Asese, and Agungi rank top 4, all located in the West region. In H2 2022, the West region contributed 33.8% of the revenue generated, with Asese, Osapa, and Gbagada ranking top 3 in revenue contribution.</p></li>
 </ul>
-<section id="embedded-power-bi-report">
-<h4>Embedded Power BI Report:<a class="headerlink" href="#embedded-power-bi-report" title="Link to this heading">#</a></h4>
-<p><a class="reference external" href="https://app.powerbi.com/view?r=eyJrIjoiYzMzMDNjNmUtZjIwYi00ODNiLTgyMTctOTg0NDI5NDBjZDQ0IiwidCI6ImJkMDJkNzlkLWZjMjktNGExMi05ZGYxLWE0YmZlNmQ4ZjRjOCJ9&amp;amp;pageName=ReportSectiond9306b8184b0330bd596">View Power BI Dashboard</a></p>
-</section>
 </section>
 <section id="conclusion">
 <h3>Conclusion:<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h3>
-<p>Continuous improvements in supply chain management and pricing strategies are essential for sustained growth.</p>
+<p>In conclusion, the end-of-year retail sales performance report for 2022 highlights the challenges and successes in the downstream oil and gas sector. While the expansion of retail stations and improved product supply led to an increase in PMS sales volume, AGO sales and lubricant sales experienced challenges. Continued efforts to improve sales performance for all products, including better supply chain management and price optimization strategies, are being implemented to achieve greater sales volumes and revenue contribution across all regions and stations.</p>
+<p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
 </section>
 </section>
 <section id="monitoring-and-evaluation-dashboard-agriculture">
 <h2>Monitoring and Evaluation Dashboard (Agriculture)<a class="headerlink" href="#monitoring-and-evaluation-dashboard-agriculture" title="Link to this heading">#</a></h2>
+<iframe width="1400" height="800" src="https://public.tableau.com/views/MonitoringandEvaluationDashboard/Dashboard1?:language=en-GB&:display_count=n&:origin=viz_share_link:showVizHome=no&:embed=true" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <section id="id2">
 <h3>Introduction:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<p>Tracking the recovery status of agricultural produce in northern Nigeria using Tableau dashboards, with data from GCS buckets and visualizations via BigQuery.</p>
-<section id="embedded-tableau-report">
-<h4>Embedded Tableau Report:<a class="headerlink" href="#embedded-tableau-report" title="Link to this heading">#</a></h4>
-<p><a class="reference external" href="https://public.tableau.com/views/MonitoringandEvaluationDashboard/Dashboard1?:language=en-GB&amp;amp;:display_count=n&amp;amp;:origin=viz_share_link:showVizHome=no&amp;amp;:embed=true">View Tableau Dashboard</a></p>
+<p>In the northern states of Nigeria, a monitoring and evaluating project is underway to track the recovery status of agriculture produce. The project aims to effectively monitor the status of submitted produce during the early stages of harvest aggregation. To facilitate this process, an innovative dashboard was created, using a combination of modern technology tools and data visualization techniques.</p>
 </section>
+<section id="etl-process">
+<h3>ETL Process:<a class="headerlink" href="#etl-process" title="Link to this heading">#</a></h3>
+<p>To create this dashboard, an ETL process was used to extract data from various technology partners’ APIs. This involved a daily scheduler using Prefect as an orchestration tool, which helped to automate the data extraction process. After the data was extracted, it was then transformed and cleaned using Pandas, to ensure that the data was consistent and accurate for loading into the data warehouse(GCS buckets). Finally, the data was visualized using Tableau, with the data source being Google BigQuery.</p>
 </section>
 <section id="id3">
 <h3>Main Findings:<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Flexible map adaptation for tracking project status.</p></li>
-<li><p>Dashboard provides a clear overview of harvested produce metrics.</p></li>
-</ul>
+<p>The resulting dashboard provides a simplistic adaptation of a more robust solution designed to effectively track and monitor project status. The dashboard displays the submitted produce in terms of bags, with sizes ranging between 50kg to 100kg. One of the most notable features of the dashboard is the map adaptation analytics, which offers flexibility and easy visualization of the data. Although the dataset mirrors real-life scenarios, it was slightly altered due to patent rights.</p>
 </section>
 <section id="id4">
 <h3>Conclusion:<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p>Innovative data visualization supports efficient agricultural project monitoring and evaluation.</p>
+<p>The creation of this dashboard has provided an innovative solution to the challenges faced in monitoring and evaluating agriculture produce in the northern states of Nigeria. Through the use of modern technology tools and data visualization techniques, the project has been able to achieve its objectives of effectively tracking and monitoring project status.</p>
 <!-- ## Contact
 - **Email:** [bukunmiadebanjo@gmail.com](mailto:bukunmiadebanjo@gmail.com)
 - **Phone:** +1 (403) 668-1475
@@ -644,28 +648,21 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives-and-primary-goal">Objectives and Primary Goal:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-overview">Dataset Overview:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-insights">Initial Insights:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-findings-deposit-trends">Key Findings - Deposit Trends:</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-summary-deposit-trends">Visual Summary - Deposit Trends:</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geographic-distribution-heatmap">Geographic Distribution Heatmap:</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-findings-deposit-trends">Key Findings - Deposit Trends:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-findings-geographic-distribution">Key Findings - Geographic Distribution:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recommendations">Recommendations:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retail-sales-annual-report-oil-gas">Retail Sales Annual Report (Oil &amp; Gas)</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eoy-retail-sales-performance-downstream-oil-gas">EOY Retail Sales Performance(Downstream Oil &amp; Gas)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Introduction:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-findings">Main Findings:</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#embedded-power-bi-report">Embedded Power BI Report:</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-and-transformations">Data Cleaning and Transformations:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-findings">Main Findings:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion:</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monitoring-and-evaluation-dashboard-agriculture">Monitoring and Evaluation Dashboard (Agriculture)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Introduction:</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#embedded-tableau-report">Embedded Tableau Report:</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Introduction:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#etl-process">ETL Process:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Main Findings:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Conclusion:</a></li>
 </ul>
