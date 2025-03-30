@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>ELT Data Engineering Project- Trip Analysis &#8212; Personal Website</title>
+    <title>ETL Batch Processing Project- No-Show Appointment &#8212; Personal Website</title>
   
   
   
@@ -57,13 +57,12 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'book/projects/trip_analysis';</script>
-    <link rel="canonical" href="https://github.com/Khunmi/book/projects/trip_analysis.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/projects/etl';</script>
+    <link rel="canonical" href="https://github.com/Khunmi/book/projects/etl.html" />
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="ETL Batch Processing Project- No-Show Appointment" href="etl.html" />
-    <link rel="prev" title="Power BI &amp; Tableau" href="powerbi_tableau.html" />
+    <link rel="prev" title="ELT Data Engineering Project- Trip Analysis" href="trip_analysis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -187,8 +186,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Engineering Projects</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">ELT Data Engineering Project- Trip Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="etl.html">ETL Batch Processing Project- No-Show Appointment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trip_analysis.html">ELT Data Engineering Project- Trip Analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">ETL Batch Processing Project- No-Show Appointment</a></li>
 </ul>
 
     </div>
@@ -260,7 +259,7 @@
       
       
       
-      <li><a href="https://github.com/Khunmi/personal-website/edit/main/book/projects/trip_analysis.md" target="_blank"
+      <li><a href="https://github.com/Khunmi/personal-website/edit/main/book/projects/etl.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -277,7 +276,7 @@
       
       
       
-      <li><a href="https://github.com/Khunmi/personal-website/issues/new?title=Issue%20on%20page%20%2Fbook/projects/trip_analysis.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/Khunmi/personal-website/issues/new?title=Issue%20on%20page%20%2Fbook/projects/etl.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -307,7 +306,7 @@
       
       
       
-      <li><a href="../../_sources/book/projects/trip_analysis.md" target="_blank"
+      <li><a href="../../_sources/book/projects/etl.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -391,7 +390,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>ELT Data Engineering Project- Trip Analysis</h1>
+    <h1>ETL Batch Processing Project- No-Show Appointment</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -401,9 +400,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-description">Project Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-analysis">Questions for Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technology-stack">Technology Stack</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-pipeline-architecture">Data Pipeline Architecture</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dashboard">Dashboard</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproduce-it-yourself">Reproduce it yourself</a></li>
 </ul>
             </nav>
@@ -416,16 +417,32 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="elt-data-engineering-project-trip-analysis">
-<h1>ELT Data Engineering Project- Trip Analysis<a class="headerlink" href="#elt-data-engineering-project-trip-analysis" title="Link to this heading">#</a></h1>
-<p>This is an end-to-end data engineering project, This project uses <a class="reference external" href="https://catalog.data.gov/dataset/">Taxi Trips dataset</a></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="etl-batch-processing-project-no-show-appointment">
+<h1>ETL Batch Processing Project- No-Show Appointment<a class="headerlink" href="#etl-batch-processing-project-no-show-appointment" title="Link to this heading">#</a></h1>
+<section id="project-description">
+<h2>Project Description<a class="headerlink" href="#project-description" title="Link to this heading">#</a></h2>
+<p>This project seeks to investigate hospital appointments no-show trends. is attendance a function of age, ailment type or proximity to the hospital? It may also be that SMS prompt play a vital role in helping people honor hospital appointments.</p>
+</section>
+<section id="questions-for-analysis">
+<h2>Questions for Analysis<a class="headerlink" href="#questions-for-analysis" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>What age ranges are more likely to honor appointments as well as the ages that most likely wouldn’t?</p></li>
+<li><p>Does SMS prompts play an important role in appoinment showup rates?</p></li>
+<li><p>What percentage of males and females are enrolled in welfare programs?</p></li>
+</ul>
+</section>
+<section id="objective">
+<h2>Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>To satisfy an end-to-end data engineering life cycle.</p></li>
+</ul>
+</section>
 <section id="technology-stack">
 <h2>Technology Stack<a class="headerlink" href="#technology-stack" title="Link to this heading">#</a></h2>
 <p>The following technologies are used to build this project</p>
 <ul class="simple">
 <li><p>Google Cloud Storage (GCS) - as Data Lake</p></li>
-<li><p>Prefect - for orchestration</p></li>
-<li><p>dbt - for transformation and data modeling</p></li>
+<li><p>PySpark - for transformation and data modeling</p></li>
 <li><p>Google BigQuery - for Data Warehouse</p></li>
 <li><p>Google Looker studio - for visualizations</p></li>
 </ul>
@@ -433,19 +450,15 @@ document.write(`
 <section id="data-pipeline-architecture">
 <h2>Data Pipeline Architecture<a class="headerlink" href="#data-pipeline-architecture" title="Link to this heading">#</a></h2>
 <div style="display: flex; align-items: center; justify-content: flex-start;">
-<img src="https://github.com/Khunmi/ELT_Project_DZC/raw/main/images/Architecture.png" alt="Visual Summary" style="max-width: 600px; margin-right: 40px;">
+<img src="https://github.com/Khunmi/Capstone-Project---Data-Engineering-ZoomCamp/raw/main/images/Architecture.png" alt="Visual Summary" style="max-width: 600px; margin-right: 40px;">
 </div>
-</section>
-<section id="dashboard">
-<h2>Dashboard<a class="headerlink" href="#dashboard" title="Link to this heading">#</a></h2>
-<iframe width="800" height="600" src="https://lookerstudio.google.com/embed/reporting/7472e395-93bf-4254-b871-618e152624be/page/25OJD" frameborder="0" style="border:0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
 </section>
 <section id="reproduce-it-yourself">
 <h2>Reproduce it yourself<a class="headerlink" href="#reproduce-it-yourself" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>First clone this repo to your local machine.</p></li>
 </ol>
-<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/Khunmi/ELT_Project_DZC</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/Khunmi/Capstone-Project---Data-Engineering-ZoomCamp</span></code></p>
 <ol class="arabic simple" start="2">
 <li><p>Setup your Google Cloud environment</p></li>
 </ol>
@@ -470,51 +483,52 @@ gcloud<span class="w"> </span>auth<span class="w"> </span>application-default<sp
 </div>
 <p>Check out this <a class="reference external" href="https://www.youtube.com/watch?v=Hajwnmj0xfQ&amp;amp;list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&amp;amp;index=11&amp;amp;t=29s">link</a>  for a video walkthrough.</p>
 <ol class="arabic simple" start="3">
-<li><p>Setup your orchestration</p></li>
+<li><p>Setup the necessary dependencies to run Apache Spark and interact with it using Pyspark within your local machine. This will be needed because I used pyspark for tranformation and schema design for this project. See <a class="reference external" href="https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/week_5_batch_processing/setup">here</a> for an instructional guide.</p></li>
+<li><p>Create a pipeline that loads your parquet files from an API to your Data Lake just as seen <a class="reference external" href="https://github.com/Khunmi/Capstone-Project---Data-Engineering-ZoomCamp/blob/main/code/4_Spark_to_GCS.ipynb">here</a></p></li>
+<li><p>Create a compute engine instance on Google cloud to enable you run a dataproc job within a severless environment which also gives the felxibility of scheduling. See <a class="reference external" href="https://www.youtube.com/watch?v=osAiAYahvh8&amp;amp;list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&amp;amp;index=56">here</a> for a video guide.</p></li>
+<li><p>Upload your python script containing your Spark job script to GCS and run your compute engine from the command line using the code below. Make sure you edit all parts that references my google cloud configurations to yours.</p></li>
 </ol>
-<ul class="simple">
-<li><p>If you do not have a prefect workspace, sign-up for the prefect cloud and create a workspace <a class="reference external" href="https://app.prefect.cloud/auth/login">here</a></p></li>
-<li><p>Create the <a class="reference external" href="https://docs.prefect.io/concepts/blocks/">prefect blocks</a> via the cloud UI or adjust the variables in <code class="docutils literal notranslate"><span class="pre">/prefect/prefect_blocks.py</span></code> and run</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>prefect/block/make_gcp_blocks.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gcloud<span class="w"> </span>dataproc<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>submit<span class="w"> </span>pyspark<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cluster<span class="o">=</span>de-zoomcamp-cluster<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--region<span class="o">=</span>northamerica-northeast2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--project<span class="o">=</span>khunmi-academy-376002<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--jars<span class="o">=</span>gs://spark-lib/bigquery/spark-bigquery-latest_2.12.jar<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gs://dtc_data_lake_khunmi-academy-376002/code/capstone_proj.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--input_data<span class="o">=</span>gs://dtc_data_lake_khunmi-academy-376002/capstone/<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--output<span class="o">=</span>trips_data_all.capstone2023
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>To execute the flow, run the following commands in two different terminals</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>prefect<span class="w"> </span>agent<span class="w"> </span>start<span class="w"> </span>-q<span class="w"> </span><span class="s1">&#39;default&#39;</span>
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>prefect<span class="w"> </span>docs/parameterized_flow.py
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>After running the flow ‘parameterized_flow.py’ which takes about 25 mins to complete, all data sets will be uploaded to the data lake as parquet files</p></li>
-</ul>
-<ol class="arabic simple" start="4">
-<li><p>Data tranformation and modeling using dbt</p></li>
+<ol class="arabic simple" start="8">
+<li><p>Google Data Studio: To generate insights from my dataset, I connected my data source located in my data warehouse(Bigquery). You can interact with the dashbpard below.</p></li>
 </ol>
-<ul class="simple">
-<li><p>I decided to create a free dbt cloud developer account and setup my google credential with it to enable communication between Google Bigquery and dbt</p></li>
-<li><p>kindly refer to the <a class="reference external" href="https://github.com/Khunmi/ELT_Project_DZC/tree/main/dbt_files/models/core">core</a> and <a class="reference external" href="https://github.com/Khunmi/ELT_Project_DZC/tree/main/dbt_files/models/staging">staging</a> models i created for more dbt tranformation docs and syntax.</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dbt</span> <span class="n">build</span> <span class="o">--</span><span class="n">var</span> <span class="s1">&#39;is_test_run: false&#39;</span>
+<iframe width="800" height="600" src="https://lookerstudio.google.com/embed/reporting/d7164b60-c4ee-4c65-937d-d10a23b1a75d/page/5c7OD" frameborder="0" style="border:0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+<!-- ![dashboard](images/dashboard.png) -->
+<p>Dataset Description</p>
+<p>This dataset collects information from 100k medical appointments in Brazil and is focused on the
+question of whether or not patients show up for their appointment. A number of characteristics
+about the patient are included in each row.‘ScheduledDay’ tells us on what day the patient setup their appointment.‘Neighborhood’ indicates the location of the hospital.‘Scholarship’ indicates whether or not the patient is enrolled in Brasilian welfare program Bolsa Família:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>|  | Variable|                Data_ Type|
+|1.| PatientId|                   float64|
+|2.| Appointment|                 IDint64|
+|3.| Gender|                       object|
+|4.| ScheduledDay|                 object|
+|5.| AppointmentDay|               object|
+|6.| Age|                           int64|
+|7.| Neighbourhood|                object|
+|8.| Scholarship|                   int64|
+|9.| Hipertension|                  int64|
+|10.| Diabetes|                     int64|
+|11.| Alcoholism|                   int64|
+|12.| Handicap|                      int64|
+|13.| SMS_received|                 int64|
+|14.| No-show |                    object|
 </pre></div>
 </div>
-<p>You will get 4 tables in Citibike_data_dbt data set</p>
-<ul class="simple">
-<li><p>dim_neighbourhoods</p></li>
-<li><p>Citibike_stations_lookup</p></li>
-<li><p>facts_citibike</p></li>
-<li><p>stg_citibike_data</p></li>
-</ul>
-<p>Data Vizualization and Dashboarding</p>
-<ul class="simple">
-<li><p>You can now query the data and connect it to looker to visualize the data, when connecting to data source use facts table to build the data source in looker, dont use partitioned table, as you wont get any data in your report.</p></li>
-<li><p>go to <a class="reference external" href="https://lookerstudio.google.com/">Looker Studio</a> → create → BigQuery → choose your project, dataset &amp; transformed table.</p></li>
-</ul>
 <p>Future work</p>
 <ul class="simple">
+<li><p>Getting more comfortable using Ifrastucture as code within my porject such as Terraform</p></li>
+<li><p>Including an orchestartion to make my process more automated such Prefect or Airflow</p></li>
 <li><p>Add more tests</p></li>
 <li><p>Add CI/CD pipeline</p></li>
 <li><p>Make incremental model, to append only the latest data from each load</p></li>
@@ -555,22 +569,13 @@ gcloud<span class="w"> </span>auth<span class="w"> </span>application-default<sp
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="powerbi_tableau.html"
+       href="trip_analysis.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Power BI &amp; Tableau</p>
+        <p class="prev-next-title">ELT Data Engineering Project- Trip Analysis</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="etl.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">ETL Batch Processing Project- No-Show Appointment</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -588,9 +593,11 @@ gcloud<span class="w"> </span>auth<span class="w"> </span>application-default<sp
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-description">Project Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-analysis">Questions for Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technology-stack">Technology Stack</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-pipeline-architecture">Data Pipeline Architecture</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dashboard">Dashboard</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproduce-it-yourself">Reproduce it yourself</a></li>
 </ul>
   </nav></div>
