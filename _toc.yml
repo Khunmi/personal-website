@@ -25,6 +25,7 @@ parts:
   - caption: Data Engineering Projects
     chapters:
       - file: book/projects/trip_analysis
+      - file: book/projects/etl
 
 
 
