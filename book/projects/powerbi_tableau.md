@@ -32,7 +32,7 @@ The dataset includes deposit information for ATB Financial branches from 2010 to
 - **Deposit Amounts:** Total dollar amounts at each branch.
 - **Geographic Locations:** State, county, city, and branch details.
 - **Year:** Spanning 2010 to 2016.
-  
+
 <div style="display: flex; align-items: center; justify-content: flex-start;">
 <img src="https://khunmi.github.io/portfolio/images/story_telling_deposits%20summary.png" alt="Visual Summary" style="max-width: 500px; margin-right: 40px;">
 

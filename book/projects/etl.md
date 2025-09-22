@@ -1,14 +1,14 @@
 # ETL Batch Processing Project- No-Show Appointment
 
 ## Project Description
-This project seeks to investigate hospital appointments no-show trends. is attendance a function of age, ailment type or proximity to the hospital? It may also be that SMS prompt play a vital role in helping people honor hospital appointments. 
+This project seeks to investigate hospital appointments no-show trends. is attendance a function of age, ailment type or proximity to the hospital? It may also be that SMS prompt play a vital role in helping people honor hospital appointments.
 
 ## Questions for Analysis
 - What age ranges are more likely to honor appointments as well as the ages that most likely wouldn't?
 - Does SMS prompts play an important role in appoinment showup rates?
 - What percentage of males and females are enrolled in welfare programs?
-    
-## Objective 
+
+## Objective
 
 - To satisfy an end-to-end data engineering life cycle.
 
@@ -54,7 +54,7 @@ Check out this [link](https://www.youtube.com/watch?v=Hajwnmj0xfQ&list=PL3MmuxUb
 
 6. Create a compute engine instance on Google cloud to enable you run a dataproc job within a severless environment which also gives the felxibility of scheduling. See [here](https://www.youtube.com/watch?v=osAiAYahvh8&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=56) for a video guide.
 
-7. Upload your python script containing your Spark job script to GCS and run your compute engine from the command line using the code below. Make sure you edit all parts that references my google cloud configurations to yours. 
+7. Upload your python script containing your Spark job script to GCS and run your compute engine from the command line using the code below. Make sure you edit all parts that references my google cloud configurations to yours.
 
 ```bash
 gcloud dataproc jobs submit pyspark \
