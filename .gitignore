@@ -9,3 +9,4 @@
 *.tsv
 book/unused/*
 book/image_prediction/*
+venv/*
