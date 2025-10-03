@@ -48,7 +48,7 @@ gcloud auth application-default login
 ```
 Check out this [link](https://www.youtube.com/watch?v=Hajwnmj0xfQ&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=11&t=29s)  for a video walkthrough.
 
-3. Setup the necessary dependencies to run Apache Spark and interact with it using Pyspark within your local machine. This will be needed because I used pyspark for tranformation and schema design for this project. See [here](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/week_5_batch_processing/setup) for an instructional guide.
+3. Setup the necessary dependencies to run Apache Spark and interact with it using Pyspark within your local machine. This will be needed because I used pyspark for transformation and schema design for this project. See [here](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/week_5_batch_processing/setup) for an instructional guide.
 
 4. Create a pipeline that loads your parquet files from an API to your Data Lake just as seen [here](https://github.com/Khunmi/Capstone-Project---Data-Engineering-ZoomCamp/blob/main/code/4_Spark_to_GCS.ipynb)
 
