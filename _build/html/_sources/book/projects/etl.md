@@ -5,7 +5,7 @@ This project seeks to investigate hospital appointments no-show trends. is atten
 
 ## Questions for Analysis
 - What age ranges are more likely to honor appointments as well as the ages that most likely wouldn't?
-- Does SMS prompts play an important role in appoinment showup rates?
+- Does SMS prompts play an important role in appointment showup rates?
 - What percentage of males and females are enrolled in welfare programs?
     
 ## Objective 
@@ -52,7 +52,7 @@ Check out this [link](https://www.youtube.com/watch?v=Hajwnmj0xfQ&list=PL3MmuxUb
 
 4. Create a pipeline that loads your parquet files from an API to your Data Lake just as seen [here](https://github.com/Khunmi/Capstone-Project---Data-Engineering-ZoomCamp/blob/main/code/4_Spark_to_GCS.ipynb)
 
-6. Create a compute engine instance on Google cloud to enable you run a dataproc job within a severless environment which also gives the felxibility of scheduling. See [here](https://www.youtube.com/watch?v=osAiAYahvh8&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=56) for a video guide.
+6. Create a compute engine instance on Google cloud to enable you run a dataproc job within a serverless environment which also gives the felxibility of scheduling. See [here](https://www.youtube.com/watch?v=osAiAYahvh8&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=56) for a video guide.
 
 7. Upload your python script containing your Spark job script to GCS and run your compute engine from the command line using the code below. Make sure you edit all parts that references my google cloud configurations to yours. 
 
@@ -98,7 +98,7 @@ about the patient are included in each row.‘ScheduledDay’ tells us on what d
 
 Future work
 
-- Getting more comfortable using Ifrastucture as code within my porject such as Terraform
+- Getting more comfortable using Ifrastucture as code within my project such as Terraform
 - Including an orchestartion to make my process more automated such Prefect or Airflow
 - Add more tests
 - Add CI/CD pipeline
