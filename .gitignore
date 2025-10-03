@@ -10,3 +10,4 @@
 book/unused/*
 book/image_prediction/*
 venv/*
+!CNAME.txt
