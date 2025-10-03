@@ -38,6 +38,7 @@ repos:
                   .*\.pdf|
                   .*\.map|
                   .*\.po|
+                  .*\seaborne.ipynb|
               )$
 
 
