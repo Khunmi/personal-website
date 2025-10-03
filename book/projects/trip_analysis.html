@@ -492,11 +492,11 @@ gcloud<span class="w"> </span>auth<span class="w"> </span>application-default<sp
 <li><p>After running the flow ‘parameterized_flow.py’ which takes about 25 mins to complete, all data sets will be uploaded to the data lake as parquet files</p></li>
 </ul>
 <ol class="arabic simple" start="4">
-<li><p>Data tranformation and modeling using dbt</p></li>
+<li><p>Data transformation and modeling using dbt</p></li>
 </ol>
 <ul class="simple">
 <li><p>I decided to create a free dbt cloud developer account and setup my google credential with it to enable communication between Google Bigquery and dbt</p></li>
-<li><p>kindly refer to the <a class="reference external" href="https://github.com/Khunmi/ELT_Project_DZC/tree/main/dbt_files/models/core">core</a> and <a class="reference external" href="https://github.com/Khunmi/ELT_Project_DZC/tree/main/dbt_files/models/staging">staging</a> models i created for more dbt tranformation docs and syntax.</p></li>
+<li><p>kindly refer to the <a class="reference external" href="https://github.com/Khunmi/ELT_Project_DZC/tree/main/dbt_files/models/core">core</a> and <a class="reference external" href="https://github.com/Khunmi/ELT_Project_DZC/tree/main/dbt_files/models/staging">staging</a> models i created for more dbt transformation docs and syntax.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dbt</span> <span class="n">build</span> <span class="o">--</span><span class="n">var</span> <span class="s1">&#39;is_test_run: false&#39;</span>
 </pre></div>
@@ -508,9 +508,9 @@ gcloud<span class="w"> </span>auth<span class="w"> </span>application-default<sp
 <li><p>facts_citibike</p></li>
 <li><p>stg_citibike_data</p></li>
 </ul>
-<p>Data Vizualization and Dashboarding</p>
+<p>Data Visualization and Dashboarding</p>
 <ul class="simple">
-<li><p>You can now query the data and connect it to looker to visualize the data, when connecting to data source use facts table to build the data source in looker, dont use partitioned table, as you wont get any data in your report.</p></li>
+<li><p>You can now query the data and connect it to looker to visualize the data, when connecting to data source use facts table to build the data source in looker, dont use partitioned table, as you won't get any data in your report.</p></li>
 <li><p>go to <a class="reference external" href="https://lookerstudio.google.com/">Looker Studio</a> → create → BigQuery → choose your project, dataset &amp; transformed table.</p></li>
 </ul>
 <p>Future work</p>

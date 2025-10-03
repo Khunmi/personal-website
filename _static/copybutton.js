@@ -58,7 +58,7 @@ if (doc_url_root == '#') {
 /**
  * SVG files for our copy buttons
  */
-let iconCheck = `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="#22863a" fill="none" stroke-linecap="round" stroke-linejoin="round">
+let iconCheck = `<svg xmlns="https://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="#22863a" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <title>${messages[locale]['copy_success']}</title>
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
   <path d="M5 12l5 5l10 -10" />
@@ -67,7 +67,7 @@ let iconCheck = `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler
 // If the user specified their own SVG use that, otherwise use the default
 let iconCopy = ``;
 if (!iconCopy) {
-  iconCopy = `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  iconCopy = `<svg xmlns="https://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <title>${messages[locale]['copy_to_clipboard']}</title>
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
   <rect x="8" y="8" width="12" height="12" rx="2" />

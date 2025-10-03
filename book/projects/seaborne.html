@@ -1073,7 +1073,7 @@ member_gender ). The <code class="docutils literal notranslate"><span class="pre
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;duration_sec&#39;</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bins</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Duration (sec)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distibution of Trip Duration&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of Trip Duration&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3500</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -1083,7 +1083,7 @@ member_gender ). The <code class="docutils literal notranslate"><span class="pre
 </div>
 </div>
 <p>Duration distribution comment 1: <span style="color:red">The distribution of the duration variable has a long tail and it is rightly-skewed.</span></p>
-<p>Duration distribution comment 2: <span style="color:red">Finding the right bin size for this ditribution took a while. Reducing it to minutes or hours will be a good idea for me to explore.</span></p>
+<p>Duration distribution comment 2: <span style="color:red">Finding the right bin size for this distribution took a while. Reducing it to minutes or hours will be a good idea for me to explore.</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#converting the duration variable from seconds to minutes</span>
@@ -1242,7 +1242,7 @@ Name: duration_min, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Duration (min)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distibution of Trip Duration&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of Trip Duration&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span><span class="mi">1500</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -1252,10 +1252,10 @@ Name: duration_min, dtype: float64
 </div>
 </div>
 <p>Duration distribution comment 3: <span style="color:red">
-A log scale plot helps to view the distrbution more closely, there seems to be a few data points greater than where majority of the distribution lies(1- 100 minutes). An observed peak is seen at 10 minutes.</span></p>
+A log scale plot helps to view the distribution more closely, there seems to be a few data points greater than where majority of the distribution lies(1- 100 minutes). An observed peak is seen at 10 minutes.</span></p>
 <p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
 <ul class="simple">
-<li><p><strong>I will proceed to take a look at the <code class="docutils literal notranslate"><span class="pre">user_type</span></code> variable. Particulary, I will explore the distribution of user types across the data set.</strong></p></li>
+<li><p><strong>I will proceed to take a look at the <code class="docutils literal notranslate"><span class="pre">user_type</span></code> variable. Particularly, I will explore the distribution of user types across the data set.</strong></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1265,7 +1265,7 @@ A log scale plot helps to view the distrbution more closely, there seems to be a
 <span class="n">sb</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;user_type&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">base_color</span><span class="p">)</span>
 
 
-<span class="c1"># percentage lable on the bar chart</span>
+<span class="c1"># percentage label on the bar chart</span>
 <span class="n">n_trips</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">user_counts</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;user_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="n">locs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">()</span>  
@@ -1293,7 +1293,7 @@ A majority of trips were done by subscribers (90.5%) while <code class="docutils
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#extracting the starting hour and ending hour of each trip to understand trip distrbution per hour of the day</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#extracting the starting hour and ending hour of each trip to understand trip distribution per hour of the day</span>
 <span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;start_time_hr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;start_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 <span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;end_time_hr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 
@@ -1436,7 +1436,7 @@ A majority of trips were done by subscribers (90.5%) while <code class="docutils
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">sb</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;start_time_hr&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">base_color</span><span class="p">)</span>
 
-<span class="c1"># percentage lable on the bar chart</span>
+<span class="c1"># percentage label on the bar chart</span>
 <span class="n">n_trips</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">user_counts</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;start_time_hr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="n">locs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">()</span>  
@@ -1454,7 +1454,7 @@ A majority of trips were done by subscribers (90.5%) while <code class="docutils
 
 <span class="n">sb</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;end_time_hr&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">base_color</span><span class="p">)</span>
 
-<span class="c1"># percentage lable on the bar chart</span>
+<span class="c1"># percentage label on the bar chart</span>
 <span class="n">n_trips</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">user_counts</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;end_time_hr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="n">locs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">()</span>  
@@ -1474,7 +1474,7 @@ A majority of trips were done by subscribers (90.5%) while <code class="docutils
 <img alt="../../_images/4abca0821c0b77b2280b22961c0988b35a1bf4b604c01778e6b2c563e46cd8e1.png" src="../../_images/4abca0821c0b77b2280b22961c0988b35a1bf4b604c01778e6b2c563e46cd8e1.png" />
 </div>
 </div>
-<p>Hourly distribution comment 1: <span style="color:red">Both distributions appears bimodal whereby peak periods are observed at 8am and 9am as well as 5pm to 6pm with the most busy period recorded at 5pm for the start time. The trip end time also mimics the start time distrbution with a peak period of 5pm as well.  </span></p>
+<p>Hourly distribution comment 1: <span style="color:red">Both distributions appears bimodal whereby peak periods are observed at 8am and 9am as well as 5pm to 6pm with the most busy period recorded at 5pm for the start time. The trip end time also mimics the start time distribution with a peak period of 5pm as well.  </span></p>
 <p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
 <ul class="simple">
 <li><p><strong>What gender is predominant in larger San Francisco Bay area when it comes to bike trips? Let me take a look at this.</strong></p></li>
@@ -1488,7 +1488,7 @@ A majority of trips were done by subscribers (90.5%) while <code class="docutils
 <span class="n">sb</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;member_gender&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">base_color</span><span class="p">)</span>
 
 
-<span class="c1"># percentage lable on the bar chart</span>
+<span class="c1"># percentage label on the bar chart</span>
 <span class="n">n_trips</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">user_counts</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">&#39;member_gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="n">locs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">()</span>  
@@ -1586,26 +1586,26 @@ A majority of trips were done by subscribers (90.5%) while <code class="docutils
 <img alt="../../_images/a188cb85db7b4fb1af1b8fb70ece1f1b5b7874d4fd2f36f796a368b8867fe483.png" src="../../_images/a188cb85db7b4fb1af1b8fb70ece1f1b5b7874d4fd2f36f796a368b8867fe483.png" />
 </div>
 </div>
-<p>Busiest stations comment 1: <span style="color:red">The top two busiest end stations are ‘San Francisco Caltrain Station 2’ and ‘Market St at 10th St’ with both of them switching postions for the start station. Considering the whole dataset, San Francisco Caltrain Station 2 is busiest bike station. </span></p>
+<p>Busiest stations comment 1: <span style="color:red">The top two busiest end stations are ‘San Francisco Caltrain Station 2’ and ‘Market St at 10th St’ with both of them switching positions for the start station. Considering the whole dataset, San Francisco Caltrain Station 2 is busiest bike station. </span></p>
 <p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
 <section id="discuss-the-distribution-s-of-your-variable-s-of-interest-were-there-any-unusual-points-did-you-need-to-perform-any-transformations">
 <h3>Discuss the distribution(s) of your variable(s) of interest. Were there any unusual points? Did you need to perform any transformations?<a class="headerlink" href="#discuss-the-distribution-s-of-your-variable-s-of-interest-were-there-any-unusual-points-did-you-need-to-perform-any-transformations" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">DRURATION('duration_sec')</span></code></p>
 <ul class="simple">
 <li><p><span style="color:blue">The duration variable initially had large range pof values due to it being in seconds, a conversion to minutes helped me see things a little bit more clearly.</span></p></li>
-<li><p><span style="color:blue">The duration variable followed a long-tialed distribution so I had to perform a log tranformation to the ‘X’ variable for a better drilled-down view of the distribution.</span></p></li>
+<li><p><span style="color:blue">The duration variable followed a long-tialed distribution so I had to perform a log transformation to the ‘X’ variable for a better drilled-down view of the distribution.</span></p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">USER</span> <span class="pre">CATEGORY('user_type')</span></code></p>
 <ul class="simple">
-<li><p><span style="color:blue">The duration variable followed a long-tialed distribution so I had to perform a log tranformation to the ‘X’ variable for a better drilled-down view of the distribution.</span></p></li>
+<li><p><span style="color:blue">The duration variable followed a long-tialed distribution so I had to perform a log transformation to the ‘X’ variable for a better drilled-down view of the distribution.</span></p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">TIME('start_time','end_time')</span></code></p>
 <ul class="simple">
-<li><p><span style="color:blue">Both variables mimic same ditribution pattern. Peak hours are present in both the first and second half of each day with the second half of the day recording the highest percentage trip activity.</span></p></li>
+<li><p><span style="color:blue">Both variables mimic same distribution pattern. Peak hours are present in both the first and second half of each day with the second half of the day recording the highest percentage trip activity.</span></p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">GENDER('member_gender')</span></code></p>
 <ul class="simple">
-<li><p><span style="color:blue">This variable followed an expected distrbution flow with ‘males’ being the predominant gender type.</span></p></li>
+<li><p><span style="color:blue">This variable followed an expected distribution flow with ‘males’ being the predominant gender type.</span></p></li>
 </ul>
 </section>
 <section id="of-the-features-you-investigated-were-there-any-unusual-distributions-did-you-perform-any-operations-on-the-data-to-tidy-adjust-or-change-the-form-of-the-data-if-so-why-did-you-do-this">
@@ -1662,13 +1662,13 @@ A majority of trips were done by subscribers (90.5%) while <code class="docutils
 </div>
 <blockquote>
 <div><blockquote>
-<div><p><span style="color:red">A majority of the subscriber category members’ travel duration fall within the range of 1 to 10 minutes with over 50% falling below 10 minutes. The customer category have slightly over 25% of them with trip durations lower than 10 minutes while the rest fall above the 10 minutes cap. A more spreadout trip duration distribution is obeserved in the customer category type.</span><br />
-<span style="color:green">The ‘male’, ‘female’ and ‘other’ gender types show similiar relationships with the trip duration variable regardless of their respective size.</span>  `</p>
+<div><p><span style="color:red">A majority of the subscriber category members’ travel duration fall within the range of 1 to 10 minutes with over 50% falling below 10 minutes. The customer category have slightly over 25% of them with trip durations lower than 10 minutes while the rest fall above the 10 minutes cap. A more spreadout trip duration distribution is observed in the customer category type.</span><br />
+<span style="color:green">The ‘male’, ‘female’ and ‘other’ gender types show similar relationships with the trip duration variable regardless of their respective size.</span>  `</p>
 </div></blockquote>
 </div></blockquote>
 <p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
 <ul class="simple">
-<li><p><strong>Next is to inspect the relationship between age distibution and trip duration</strong></p></li>
+<li><p><strong>Next is to inspect the relationship between age distribution and trip duration</strong></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1729,7 +1729,7 @@ A majority of trips were done by subscribers (90.5%) while <code class="docutils
 </div></blockquote>
 <p><img alt="purple-divider" src="https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png" /></p>
 <ul class="simple">
-<li><p><strong>Is there a pattern or correlation present between categorical and numeric data types? A Matrx plot of numeric agaist categorical data can show me at a galance.</strong></p></li>
+<li><p><strong>Is there a pattern or correlation present between categorical and numeric data types? A Matrx plot of numeric against categorical data can show me at a galance.</strong></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1743,7 +1743,7 @@ A majority of trips were done by subscribers (90.5%) while <code class="docutils
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Creating a matrix plot to view numeric against catgorical data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Creating a matrix plot to view numeric against categorical data</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">boxgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Quick hack for creating box plots with seaborn&#39;s PairGrid. &quot;&quot;&quot;</span>
     <span class="n">default_color</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
@@ -1773,7 +1773,7 @@ A majority of trips were done by subscribers (90.5%) while <code class="docutils
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">GENDER('duration_min'</span> <span class="pre">Vs</span> <span class="pre">'member_gender')</span></code></p>
 <ul class="simple">
-<li><p><span style="color:blue">Surprisingly, the male gender spend lesser time on thier bike trips in comparison to other gender categories, alibeit being the predominant gender across the dataset. </span></p></li>
+<li><p><span style="color:blue">Surprisingly, the male gender spend lesser time on their bike trips in comparison to other gender categories, alibeit being the predominant gender across the dataset. </span></p></li>
 </ul>
 </section>
 <section id="did-you-observe-any-interesting-relationships-between-the-other-features-not-the-main-feature-s-of-interest">
