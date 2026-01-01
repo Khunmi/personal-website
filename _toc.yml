@@ -15,6 +15,9 @@ parts:
   - caption: About
     chapters:
       - file: book/about/summary
+  - caption: GIS Projects
+    chapters:
+      - file: book/projects/crudwebgis
   - caption: Data Analytics Projects
     chapters:
       - file: book/projects/data_investigation
@@ -26,6 +29,5 @@ parts:
     chapters:
       - file: book/projects/trip_analysis
       - file: book/projects/etl
-
 
 

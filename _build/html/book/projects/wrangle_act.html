@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -176,6 +176,10 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../about/summary.html">Profile Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">GIS Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="crudwebgis.html">CRUD Web GIS: Build Process</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Analytics Projects</span></p>
 <ul class="current nav bd-sidenav">
@@ -518,6 +522,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
@@ -525,7 +530,9 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">BytesIO</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
-<span class="n">weratedogs_archive</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://d17h27t6h515a5.cloudfront.net/topher/2017/August/59a4e958_twitter-archive-enhanced/twitter-archive-enhanced.csv&#39;</span><span class="p">)</span>
+<span class="n">weratedogs_archive</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;https://d17h27t6h515a5.cloudfront.net/topher/2017/August/59a4e958_twitter-archive-enhanced/twitter-archive-enhanced.csv&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -542,7 +549,7 @@ document.write(`
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">folder_name</span> <span class="o">=</span> <span class="s1">&#39;image_prediction&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">folder_name</span> <span class="o">=</span> <span class="s2">&quot;image_prediction&quot;</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">folder_name</span><span class="p">):</span>
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">folder_name</span><span class="p">)</span>
 </pre></div>
@@ -551,7 +558,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://d17h27t6h515a5.cloudfront.net/topher/2017/August/599fd2ad_image-predictions/image-predictions.tsv&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://d17h27t6h515a5.cloudfront.net/topher/2017/August/599fd2ad_image-predictions/image-predictions.tsv&quot;</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -559,7 +566,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span> <span class="n">url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span> <span class="n">url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
     <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -567,7 +574,10 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_prediction</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://d17h27t6h515a5.cloudfront.net/topher/2017/August/599fd2ad_image-predictions/image-predictions.tsv&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_prediction</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;https://d17h27t6h515a5.cloudfront.net/topher/2017/August/599fd2ad_image-predictions/image-predictions.tsv&quot;</span><span class="p">,</span>
+    <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">image_prediction</span>
 </pre></div>
 </div>
@@ -578,7 +588,7 @@ document.write(`
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file1</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tweet-json.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file1</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;tweet-json.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
 <span class="n">tweet_json</span> <span class="o">=</span> <span class="n">file1</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -595,16 +605,16 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#tweet ID, retweet count, and favorite count.&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># tweet ID, retweet count, and favorite count.&quot;</span>
 <span class="n">df_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweets_converted</span><span class="p">:</span>
-        <span class="n">tweet_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;id_str&#39;</span><span class="p">])</span>
-        <span class="n">retweets</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;retweet_count&#39;</span><span class="p">]</span>
-        <span class="n">number_of_likes</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;favorite_count&#39;</span><span class="p">]</span>
-        <span class="c1"># Append to list of dictionaries</span>
-        <span class="n">df_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;tweet_id&#39;</span><span class="p">:</span> <span class="n">tweet_id</span><span class="p">,</span>
-                        <span class="s1">&#39;retweets&#39;</span><span class="p">:</span> <span class="n">retweets</span><span class="p">,</span>
-                        <span class="s1">&#39;number_of_likes&#39;</span><span class="p">:</span> <span class="n">number_of_likes</span><span class="p">})</span>
+    <span class="n">tweet_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s2">&quot;id_str&quot;</span><span class="p">])</span>
+    <span class="n">retweets</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">&quot;retweet_count&quot;</span><span class="p">]</span>
+    <span class="n">number_of_likes</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">&quot;favorite_count&quot;</span><span class="p">]</span>
+    <span class="c1"># Append to list of dictionaries</span>
+    <span class="n">df_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="p">{</span><span class="s2">&quot;tweet_id&quot;</span><span class="p">:</span> <span class="n">tweet_id</span><span class="p">,</span> <span class="s2">&quot;retweets&quot;</span><span class="p">:</span> <span class="n">retweets</span><span class="p">,</span> <span class="s2">&quot;number_of_likes&quot;</span><span class="p">:</span> <span class="n">number_of_likes</span><span class="p">}</span>
+    <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -612,7 +622,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create DataFrame from list of dictionaries</span>
-<span class="n">tweets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df_list</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tweet_id&#39;</span><span class="p">,</span> <span class="s1">&#39;retweets&#39;</span><span class="p">,</span> <span class="s1">&#39;number_of_likes&#39;</span><span class="p">])</span>
+<span class="n">tweets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df_list</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tweet_id&quot;</span><span class="p">,</span> <span class="s2">&quot;retweets&quot;</span><span class="p">,</span> <span class="s2">&quot;number_of_likes&quot;</span><span class="p">])</span>
 <span class="n">tweets</span>
 </pre></div>
 </div>
@@ -623,7 +633,7 @@ document.write(`
 <h2>Assessing Data<a class="headerlink" href="#assessing-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Programmatic Assessment</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Programmatic Assessment</span>
 <span class="n">weratedogs_archive</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -631,7 +641,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Programmatic Assessment</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Programmatic Assessment</span>
 <span class="n">weratedogs_archive</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -639,7 +649,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Programmatic Assessment</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Programmatic Assessment</span>
 <span class="n">image_prediction</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -647,7 +657,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Programmatic Assessment</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Programmatic Assessment</span>
 <span class="n">image_prediction</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -655,7 +665,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Programmatic Assessment</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Programmatic Assessment</span>
 <span class="n">tweets</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -740,10 +750,20 @@ document.write(`
 <p><span style="color: purple;">Code</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#This code drops all columns that are either unwanted from the `weratedogs_archive_clean` dataframe</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This code drops all columns that are either unwanted from the `weratedogs_archive_clean` dataframe</span>
 
-<span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;retweeted_status_id&#39;</span><span class="p">,</span><span class="s1">&#39;retweeted_status_user_id&#39;</span><span class="p">,</span><span class="s1">&#39;retweeted_status_timestamp&#39;</span><span class="p">,</span>
-                                                          <span class="s1">&#39;expanded_urls&#39;</span><span class="p">,</span><span class="s1">&#39;floofer&#39;</span><span class="p">,</span><span class="s1">&#39;in_reply_to_status_id&#39;</span><span class="p">,</span><span class="s1">&#39;in_reply_to_user_id&#39;</span> <span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;retweeted_status_id&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;retweeted_status_user_id&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;retweeted_status_timestamp&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;expanded_urls&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;floofer&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;in_reply_to_status_id&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;in_reply_to_user_id&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -751,7 +771,7 @@ document.write(`
 <p><span style="color: green;">Test</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#checking if all unwanted columns have been successfully removed from the &#39;weratedogs_archive_clean&#39; dataframe</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># checking if all unwanted columns have been successfully removed from the &#39;weratedogs_archive_clean&#39; dataframe</span>
 <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -766,16 +786,34 @@ document.write(`
 <p><span style="color: purple;">Code</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;doggo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(doggo)&#39;</span><span class="p">,</span><span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;pupper&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(pupper)&#39;</span><span class="p">,</span><span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;puppo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(puppo)&#39;</span><span class="p">,</span><span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;blep&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(blep)&#39;</span><span class="p">,</span><span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;floof&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(floof)&#39;</span><span class="p">,</span><span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;snoot&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(snoot)&#39;</span><span class="p">,</span><span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;rating_numerator&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(\d+\S?\d+)(/\d+)&#39;</span><span class="p">,</span><span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;rating_denominator&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(/\d+)(\s+h?)&#39;</span><span class="p">,</span><span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s2">&quot;doggo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span>
+    <span class="s2">&quot;(doggo)&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s2">&quot;pupper&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span>
+    <span class="s2">&quot;(pupper)&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s2">&quot;puppo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span>
+    <span class="s2">&quot;(puppo)&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s2">&quot;blep&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span>
+    <span class="s2">&quot;(blep)&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s2">&quot;floof&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span>
+    <span class="s2">&quot;(floof)&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s2">&quot;snoot&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span>
+    <span class="s2">&quot;(snoot)&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s2">&quot;rating_numerator&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s2">&quot;(\d+\S?\d+)(/\d+)&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s2">&quot;rating_denominator&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s2">&quot;(/\d+)(\s+h?)&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span>
 
-<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;(is\s[A-Z][a-z]+\.)&#39;</span><span class="p">,</span><span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span>
+    <span class="s2">&quot;(is\s[A-Z][a-z]+\.)&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -795,9 +833,11 @@ document.write(`
 <p><span style="color: purple;">Code</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#cleaning the data re-gathered and testing to see the results</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># cleaning the data re-gathered and testing to see the results</span>
 <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_denominator</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_denominator</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_denominator</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_denominator</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -818,14 +858,18 @@ document.write(`
 <p><span style="color: purple;">Code</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">weratedogs_archive_clean</span><span class="p">,</span><span class="n">tweets_clean</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;tweet_id&#39;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">weratedogs_archive_clean</span><span class="p">,</span> <span class="n">tweets_clean</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;tweet_id&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">weratedogs_archive_clean</span><span class="p">,</span><span class="n">image_prediction_clean</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;tweet_id&#39;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">weratedogs_archive_clean</span><span class="p">,</span> <span class="n">image_prediction_clean</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;tweet_id&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -833,7 +877,7 @@ document.write(`
 <p><span style="color: green;">Test</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#A check to see if the merge was successful</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A check to see if the merge was successful</span>
 <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -847,13 +891,36 @@ document.write(`
 <p><span style="color: purple;">Code</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#collapsing the stage variable columns to effect proper structure</span>
-<span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">weratedogs_archive_clean</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tweet_id&#39;</span><span class="p">,</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;rating_numerator&#39;</span><span class="p">,</span><span class="s1">&#39;rating_denominator&#39;</span><span class="p">,</span>
-                                                                      <span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="s1">&#39;retweets&#39;</span><span class="p">,</span><span class="s1">&#39;number_of_likes&#39;</span><span class="p">,</span><span class="s1">&#39;text&#39;</span><span class="p">,</span>
-                                                                      <span class="s1">&#39;jpg_url&#39;</span><span class="p">,</span><span class="s1">&#39;img_num&#39;</span><span class="p">,</span><span class="s1">&#39;p1&#39;</span><span class="p">,</span><span class="s1">&#39;p1_conf&#39;</span><span class="p">,</span><span class="s1">&#39;p1_dog&#39;</span><span class="p">,</span><span class="s1">&#39;p2&#39;</span><span class="p">,</span><span class="s1">&#39;p2_conf&#39;</span><span class="p">,</span><span class="s1">&#39;p2_dog&#39;</span><span class="p">,</span><span class="s1">&#39;p3&#39;</span><span class="p">,</span><span class="s1">&#39;p3_conf&#39;</span><span class="p">,</span><span class="s1">&#39;p3_dog&#39;</span><span class="p">],</span>
-                           <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;header&#39;</span><span class="p">,</span> <span class="n">value_name</span> <span class="o">=</span> <span class="s1">&#39;stage&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># collapsing the stage variable columns to effect proper structure</span>
+<span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
+    <span class="n">weratedogs_archive_clean</span><span class="p">,</span>
+    <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;tweet_id&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;timestamp&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rating_numerator&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rating_denominator&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;retweets&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;number_of_likes&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;jpg_url&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;img_num&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;p1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;p1_conf&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;p1_dog&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;p2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;p2_conf&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;p2_dog&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;p3&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;p3_conf&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;p3_dog&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">var_name</span><span class="o">=</span><span class="s2">&quot;header&quot;</span><span class="p">,</span>
+    <span class="n">value_name</span><span class="o">=</span><span class="s2">&quot;stage&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 
-<span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;header&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;header&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -861,7 +928,7 @@ document.write(`
 <p><span style="color: green;">Test</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#checking if code implementation was a success</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># checking if code implementation was a success</span>
 <span class="n">weratedogs_archive_clean</span>
 </pre></div>
 </div>
@@ -876,15 +943,17 @@ document.write(`
 <p><span style="color: purple;">Code</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#querying the duplicated tweet_id with Null values and leaving those with valid entries</span>
-<span class="n">mask_null_stage</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">tweet_id</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># querying the duplicated tweet_id with Null values and leaving those with valid entries</span>
+<span class="n">mask_null_stage</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="p">[</span>
+    <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">tweet_id</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="p">]</span>
 <span class="n">rows_to_drop</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mask_null_stage</span><span class="p">[</span><span class="n">mask_null_stage</span><span class="o">.</span><span class="n">stage</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 <span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">rows_to_drop</span><span class="p">)</span>
 </pre></div>
@@ -894,7 +963,7 @@ document.write(`
 <p><span style="color: green;">Test</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#this test shows that we still have some form of duplicates hiding in our dataset</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this test shows that we still have some form of duplicates hiding in our dataset</span>
 <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -909,16 +978,20 @@ document.write(`
 <p><span style="color: purple;">Code</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#checking if we still have duplicated tweet_ids</span>
-<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">tweet_id</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span> <span class="kc">False</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># checking if we still have duplicated tweet_ids</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">tweet_id</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#querying and deleting tweet_ids that have multiple stage entries as found in the cell above</span>
-<span class="n">double_stage_entry</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">tweet_id</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span> <span class="kc">False</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># querying and deleting tweet_ids that have multiple stage entries as found in the cell above</span>
+<span class="n">double_stage_entry</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+    <span class="n">weratedogs_archive_clean</span><span class="p">[</span>
+        <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">tweet_id</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="p">]</span><span class="o">.</span><span class="n">index</span>
+<span class="p">)</span>
 <span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">double_stage_entry</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -927,7 +1000,7 @@ document.write(`
 <p><span style="color: green;">Test</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">tweet_id</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span> <span class="kc">False</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">tweet_id</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -940,7 +1013,9 @@ document.write(`
 <p><span style="color: purple;">Code</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">missing_image_Urls</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">jpg_url</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">missing_image_Urls</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+    <span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">jpg_url</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span><span class="o">.</span><span class="n">index</span>
+<span class="p">)</span>
 
 <span class="n">weratedogs_archive_clean</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">missing_image_Urls</span><span class="p">)</span>
 </pre></div>
@@ -963,7 +1038,7 @@ document.write(`
 <p><span style="color: purple;">Code</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#checking the rows with null values for retweets and number_of_likes columns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># checking the rows with null values for retweets and number_of_likes columns</span>
 
 <span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">number_of_likes</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
 </pre></div>
@@ -972,10 +1047,14 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#filling the missing values with the average number of retweets and likes in the dataset</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># filling the missing values with the average number of retweets and likes in the dataset</span>
 
-<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;retweets&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;retweets&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">((</span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;retweets&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
-<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;number_of_likes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;number_of_likes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">((</span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;number_of_likes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s2">&quot;retweets&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s2">&quot;retweets&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s2">&quot;retweets&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s2">&quot;number_of_likes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="p">[</span>
+    <span class="s2">&quot;number_of_likes&quot;</span>
+<span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">((</span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s2">&quot;number_of_likes&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
 </pre></div>
 </div>
 </div>
@@ -983,8 +1062,10 @@ document.write(`
 <p><span style="color: green;">Test</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#checking if there are any null values left in the &#39;retwweets&#39; and &#39;number_of_likes&#39; columns</span>
-<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">number_of_likes</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">retweets</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span><span class="o">.</span><span class="n">size</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># checking if there are any null values left in the &#39;retwweets&#39; and &#39;number_of_likes&#39; columns</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span>
+    <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">number_of_likes</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+<span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">retweets</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span><span class="o">.</span><span class="n">size</span>
 </pre></div>
 </div>
 </div>
@@ -1001,15 +1082,21 @@ document.write(`
 <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p1_dog</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p1_dog</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
 <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p2_dog</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p2_dog</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
 <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p3_dog</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p3_dog</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
-<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">retweets</span><span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">retweets</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">number_of_likes</span><span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">number_of_likes</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">img_num</span><span class="o">=</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">img_num</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">retweets</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">retweets</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">number_of_likes</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">number_of_likes</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">img_num</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">img_num</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">tweet_id</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">tweet_id</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p1</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p1</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
 <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p2</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p2</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
 <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p3</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">p3</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
-<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_numerator</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_numerator</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_denominator</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_denominator</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_numerator</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_numerator</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_denominator</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_denominator</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1030,7 +1117,7 @@ document.write(`
 <p><span style="color: purple;">Code</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#checking the rows with null values for retweets and rating_numerator columns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># checking the rows with null values for retweets and rating_numerator columns</span>
 
 <span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_numerator</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
 </pre></div>
@@ -1039,7 +1126,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#checking the rows with null values for retweets and rating_denominator columns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># checking the rows with null values for retweets and rating_denominator columns</span>
 
 <span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_denominator</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
 </pre></div>
@@ -1048,10 +1135,14 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#filling the missing values with the average number of rating_numerator and rating_denominator respectively</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># filling the missing values with the average number of rating_numerator and rating_denominator respectively</span>
 
-<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;rating_numerator&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;rating_numerator&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;rating_numerator&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;rating_denominator&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;rating_denominator&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s1">&#39;rating_denominator&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s2">&quot;rating_numerator&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="p">[</span>
+    <span class="s2">&quot;rating_numerator&quot;</span>
+<span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s2">&quot;rating_numerator&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s2">&quot;rating_denominator&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weratedogs_archive_clean</span><span class="p">[</span>
+    <span class="s2">&quot;rating_denominator&quot;</span>
+<span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="s2">&quot;rating_denominator&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -1059,7 +1150,11 @@ document.write(`
 <p><span style="color: green;">Test</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_numerator</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span><span class="o">.</span><span class="n">size</span><span class="p">,</span><span class="n">weratedogs_archive_clean</span><span class="p">[</span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_denominator</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span><span class="o">.</span><span class="n">size</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span><span class="p">[</span>
+    <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_numerator</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+<span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">weratedogs_archive_clean</span><span class="p">[</span>
+    <span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">rating_denominator</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+<span class="p">]</span><span class="o">.</span><span class="n">size</span>
 </pre></div>
 </div>
 </div>
@@ -1099,7 +1194,7 @@ document.write(`
 <p>Save gathered, assessed, and cleaned master dataset to a CSV file named “twitter_archive_master.csv”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;twitter_archive_master.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weratedogs_archive_clean</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;twitter_archive_master.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1110,15 +1205,15 @@ document.write(`
 <p>In this section, analyze and visualize your wrangled data. You must produce at least <strong>three (3) insights and one (1) visualization.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;twitter_archive_master.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;twitter_archive_master.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Top viral tweets from the dataframe</span>
-<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;retweets&#39;</span><span class="p">],</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Top viral tweets from the dataframe</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;retweets&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1127,14 +1222,14 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Top 10 Tweets with the highest likes</span>
 
-<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;number_of_likes&#39;</span><span class="p">],</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;number_of_likes&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#The top five most frequent dog breed predicted by the neural network</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The top five most frequent dog breed predicted by the neural network</span>
 
 <span class="n">df</span><span class="o">.</span><span class="n">p1</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -1155,11 +1250,11 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stages</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">stage</span><span class="o">.</span><span class="n">isna</span><span class="p">())]</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">stages</span><span class="o">.</span><span class="n">stage</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Most Popular Dog Stage&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Stages&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Stages&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>

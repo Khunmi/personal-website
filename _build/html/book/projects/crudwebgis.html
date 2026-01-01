@@ -1,0 +1,807 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CRUD Web GIS: Build Process &#8212; Personal Website</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/projects/crudwebgis';</script>
+    <link rel="canonical" href="https://github.com/Khunmi/book/projects/crudwebgis.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Exploratory Data Analysis(EDA)" href="data_investigation.html" />
+    <link rel="prev" title="Profile Summary" href="../about/summary.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Personal Website - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Personal Website - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/summary.html">Profile Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">GIS Projects</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">CRUD Web GIS: Build Process</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Analytics Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="data_investigation.html">Exploratory Data Analysis(EDA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ab_testing.html">Analyze A/B Test Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wrangle_act.html">Wrangling and Analyze Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seaborne.html">Analytics With Seaborne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powerbi_tableau.html">Power BI &amp; Tableau</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Engineering Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="trip_analysis.html">ELT Data Engineering Project- Trip Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="etl.html">ETL Batch Processing Project- No-Show Appointment</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/Khunmi/personal-website/main?urlpath=tree/book/projects/crudwebgis.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/Khunmi/personal-website/blob/main/book/projects/crudwebgis.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Khunmi/personal-website" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Khunmi/personal-website/edit/main/book/projects/crudwebgis.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Khunmi/personal-website/issues/new?title=Issue%20on%20page%20%2Fbook/projects/crudwebgis.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/book/projects/crudwebgis.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>CRUD Web GIS: Build Process</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-flow">High-level flow</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frontend-build-leaflet-ui">Frontend build (Leaflet UI)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-and-plugins">Libraries and plugins</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map-setup">Map setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layer-logic">Layer logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-insert-workflow">Drawing + insert workflow</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backend-build-php-postgis">Backend build (PHP + PostGIS)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-connection">Database connection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-security-token">Write security token</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-endpoints">Read endpoints</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-endpoints">Write endpoints</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-model-as-used-by-the-app">Data model (as used by the app)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment-notes">Deployment notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-i-would-improve-next">What I would improve next</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-demo">Live Demo</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="crud-web-gis-build-process">
+<h1>CRUD Web GIS: Build Process<a class="headerlink" href="#crud-web-gis-build-process" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>This webmap is a CRUD-capable GIS application built with Leaflet on the frontend and PHP + PostGIS on the backend. The UI provides map navigation, sidebar-driven feature tools, and create/update/delete workflows for multiple infrastructure layers (valves, pipelines, buildings). Data is persisted in a spatial database and served as GeoJSON to the browser.</p>
+<p>Live demo: <a class="reference external" href="https://webmap.kunmiadebanjo.com/">https://webmap.kunmiadebanjo.com/</a>
+Source repo (reference implementation): <a class="github reference external" href="https://github.com/Khunmi/webmap_backup">Khunmi/webmap_backup</a></p>
+</section>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Frontend: Leaflet map UI with plugins, AJAX calls to PHP endpoints, GeoJSON rendering.</p></li>
+<li><p>Backend: PHP API endpoints for CRUD and lookup operations.</p></li>
+<li><p>Database: PostGIS-enabled PostgreSQL (inferred from <code class="docutils literal notranslate"><span class="pre">ST_AsGeoJSON</span></code> and <code class="docutils literal notranslate"><span class="pre">ST_GeomFromGeoJSON</span></code>).</p></li>
+</ul>
+<section id="high-level-flow">
+<h3>High-level flow<a class="headerlink" href="#high-level-flow" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>User loads the webmap and selects a DMA (area filter).</p></li>
+<li><p>Frontend calls backend endpoints to load features by DMA.</p></li>
+<li><p>GeoJSON is returned and rendered by Leaflet with styling and tooltips/popups.</p></li>
+<li><p>Edits and deletes occur from popups, inserts from sidebar forms, all handled via AJAX POST to PHP endpoints.</p></li>
+</ol>
+</section>
+</section>
+<section id="frontend-build-leaflet-ui">
+<h2>Frontend build (Leaflet UI)<a class="headerlink" href="#frontend-build-leaflet-ui" title="Link to this heading">#</a></h2>
+<p>Key file: <code class="docutils literal notranslate"><span class="pre">index.php</span></code></p>
+<section id="libraries-and-plugins">
+<h3>Libraries and plugins<a class="headerlink" href="#libraries-and-plugins" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Leaflet 1.7</p></li>
+<li><p>Bootstrap 3.4 for layout and form styling</p></li>
+<li><p>jQuery + jQuery UI (autocomplete)</p></li>
+<li><p>Leaflet Sidebar (tabbed sidebar)</p></li>
+<li><p>Leaflet Geoman (drawing tools)</p></li>
+<li><p>Leaflet PolylineMeasure (measurement tool)</p></li>
+<li><p>MiniMap and ZoomBar controls</p></li>
+<li><p>SweetAlert2 for confirmation dialogs</p></li>
+</ul>
+</section>
+<section id="map-setup">
+<h3>Map setup<a class="headerlink" href="#map-setup" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Base layers: Google Streets, OpenStreetMap, CartoDB Positron, Esri World Imagery, OpenTopoMap</p></li>
+<li><p>Controls: sidebar, layer control, scale, minimap, polyline measure, geoman drawing</p></li>
+<li><p>Default view: centered around <code class="docutils literal notranslate"><span class="pre">[23.7923,</span> <span class="pre">90.4167]</span></code> with zoom 13</p></li>
+</ul>
+</section>
+<section id="layer-logic">
+<h3>Layer logic<a class="headerlink" href="#layer-logic" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Valves</strong>: point layer with circle markers, styled by <code class="docutils literal notranslate"><span class="pre">valve_type</span></code>.</p></li>
+<li><p><strong>Pipelines</strong>: line layer styled by <code class="docutils literal notranslate"><span class="pre">pipeline_category</span></code>.</p></li>
+<li><p><strong>Buildings</strong>: polygon layer styled by <code class="docutils literal notranslate"><span class="pre">building_category</span></code> and <code class="docutils literal notranslate"><span class="pre">building_storey</span></code>.</p></li>
+</ul>
+<p>Each layer includes:</p>
+<ul class="simple">
+<li><p>Tooltip for quick inspection</p></li>
+<li><p>Popup form with editable attributes and Update/Delete actions</p></li>
+<li><p>Autocomplete search by ID (valve_id, pipe_id, account_no)</p></li>
+</ul>
+</section>
+<section id="drawing-insert-workflow">
+<h3>Drawing + insert workflow<a class="headerlink" href="#drawing-insert-workflow" title="Link to this heading">#</a></h3>
+<p>Geoman drawing creates a geometry, then writes GeoJSON into a hidden textarea:</p>
+<ul class="simple">
+<li><p>Marker -&gt; Point (valves)</p></li>
+<li><p>Line -&gt; MultiLineString (pipelines)</p></li>
+<li><p>Polygon -&gt; MultiPolygon (buildings)</p></li>
+</ul>
+<p>Insert forms collect attributes + geometry and POST to <code class="docutils literal notranslate"><span class="pre">insert_data.php</span></code>.</p>
+</section>
+</section>
+<section id="backend-build-php-postgis">
+<h2>Backend build (PHP + PostGIS)<a class="headerlink" href="#backend-build-php-postgis" title="Link to this heading">#</a></h2>
+<p>Key files: <code class="docutils literal notranslate"><span class="pre">init.php</span></code>, <code class="docutils literal notranslate"><span class="pre">load_data.php</span></code>, <code class="docutils literal notranslate"><span class="pre">find_data.php</span></code>, <code class="docutils literal notranslate"><span class="pre">insert_data.php</span></code>, <code class="docutils literal notranslate"><span class="pre">update_data.php</span></code>, <code class="docutils literal notranslate"><span class="pre">delete_data.php</span></code></p>
+<section id="database-connection">
+<h3>Database connection<a class="headerlink" href="#database-connection" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">init.php</span></code> reads database config from <code class="docutils literal notranslate"><span class="pre">/home/kunmiade/config/db.php</span></code> or environment variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">WEBMAP_DSN</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WEBMAP_DB_USER</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WEBMAP_DB_PASS</span></code></p></li>
+</ul>
+<p>If config is missing, the API exits with an error.</p>
+</section>
+<section id="write-security-token">
+<h3>Write security token<a class="headerlink" href="#write-security-token" title="Link to this heading">#</a></h3>
+<p>Write operations require a token (via header <code class="docutils literal notranslate"><span class="pre">X-WEBMAP-TOKEN</span></code> or POST <code class="docutils literal notranslate"><span class="pre">token</span></code>).
+Token is read from config or <code class="docutils literal notranslate"><span class="pre">WEBMAP_WRITE_TOKEN</span></code> environment variable.</p>
+</section>
+<section id="read-endpoints">
+<h3>Read endpoints<a class="headerlink" href="#read-endpoints" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">load_data.php</span></code>: loads features for a selected DMA</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">find_data.php</span></code>: returns a feature by ID</p></li>
+</ul>
+<p>Both endpoints return GeoJSON FeatureCollections using <code class="docutils literal notranslate"><span class="pre">ST_AsGeoJSON(geom)</span></code>.</p>
+</section>
+<section id="write-endpoints">
+<h3>Write endpoints<a class="headerlink" href="#write-endpoints" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">insert_data.php</span></code>: validates unique IDs, inserts with <code class="docutils literal notranslate"><span class="pre">ST_GeomFromGeoJSON</span></code> and SRID 4326</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">update_data.php</span></code>: updates attributes with checks for unique IDs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">delete_data.php</span></code>: deletes by database primary key</p></li>
+</ul>
+</section>
+</section>
+<section id="data-model-as-used-by-the-app">
+<h2>Data model (as used by the app)<a class="headerlink" href="#data-model-as-used-by-the-app" title="Link to this heading">#</a></h2>
+<p>Tables referenced by the frontend:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">valves</span></code></p>
+<ul>
+<li><p>ids and attributes: <code class="docutils literal notranslate"><span class="pre">valve_id</span></code>, <code class="docutils literal notranslate"><span class="pre">valve_type</span></code>, <code class="docutils literal notranslate"><span class="pre">valve_dma_id</span></code>, <code class="docutils literal notranslate"><span class="pre">valve_diameter</span></code>, <code class="docutils literal notranslate"><span class="pre">valve_visibility</span></code>, <code class="docutils literal notranslate"><span class="pre">valve_location</span></code></p></li>
+<li><p>geometry: <code class="docutils literal notranslate"><span class="pre">geom</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pipelines</span></code></p>
+<ul>
+<li><p>ids and attributes: <code class="docutils literal notranslate"><span class="pre">pipe_id</span></code>, <code class="docutils literal notranslate"><span class="pre">pipeline_category</span></code>, <code class="docutils literal notranslate"><span class="pre">pipeline_dma_id</span></code>, <code class="docutils literal notranslate"><span class="pre">pipeline_diameter</span></code>, <code class="docutils literal notranslate"><span class="pre">pipeline_material</span></code>, <code class="docutils literal notranslate"><span class="pre">pipeline_location</span></code>, <code class="docutils literal notranslate"><span class="pre">length</span></code></p></li>
+<li><p>geometry: <code class="docutils literal notranslate"><span class="pre">geom</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buildings</span></code></p>
+<ul>
+<li><p>ids and attributes: <code class="docutils literal notranslate"><span class="pre">account_no</span></code>, <code class="docutils literal notranslate"><span class="pre">building_category</span></code>, <code class="docutils literal notranslate"><span class="pre">building_dma_id</span></code>, <code class="docutils literal notranslate"><span class="pre">building_storey</span></code>, <code class="docutils literal notranslate"><span class="pre">building_population</span></code>, <code class="docutils literal notranslate"><span class="pre">building_location</span></code></p></li>
+<li><p>geometry: <code class="docutils literal notranslate"><span class="pre">geom</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="deployment-notes">
+<h2>Deployment notes<a class="headerlink" href="#deployment-notes" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The live webmap serves the same PHP-based frontend and backend.</p></li>
+<li><p>Make sure the server includes PHP + PDO + PostGIS support.</p></li>
+<li><p>Store database credentials and the write token in <code class="docutils literal notranslate"><span class="pre">/home/kunmiade/config/db.php</span></code> or environment variables to avoid exposing secrets in source control.</p></li>
+</ul>
+</section>
+<section id="what-i-would-improve-next">
+<h2>What I would improve next<a class="headerlink" href="#what-i-would-improve-next" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Move hardcoded base layers and API paths into a config file.</p></li>
+<li><p>Add input validation and server-side request rate limiting.</p></li>
+<li><p>Use prepared geometry validation to avoid invalid shapes.</p></li>
+<li><p>Add a lightweight authentication screen or user roles for write access.</p></li>
+<li><p>Add backups and migrations for the spatial database.</p></li>
+</ul>
+</section>
+<section id="live-demo">
+<h2>Live Demo<a class="headerlink" href="#live-demo" title="Link to this heading">#</a></h2>
+<iframe src="https://webmap.kunmiadebanjo.com/" width="100%" height="700" style="border:0;" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "Khunmi/personal-website",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book/projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../about/summary.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Profile Summary</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="data_investigation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exploratory Data Analysis(EDA)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-flow">High-level flow</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frontend-build-leaflet-ui">Frontend build (Leaflet UI)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-and-plugins">Libraries and plugins</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map-setup">Map setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layer-logic">Layer logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-insert-workflow">Drawing + insert workflow</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backend-build-php-postgis">Backend build (PHP + PostGIS)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-connection">Database connection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-security-token">Write security token</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-endpoints">Read endpoints</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-endpoints">Write endpoints</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-model-as-used-by-the-app">Data model (as used by the app)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment-notes">Deployment notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-i-would-improve-next">What I would improve next</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-demo">Live Demo</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Kunmi Adebanjo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

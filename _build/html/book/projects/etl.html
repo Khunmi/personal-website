@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -175,6 +175,10 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../about/summary.html">Profile Summary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">GIS Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="crudwebgis.html">CRUD Web GIS: Build Process</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Analytics Projects</span></p>
 <ul class="nav bd-sidenav">
@@ -427,7 +431,7 @@ document.write(`
 <h2>Questions for Analysis<a class="headerlink" href="#questions-for-analysis" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>What age ranges are more likely to honor appointments as well as the ages that most likely wouldn’t?</p></li>
-<li><p>Does SMS prompts play an important role in appoinment showup rates?</p></li>
+<li><p>Does SMS prompts play an important role in appointment showup rates?</p></li>
 <li><p>What percentage of males and females are enrolled in welfare programs?</p></li>
 </ul>
 </section>
@@ -485,7 +489,7 @@ gcloud<span class="w"> </span>auth<span class="w"> </span>application-default<sp
 <ol class="arabic simple" start="3">
 <li><p>Setup the necessary dependencies to run Apache Spark and interact with it using Pyspark within your local machine. This will be needed because I used pyspark for transformation and schema design for this project. See <a class="reference external" href="https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/week_5_batch_processing/setup">here</a> for an instructional guide.</p></li>
 <li><p>Create a pipeline that loads your parquet files from an API to your Data Lake just as seen <a class="reference external" href="https://github.com/Khunmi/Capstone-Project---Data-Engineering-ZoomCamp/blob/main/code/4_Spark_to_GCS.ipynb">here</a></p></li>
-<li><p>Create a compute engine instance on Google cloud to enable you run a dataproc job within a severless environment which also gives the felxibility of scheduling. See <a class="reference external" href="https://www.youtube.com/watch?v=osAiAYahvh8&amp;amp;list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&amp;amp;index=56">here</a> for a video guide.</p></li>
+<li><p>Create a compute engine instance on Google cloud to enable you run a dataproc job within a serverless environment which also gives the felxibility of scheduling. See <a class="reference external" href="https://www.youtube.com/watch?v=osAiAYahvh8&amp;amp;list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&amp;amp;index=56">here</a> for a video guide.</p></li>
 <li><p>Upload your python script containing your Spark job script to GCS and run your compute engine from the command line using the code below. Make sure you edit all parts that references my google cloud configurations to yours.</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gcloud<span class="w"> </span>dataproc<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>submit<span class="w"> </span>pyspark<span class="w"> </span><span class="se">\</span>
@@ -527,7 +531,7 @@ about the patient are included in each row.‘ScheduledDay’ tells us on what d
 </div>
 <p>Future work</p>
 <ul class="simple">
-<li><p>Getting more comfortable using Ifrastucture as code within my porject such as Terraform</p></li>
+<li><p>Getting more comfortable using Ifrastucture as code within my project such as Terraform</p></li>
 <li><p>Including an orchestartion to make my process more automated such Prefect or Airflow</p></li>
 <li><p>Add more tests</p></li>
 <li><p>Add CI/CD pipeline</p></li>
