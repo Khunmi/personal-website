@@ -28,6 +28,7 @@ repos:
                 ]
             exclude: >
               (?x)^(
+                  _build/.*|
                   .*\.json|
                   .*\.geojson|
                   .*\.csv|
