@@ -20,12 +20,12 @@ project:
     - references.bib
   toc:
     - file: index.md
-    - title: About
-      children:
-        - file: book/about/summary.md
+    # - title: About
+    #   children:
+    #     - file: summary.md
     - title: GIS Projects
       children:
-        - file: book/projects/crudwebgis.ipynb
+        - file: book/projects/crudwebgis.md
     - title: Data Analytics Projects
       children:
         - file: book/projects/data_investigation.ipynb
@@ -41,5 +41,7 @@ site:
   options:
     logo: logo.png
     favicon: fav.ico
-    folders: true
+    folders: false
+    hide_outline: true
+    style: ./custom.css
   template: book-theme
