@@ -44,7 +44,7 @@ jobs:
           key: jupyter-book-cache-${{ hashFiles('requirements.txt') }}
 
       # Build the book
-      - name: Build the book
+      - name: personal-website
         run: |
           jupyter-book build .
 
