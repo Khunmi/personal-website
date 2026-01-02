@@ -3,7 +3,6 @@
 *.tif
 *.nc
 *.parquet
-*.txt
 *.zip
 *.csv
 *.tsv
