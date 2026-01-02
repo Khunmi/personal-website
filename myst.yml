@@ -1,0 +1,45 @@
+version: 1
+project:
+  title: Personal Website
+  authors:
+    - name: Kunmi Adebanjo
+  copyright: '2025'
+  exclude:
+    - _build
+    - Thumbs.db
+    - .DS_Store
+    - '**.ipynb_checkpoints'
+  github: Khunmi/personal-website
+  thebe:
+    binder:
+      repo: Khunmi/personal-website
+      provider: github
+      url: https://mybinder.org
+      ref: main
+  bibliography:
+    - book/references.bib
+  toc:
+    - file: index.md
+    - title: About
+      children:
+        - file: book/about/summary.md
+    - title: GIS Projects
+      children:
+        - file: book/projects/crudwebgis.ipynb
+    - title: Data Analytics Projects
+      children:
+        - file: book/projects/data_investigation.ipynb
+        - file: book/projects/ab_testing.ipynb
+        - file: book/projects/wrangle_act.ipynb
+        - file: book/projects/seaborne.ipynb
+        - file: book/projects/powerbi_tableau.md
+    - title: Data Engineering Projects
+      children:
+        - file: book/projects/trip_analysis.md
+        - file: book/projects/etl.md
+site:
+  options:
+    logo: logo.png
+    favicon: fav.ico
+    folders: true
+  template: book-theme

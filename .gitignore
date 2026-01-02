@@ -11,3 +11,6 @@ book/unused/*
 book/image_prediction/*
 venv/*
 !CNAME.txt
+
+# MyST build outputs
+_build
