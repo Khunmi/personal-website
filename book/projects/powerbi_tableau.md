@@ -16,7 +16,7 @@ Let's get started .........
 
 ## ATB Financial US Branch Performance Analysis
 
-<iframe width="1010" height="850" src="https://public.tableau.com/views/ATB-StrategyMock/Overview?:language=en-GB&:display_count=n&:origin=viz_share_link:showVizHome=no&:embed=true" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="900" src="https://public.tableau.com/views/ATB-StrategyMock/Overview?:language=en-GB&:display_count=n&:origin=viz_share_link:showVizHome=no&:embed=true" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 ### Objectives and Primary Goal:
@@ -98,7 +98,7 @@ The dataset includes deposit information for ATB Financial branches from 2010 to
 
 ## EOY Retail Sales Performance(Downstream Oil & Gas)
 
-<iframe width="965" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiYzMzMDNjNmUtZjIwYi00ODNiLTgyMTctOTg0NDI5NDBjZDQ0IiwidCI6ImJkMDJkNzlkLWZjMjktNGExMi05ZGYxLWE0YmZlNmQ4ZjRjOCJ9&pageName=ReportSectiond9306b8184b0330bd596" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="900" src="https://app.powerbi.com/view?r=eyJrIjoiYzMzMDNjNmUtZjIwYi00ODNiLTgyMTctOTg0NDI5NDBjZDQ0IiwidCI6ImJkMDJkNzlkLWZjMjktNGExMi05ZGYxLWE0YmZlNmQ4ZjRjOCJ9&pageName=ReportSectiond9306b8184b0330bd596" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### Introduction:
 
@@ -121,7 +121,7 @@ In conclusion, the end-of-year retail sales performance report for 2022 highligh
 
 ## Monitoring and Evaluation Dashboard (Agriculture)
 
-<iframe width="1400" height="800" src="https://public.tableau.com/views/MonitoringandEvaluationDashboard/Dashboard1?:language=en-GB&:display_count=n&:origin=viz_share_link:showVizHome=no&:embed=true" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="900" src="https://public.tableau.com/views/MonitoringandEvaluationDashboard/Dashboard1?:language=en-GB&:display_count=n&:origin=viz_share_link:showVizHome=no&:embed=true" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### Introduction:
 In the northern states of Nigeria, a monitoring and evaluating project is underway to track the recovery status of agriculture produce. The project aims to effectively monitor the status of submitted produce during the early stages of harvest aggregation. To facilitate this process, an innovative dashboard was created, using a combination of modern technology tools and data visualization techniques.
@@ -140,4 +140,3 @@ The creation of this dashboard has provided an innovative solution to the challe
 - **Phone:** +1 (403) 668-1475
 - **GitHub:** [Kunmi's GitHub](https://github.com/Khunmi)
 - **LinkedIn:** [Kunmi's LinkedIn](https://www.linkedin.com/in/kunmiadebanjo) -->
-
