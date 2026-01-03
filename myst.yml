@@ -2,7 +2,7 @@ version: 1
 project:
   title: Personal Website
   authors:
-    - name: Kunmi Adebanjo
+    - name: By Kunmi Adebanjo
   copyright: '2026'
   exclude:
     - _build

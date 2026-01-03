@@ -1,4 +1,19 @@
-# ETL Batch Processing Project- No-Show Appointment
+# ETL Batch Processing Project - No-Show Appointment
+
+:::{div}
+:class: project-hero
+**ETL Batch Processing Project - No-Show Appointment**
+
+Batch ETL pipeline analyzing hospital appointment no-show trends across age, SMS prompts, and welfare enrollment.
+{span}`GCP • PySpark • BigQuery • Looker Studio`
+:::
+
+:::{div}
+:class: project-meta
+**Stack:** GCS, PySpark, BigQuery, Looker Studio  
+**Data:** Hospital no-show appointments  
+**Goal:** Build a batch ETL pipeline and reporting dashboard
+:::
 
 ## Project Description
 This project seeks to investigate hospital appointments no-show trends. is attendance a function of age, ailment type or proximity to the hospital? It may also be that SMS prompt play a vital role in helping people honor hospital appointments. 
@@ -21,9 +36,10 @@ The following technologies are used to build this project
 
 ## Data Pipeline Architecture
 
-<div style="display: flex; align-items: center; justify-content: flex-start;">
-<img src="https://github.com/Khunmi/Capstone-Project---Data-Engineering-ZoomCamp/raw/main/images/Architecture.png" alt="Visual Summary" style="max-width: 600px; margin-right: 40px;">
-</div>
+:::{image} https://github.com/Khunmi/Capstone-Project---Data-Engineering-ZoomCamp/raw/main/images/Architecture.png
+:alt: Data pipeline architecture
+:width: 100%
+:::
 
 ## Reproduce it yourself
 
@@ -68,9 +84,23 @@ gcloud dataproc jobs submit pyspark \
         --output=trips_data_all.capstone2023
 ```
 
-8. Google Data Studio: To generate insights from my dataset, I connected my data source located in my data warehouse(Bigquery). You can interact with the dashbpard below.
+8. Google Data Studio: To generate insights from my dataset, I connected my data source located in my data warehouse(Bigquery). You can interact with the dashboard below.
 
-<iframe width="800" height="600" src="https://lookerstudio.google.com/embed/reporting/d7164b60-c4ee-4c65-937d-d10a23b1a75d/page/5c7OD" frameborder="0" style="border:0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+:::{div}
+:class: embed-section
+**Live Dashboard**
+:::
+
+:::{div}
+:class: powerbi-embed
+<iframe
+  src="https://lookerstudio.google.com/embed/reporting/d7164b60-c4ee-4c65-937d-d10a23b1a75d/page/5c7OD"
+  class="full-bleed-iframe"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+  sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
+</iframe>
+:::
 
 <!-- ![dashboard](images/dashboard.png) -->
 

@@ -1,10 +1,28 @@
 # CRUD Web GIS: Build Process
 
-A CRUD-capable GIS webmap built with Leaflet (frontend) and PHP + PostGIS (backend). Users can explore layers, filter by DMA, and create/update/delete features directly on the map.
+:::{div}
+:class: project-hero
+**CRUD Web GIS: Build Process**
 
-Get started with editing and creating feature below. Start by clicking the home button at the top left and filtering to your desired area.
+Interactive webmap for CRUD operations on spatial layers with Leaflet and PostGIS.
+{span}`Leaflet • PHP • PostGIS`
+:::
+
+:::{div}
+:class: project-meta
+**Stack:** Leaflet, PHP, PostGIS  
+**Data:** Infrastructure layers (valves, pipelines, buildings)  
+**Goal:** Enable CRUD workflows directly on the map
+:::
+
+Get started by clicking the home button 🏠 at the top left and filtering to your desired locality. Create features, update attributes and delete features below 👇. 
 
 ## Live Webmap
+
+:::{div}
+:class: embed-section
+**Live Webmap**
+:::
 
 :::{div}
 :class: full-bleed-embed
