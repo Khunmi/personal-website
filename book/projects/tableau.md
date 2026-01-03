@@ -14,6 +14,26 @@ This section showcases data analytics and visualization projects using Tableau, 
 ## ATB Financial US Branch Performance Analysis
 
 :::{div}
+:class: project-hero
+**ATB Financial US Branch Performance Analysis**
+
+Transitioning client activity to digital channels using branch deposit performance data.
+{span}`Tableau • 2010–2016 • Banking`
+:::
+
+:::{div}
+:class: project-meta
+**Stack:** Tableau  
+**Data:** Branch deposits  
+**Goal:** Identify underperforming regions
+:::
+
+:::{div}
+:class: embed-section
+**Live Dashboard**
+:::
+
+:::{div}
 :class: tableau-embed
 <iframe
   src="https://public.tableau.com/views/ATB-StrategyMock/Overview?:language=en-GB&:display_count=n&:origin=viz_share_link:showVizHome=no&:embed=true"
@@ -99,6 +119,26 @@ The dataset includes deposit information for ATB Financial branches from 2010 to
 ---
 
 ## Monitoring and Evaluation Dashboard (Agriculture)
+
+:::{div}
+:class: project-hero
+**Monitoring and Evaluation Dashboard (Agriculture)**
+
+Tracking recovery status of submitted produce during early harvest aggregation.
+{span}`Tableau • Agriculture • Monitoring`
+:::
+
+:::{div}
+:class: project-meta
+**Stack:** Tableau  
+**Data:** Partner APIs + BigQuery  
+**Goal:** Track recovery status and submission metrics
+:::
+
+:::{div}
+:class: embed-section
+**Live Dashboard**
+:::
 
 :::{div}
 :class: full-bleed-embed

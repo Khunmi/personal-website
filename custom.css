@@ -23,6 +23,33 @@
   display: block;
 }
 
+.project-hero {
+  padding: 24px;
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  background: #fafafa;
+}
+
+.project-meta {
+  margin: 12px 0 24px;
+  color: #444;
+}
+
+.embed-section {
+  font-weight: 600;
+  margin: 12px 0;
+}
+
+.dark .project-hero {
+  border-color: #2f2f2f;
+  background: #1f1f1f;
+  color: #f5f5f5;
+}
+
+.dark .project-meta {
+  color: #d6d6d6;
+}
+
 .tableau-embed {
   width: 53vw;
   max-width: 1180px;

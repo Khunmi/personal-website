@@ -13,6 +13,26 @@ This section showcases data analytics and visualization projects using Power BI,
 ## EOY Retail Sales Performance (Downstream Oil & Gas)
 
 :::{div}
+:class: project-hero
+**EOY Retail Sales Performance (Downstream Oil & Gas)**
+
+Retail sales performance dashboard for downstream oil & gas, focused on PMS, AGO, and lubricants across regions.
+{span}`Power BI • 2022 • Retail Analytics`
+:::
+
+:::{div}
+:class: project-meta
+**Stack:** Power BI  
+**Data:** Sage Business Cloud ERP  
+**Goal:** Monitor retail station and product performance
+:::
+
+:::{div}
+:class: embed-section
+**Live Dashboard**
+:::
+
+:::{div}
 :class: powerbi-embed
 <iframe
   src="https://app.powerbi.com/view?r=eyJrIjoiYzMzMDNjNmUtZjIwYi00ODNiLTgyMTctOTg0NDI5NDBjZDQ0IiwidCI6ImJkMDJkNzlkLWZjMjktNGExMi05ZGYxLWE0YmZlNmQ4ZjRjOCJ9&pageName=ReportSectiond9306b8184b0330bd596"
