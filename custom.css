@@ -12,11 +12,11 @@
   border: 0;
 }
 
-/* .dashboard-embed {
+.dashboard-embed {
   width: 100%;
   max-width: 1300px;
   margin: 0 auto;
-} */
+}
 
 .dashboard-embed .full-bleed-iframe {
   height: 800px;

@@ -1,6 +1,20 @@
 
-# ELT Data Engineering Project- Trip Analysis
-This is an end-to-end data engineering project, This project uses [Taxi Trips dataset](https://catalog.data.gov/dataset/)
+# ELT Data Engineering Project - Trip Analysis
+
+:::{div}
+:class: project-hero
+**ELT Data Engineering Project - Trip Analysis**
+
+End-to-end ELT pipeline using the Taxi Trips dataset to orchestrate ingestion, transformation, and analytics.
+{span}`GCP • Prefect • dbt • BigQuery`
+:::
+
+:::{div}
+:class: project-meta
+**Stack:** GCS, Prefect, dbt, BigQuery, Looker Studio  
+**Data:** [Taxi Trips dataset](https://catalog.data.gov/dataset/)  
+**Goal:** Build a reproducible ELT pipeline and analytics dashboard
+:::
 
 ## Technology Stack
 The following technologies are used to build this project
@@ -11,14 +25,29 @@ The following technologies are used to build this project
 - Google Looker studio - for visualizations
 ## Data Pipeline Architecture
 
-<div style="display: flex; align-items: center; justify-content: flex-start;">
-<img src="https://github.com/Khunmi/ELT_Project_DZC/raw/main/images/Architecture.png" alt="Visual Summary" style="max-width: 600px; margin-right: 40px;">
-</div>
+:::{image} https://github.com/Khunmi/ELT_Project_DZC/raw/main/images/Architecture.png
+:alt: Data pipeline architecture
+:width: 100%
+:::
 
 
 ## Dashboard
 
-<iframe width="800" height="600" src="https://lookerstudio.google.com/embed/reporting/7472e395-93bf-4254-b871-618e152624be/page/25OJD" frameborder="0" style="border:0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+:::{div}
+:class: embed-section
+**Live Dashboard**
+:::
+
+:::{div}
+:class: powerbi-embed
+<iframe
+  src="https://lookerstudio.google.com/embed/reporting/7472e395-93bf-4254-b871-618e152624be/page/25OJD"
+  class="full-bleed-iframe"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+  sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
+</iframe>
+:::
 
 
 ## Reproduce it yourself
