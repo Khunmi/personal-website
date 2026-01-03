@@ -32,7 +32,8 @@ project:
         - file: book/projects/ab_testing.ipynb
         - file: book/projects/wrangle_act.ipynb
         - file: book/projects/seaborne.ipynb
-        - file: book/projects/powerbi_tableau.md
+        - file: book/projects/powerbi.md
+        - file: book/projects/tableau.md
     - title: Data Engineering Projects
       children:
         - file: book/projects/trip_analysis.md
