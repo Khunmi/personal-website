@@ -26,6 +26,7 @@ project:
     - title: GIS Projects
       children:
         - file: book/projects/crudwebgis.md
+        - file: book/projects/crime-patterns.md
     - title: Data Analytics Projects
       children:
         - file: book/projects/data_investigation.ipynb
