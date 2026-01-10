@@ -10,6 +10,10 @@ book/unused/*
 book/image_prediction/*
 venv/*
 !CNAME.txt
+*.DS_Store
+
+# MyST build outputs
+_build
 
 # MyST build outputs
 _build
