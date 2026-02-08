@@ -27,6 +27,7 @@ project:
       children:
         - file: book/projects/crudwebgis.md
         - file: book/projects/crime-patterns.md
+        - file: book/projects/esri_js_api.md
     - title: Data Analytics Projects
       children:
         - file: book/projects/data_investigation.ipynb
