@@ -43,6 +43,8 @@ Transitioning client activity to digital channels using branch deposit performan
 </iframe>
 :::
 
+For a better experience, click [here](https://public.tableau.com/views/ATB-StrategyMock/Overview?:language=en-GB&:display_count=n&:origin=viz_share_link:showVizHome=no&:embed=true).
+
 ### Objectives and Primary Goal
 
 Analyze ATB branch performance to identify opportunities for transitioning client activity from physical branches to digital channels.
@@ -141,7 +143,7 @@ Tracking recovery status of submitted produce during early harvest aggregation.
 :::
 
 :::{div}
-:class: full-bleed-embed
+:class: tableau-embed
 <iframe
   src="https://public.tableau.com/views/MonitoringandEvaluationDashboard/Dashboard1?:language=en-GB&:display_count=n&:origin=viz_share_link:showVizHome=no&:embed=true"
   class="full-bleed-iframe"
@@ -149,6 +151,8 @@ Tracking recovery status of submitted produce during early harvest aggregation.
   allowfullscreen>
 </iframe>
 :::
+
+For a better experience, click [here](https://public.tableau.com/views/MonitoringandEvaluationDashboard/Dashboard1?:language=en-GB&:display_count=n&:origin=viz_share_link:showVizHome=no&:embed=true).
 
 ### Introduction
 
